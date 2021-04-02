@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor de Temperatura</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="dist/simple-notify.min.css" />
+    <script src="dist/simple-notify.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="opcion">
+            <div class="contenedor flex-h">
+                <div class="combo">
+                    <select required name="metricUnit" id="metricUnit">
+                        <option value="celcius" selected>°C</option>
+                        <option value="fahrenheit">°F</option>
+                    </select>
+                    <select name="language" id="language">
+                        <option value="esp">Español</option>
+                        <option value="eng">Ingles</option>
+                    </select>
+                </div>
+                <div class="user">
+                    <a href="#">CERRAR</a>
+                </div>
+            </div>
+        </div>
+        <div class="opcion-fixed">
+            <div class="contenedor">
+                <div class="grid-center">
+                    <div class="arduino-logo">
+                        <img src="https://img.icons8.com/fluent/65/000000/arduino.png" />
+                        <h1>Temperature Sensor</h1>
+                    </div>
+                    <div class="flex-center padding-10px">
+                        <p id="txtCiudad">Man</p>
+                        <img id="imgWeather" src="" alt="">
+                        <p id="txtWeather">25</p>
+                    </div>
+                    <div class="flex-end padding-10px">
+                        <span class="material-icons mini-icon">thermostat</span>
+                        <span class="mini visual-number" id="txtDegree">24</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="bg-cyan">
+        <div class="contenedor">
+            <main class="contain-center">
+                <div class="visual-sensor">
+                    <div>
+                        <span class="material-icons icon">thermostat</span>
+                    </div>
+                    <h2>Temperatura obtenida</h2>
+                    <span class="visual-number" id="txtDegree">24</span>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="contenedor">
+        <main class="contain-center">
+            <h3>Grafica Lineal</h3>
+            <canvas class="flex-center" id="chartDegree"></canvas>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
