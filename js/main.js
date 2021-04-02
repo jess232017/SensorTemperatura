@@ -1,6 +1,7 @@
 var myChart;
 var txtDegree;
 var Contador = 0;
+var lastTempt = 0;
 var notyfDemo = new Notyf();
 var chartDegree = document.getElementById('chartDegree').getContext('2d');
 
@@ -9,23 +10,9 @@ function Init() {
     document.addEventListener('DOMContentLoaded', () => {
         txtDegree = document.querySelectorAll('.visual-number');
 
+        getWeather();
         showTemperatura();
-        setInterval(leerTemperatura, 1000);
-
-        fetch("http://api.openweathermap.org/data/2.5/weather?id=3617762&appid=63ea8a31096b0c9250a8505ff8f2c8a9&units=metric").then(response => {
-                response.json().then(data => {
-                    console.log(data);
-
-                    let imgWeather = document.querySelector('#imgWeather');
-                    let txtWeather = document.querySelector('#txtWeather');
-                    txtWeather.innerText = data.main.temp;
-                    imgWeather.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-                    //
-                });
-            })
-            .catch(err => {
-                console.error(err);
-            });
+        setInterval(leerTemperatura, 1250);
     })
 }
 
@@ -66,8 +53,8 @@ function leerTemperatura() {
         removeData(myChart);
     }
 
-    if (aux > 38) {
-        if (!Swal.isVisible() && false) {
+    if (aux > 38 && lastTempt != aux) {
+        if (!Swal.isVisible()) {
             Swal.fire({
                 title: "¡Temperatura muy alta!",
                 text: `Los ${aux}°C supera al rango maximo establecido`,
@@ -77,23 +64,18 @@ function leerTemperatura() {
                 footer: '<a href="#">¿Que hacer frente al Covid-19?</a>'
             });
         } else {
-            //toastr.error(`Los ${aux}°C supera al rango maximo establecido!`, '¡Temperatura muy alta!');
-            /* new Notify({
-                 title: "¡Temperatura muy alta!",
-                 text: `Los ${aux}°C supera al rango maximo establecido!`,
-                 position: 'right bottom'
-             });*/
 
-            notyfDemo.dismissible = true;
             notyfDemo.error({
-                message: `Los ${aux}°C supera al rango maximo establecido!`,
-                duration: 5000,
+                message: `Los ${aux}°C supera el rango maximo establecido!`,
+                duration: 3000,
             });
         }
     }
 
 
 }
+
+//#region Grafico de la temperatura
 
 function addData(chart, label, data) {
     chart.data.labels.push(label);
@@ -110,9 +92,49 @@ function removeData(chart) {
     });
     chart.update();
 }
+//#endregion
+
+//#region Obtener temperatura y clima
+function getWeather() {
+    fetch("https://api.openweathermap.org/data/2.5/weather?id=3617762&appid=63ea8a31096b0c9250a8505ff8f2c8a9&units=metric").then(response => {
+            response.json().then(data => {
+                console.log(data);
+
+                let imgWeather = document.querySelector('#imgWeather');
+                let txtWeather = document.querySelector('#txtWeather');
+                txtWeather.innerText = data.main.temp;
+                imgWeather.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+                //
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
 
 function getRndTemperature(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
+}
+//#endregion
+
+window.onscroll = function() { myFunction() };
+
+// Get the header
+var header = document.querySelector(".opcion-fixed");
+var nextContent = document.querySelector('.main');
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+    if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+        nextContent.style.marginTop = header.offsetHeight + 'px';
+    } else {
+        header.classList.remove("sticky");
+        nextContent.style.marginTop = 0;
+    }
 }
 
 Init();

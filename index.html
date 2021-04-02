@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensor de Temperatura</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet'>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -64,27 +66,68 @@
         </div>
     </header>
 
-
-    <div class="bg-cyan">
-        <div class="contenedor">
-            <main class="contain-center">
-                <div class="visual-sensor">
-                    <div>
-                        <span class="material-icons icon">thermostat</span>
+    <main class="main">
+        <section class="bg-cyan">
+            <div class="contenedor">
+                <div class="contain-center">
+                    <div class="visual-sensor">
+                        <div>
+                            <span class="material-icons icon">thermostat</span>
+                        </div>
+                        <h2>Temperatura obtenida</h2>
+                        <span class="visual-number" id="txtDegree">24</span>
                     </div>
-                    <h2>Temperatura obtenida</h2>
-                    <span class="visual-number" id="txtDegree">24</span>
                 </div>
-            </main>
-        </div>
-    </div>
+            </div>
+        </section>
 
-    <div class="contenedor">
-        <main class="contain-center">
-            <h3>Grafica Lineal</h3>
-            <canvas class="flex-center" id="chartDegree"></canvas>
-        </main>
-    </div>
+        <section class="contenedor">
+            <div class="contain-full">
+                <h3>Grafica Lineal</h3>
+                <canvas class="flex-center" id="chartDegree"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="contenedor">
+            <aside>
+                <div class="bullet-point">
+                    <div class="circle-icon">
+                        <span class="material-icons">school</span>
+                    </div>
+                    <p>Universidad Nacional de Ingenieria</p>
+                </div>
+                <div class="bullet-point">
+                    <div class="circle-icon">
+                        <span class="material-icons">engineering</span>
+                    </div>
+                    <p>Facultad de Electrotecnia y Computación</p>
+                </div>
+                <div class="bullet-point">
+                    <div class="circle-icon">
+                        <span class="material-icons">work</span>
+                    </div>
+                    <p>Proyecto de AMC1</p>
+                </div>
+            </aside>
+            <aside>
+                <h3>Integrantes:</h3>
+                <ul>
+                    <li>Jesus Hernández</li>
+                    <li>Nathanael González</li>
+                    <li>Juan López</li>
+                </ul>
+            </aside>
+            <aside>
+                <h3>Sobre el Proyecto</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis molestiae numquam cupiditate explicabo, itaque libero laborum ea autem corporis alias vero cum ullam quibusdam harum est accusamus ex hic asperiores perferendis nam voluptates
+                    similique tempora officia amet! Eaque, animi expedita?</p>
+            </aside>
+        </div>
+
+        <p class="copyright">Todos los derechos reservados &copy;</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script src="js/main.js"></script>
