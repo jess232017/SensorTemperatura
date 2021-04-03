@@ -2,6 +2,7 @@ var myChart;
 var txtDegree;
 var Contador = 0;
 var lastTempt = 0;
+var varSwitch = true;
 var notyfDemo = new Notyf();
 var chartDegree = document.getElementById('chartDegree').getContext('2d');
 
@@ -11,8 +12,17 @@ function Init() {
         txtDegree = document.querySelectorAll('.visual-number');
 
         getWeather();
+        switchControl();
         showTemperatura();
         setInterval(leerTemperatura, 1250);
+    })
+}
+
+function switchControl() {
+    var btnSwitch = document.querySelector('#switch');
+    btnSwitch.addEventListener('click', () => {
+        varSwitch = !varSwitch;
+        console.log(varSwitch);
     })
 }
 
@@ -44,17 +54,23 @@ function showTemperatura() {
 }
 
 function leerTemperatura() {
-    let aux = getRndTemperature(20, 50);
+
+    if (!varSwitch)
+        return;
+
+    let aux = getRndTemperature(-50, 50);
     txtDegree[0].innerText = `${aux}`;
     txtDegree[1].innerText = `${aux}`;
     addData(myChart, Contador++, aux)
 
-    if (Contador > 20) {
+    if (Contador > 60) {
         removeData(myChart);
     }
 
     if (aux > 38 && lastTempt != aux) {
-        if (!Swal.isVisible()) {
+        if (!Swal.isVisible() && false) {
+            new Howl({ src: ['../sound/Alerty.mp3'] }).play();
+
             Swal.fire({
                 title: "¡Temperatura muy alta!",
                 text: `Los ${aux}°C supera al rango maximo establecido`,
@@ -64,6 +80,7 @@ function leerTemperatura() {
                 footer: '<a href="#">¿Que hacer frente al Covid-19?</a>'
             });
         } else {
+            new Howl({ src: ['../sound/Alert.mp3'] }).play();
 
             notyfDemo.error({
                 message: `Los ${aux}°C supera el rango maximo establecido!`,
@@ -72,7 +89,7 @@ function leerTemperatura() {
         }
     }
 
-
+    lastTempt = aux;
 }
 
 //#region Grafico de la temperatura
@@ -103,7 +120,10 @@ function getWeather() {
                 let imgWeather = document.querySelector('#imgWeather');
                 let txtWeather = document.querySelector('#txtWeather');
                 txtWeather.innerText = data.main.temp;
-                imgWeather.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+                imgWeather.src = `../img/09n.png`;
+                //imgWeather.src = `../img/${data.weather[0].icon}.png`;
+
+                imgWeather.alt = data.weather[0].description;
                 //
             });
         })

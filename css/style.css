@@ -81,13 +81,13 @@ select {
 
 .opcion,
 .opcion-fixed {
-    padding: 10px 0px;
     background-color: rgb(52, 52, 53);
 }
 
 .opcion-fixed {
     min-width: 100%;
-    background-color: white;
+    opacity: .96;
+    backdrop-filter: blur(10px);
     background-color: #eaedf8;
 }
 
@@ -205,6 +205,10 @@ select {
     align-items: center;
 }
 
+.arduino-logo img {
+    margin-right: 10px;
+}
+
 .visual-sensor {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -258,6 +262,10 @@ select {
 
 #txtWeather::after {
     font-size: 12px;
+}
+
+#imgWeather {
+    margin: 0 10px;
 }
 
 
