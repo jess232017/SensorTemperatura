@@ -74,6 +74,10 @@ select {
     margin-top: 90px;
 }
 
+.disabled {
+    color: grey!important;
+}
+
 .bg-cyan {
     background: linear-gradient( 155.26deg, #300158, #241568 28.82%, #12509e 60.55%, #34b1c7 82.92%, #9de0d5);
     --background: linear-gradient( 23deg, #300158, #241568 28.82%, #12509e 60.55%, #34b1c7 82.92%, #9de0d5);
@@ -88,6 +92,7 @@ select {
     min-width: 100%;
     opacity: .96;
     backdrop-filter: blur(10px);
+    box-shadow: black 0px 1px 7px;
     background-color: #eaedf8;
 }
 
@@ -266,6 +271,42 @@ select {
 
 #imgWeather {
     margin: 0 10px;
+}
+
+
+/**  Graficos    **/
+
+.grid-graph {
+    display: block;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+    .grid-graph {
+        display: grid;
+        column-gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.graph-lineal {
+    grid-column: 1/3;
+    padding: 20px;
+}
+
+canvas {
+    min-width: 100%;
+}
+
+.gauge-graph {
+    text-align: center;
+}
+
+.gauge-graph>div {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid rgb(187, 183, 183);
 }
 
 
