@@ -4,13 +4,20 @@ var myChart;
 var txtDegree;
 var Contador = 0;
 var lastTempt = 0;
+var btnHideable;
 var varSwitch = true;
-var notyfDemo = new Notyf();
+var notyfDemo = new Notyf({
+    position: {
+        x: 'right',
+        y: 'top',
+    },
+});
 var chartDegree = document.getElementById('chartDegree').getContext('2d');
 
 function Init() {
     document.addEventListener('DOMContentLoaded', () => {
         txtDegree = document.querySelectorAll('.visual-number');
+        btnHideable = document.querySelector('.button');
 
         getWeather();
         switchControl();
@@ -21,11 +28,13 @@ function Init() {
 }
 
 function switchControl() {
-    var btnSwitch = document.querySelector('#switch');
-    btnSwitch.addEventListener('click', () => {
-        varSwitch = !varSwitch;
-        console.log(varSwitch);
-    })
+    var btnSwitch = document.querySelectorAll('.switch');
+    btnSwitch[0].addEventListener('click', () => {
+        btnSwitch[1].checked = varSwitch = !varSwitch;
+    });
+    btnSwitch[1].addEventListener('click', () => {
+        btnSwitch[0].checked = varSwitch = !varSwitch;
+    });
 }
 
 function showTemperatura() {
@@ -35,23 +44,30 @@ function showTemperatura() {
             labels: [],
             datasets: [{
                 data: [],
-                label: 'Nivel de Temperatura',
+                label: 'Temperatura',
                 fill: true,
                 backgroundColor: "rgba(54, 162, 235, 0.2)",
                 borderWidth: 1,
                 borderColor: "blue"
             }]
         },
-        options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+        actions: [{
+                name: 'Randomize',
+                handler(chart) {
+                    chart.data.datasets.forEach(dataset => {
+                        dataset.data = Utils.numbers({ count: chart.data.labels.length, min: -100, max: 100 });
+                    });
+                    chart.update();
+                }
+            },
+            {
+                name: 'Remove Dataset',
+                handler(chart) {
+                    chart.data.datasets.pop();
+                    chart.update();
+                }
+            },
+        ],
     });
 }
 
@@ -243,9 +259,11 @@ var sticky = header.offsetTop;
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
     if (window.pageYOffset > sticky) {
+        btnHideable.classList.remove("hide");
         header.classList.add("sticky");
         nextContent.style.marginTop = header.offsetHeight + 'px';
     } else {
+        btnHideable.classList.add("hide");
         header.classList.remove("sticky");
         nextContent.style.marginTop = 0;
     }

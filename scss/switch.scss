@@ -1,67 +1,3 @@
-/*switch*/
-
-
-/*
-// Tweak these to change the style of the toggle
-$toggle-background-color-on: dodgerblue;
-$toggle-background-color-off: darkgray;
-$toggle-control-color: white;
-$toggle-width: 50px;
-$toggle-height: 25px;
-$toggle-gutter: 5px;
-$toggle-radius: 50%;
-$toggle-control-speed: .15s;
-$toggle-control-ease: ease-in;
-// These are our computed variables
-// change at your own risk.
-$toggle-radius: $toggle-height / 2;
-$toggle-control-size: $toggle-height - ($toggle-gutter * 2);
-.toggle-control {
-    display: block;
-    position: relative;
-    padding-left: $toggle-width;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    user-select: none;
-    input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
-    input:checked~.control {
-        background-color: $toggle-background-color-on;
-        &:after {
-            left: $toggle-width - $toggle-control-size - $toggle-gutter;
-        }
-    }
-    .control {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: $toggle-height;
-        width: $toggle-width;
-        border-radius: $toggle-radius;
-        background-color: $toggle-background-color-off;
-        transition: background-color $toggle-control-speed $toggle-control-ease;
-        &:after {
-            content: "";
-            position: absolute;
-            left: $toggle-gutter;
-            top: $toggle-gutter;
-            width: $toggle-control-size;
-            height: $toggle-control-size;
-            border-radius: $toggle-radius;
-            background: $toggle-control-color;
-            transition: left $toggle-control-speed $toggle-control-ease;
-        }
-    }
-}
-
-/*real switch*/
-
 .mid {
     display: flex;
     align-items: center;
@@ -69,9 +5,7 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
     padding-top: 1em;
 }
 
-
-/* Switch starts here */
-
+//#region switch starts here
 .rocker {
     display: inline-block;
     position: relative;
@@ -95,7 +29,7 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 
 .rocker-small {
-    font-size: 1em;
+    font-size: .68em;
     /* Sizes the switch */
     margin: 1em;
 }
@@ -215,6 +149,111 @@ input:checked:focus+.switch-left+.switch-right {
     color: #333;
 }
 
+//#endregion
+//#region fab starts here
+.adminActions {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+}
+
+.adminButton {
+    height: 60px;
+    width: 60px;
+    background-color: rgba(67, 83, 143, .8);
+    border-radius: 50%;
+    display: block;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.adminButton i {
+    font-size: 22px;
+}
+
+.adminButtons {
+    position: absolute;
+    width: 100%;
+    bottom: 120%;
+    text-align: center;
+}
+
+.adminButtons a {
+    display: block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 10px auto 0;
+    line-height: 1.15;
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    position: relative;
+    box-shadow: 0 0 5px 1px rgba(51, 51, 51, .3);
+}
+
+.adminButtons a:hover {
+    transform: scale(1.05);
+}
+
+.adminButtons a:nth-child(1) {
+    background-color: #ff5722;
+    transition: opacity .2s ease-in-out .3s, transform .15s ease-in-out;
+}
+
+.adminButtons a:nth-child(2) {
+    background-color: #03a9f4;
+    transition: opacity .2s ease-in-out .25s, transform .15s ease-in-out;
+}
+
+.adminButtons a:nth-child(3) {
+    background-color: #f44336;
+    transition: opacity .2s ease-in-out .2s, transform .15s ease-in-out;
+}
+
+.adminButtons a:nth-child(4) {
+    background-color: #4CAF50;
+    transition: opacity .2s ease-in-out .15s, transform .15s ease-in-out;
+}
+
+.adminActions a i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.adminToggle {
+    -webkit-appearance: none;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    z-index: 2;
+    transition: box-shadow .2s ease-in-out;
+    box-shadow: 0 3px 5px 1px rgba(51, 51, 51, .3);
+}
+
+.adminToggle:hover {
+    box-shadow: 0 3px 6px 2px rgba(51, 51, 51, .3);
+}
+
+.adminToggle:checked~.adminButtons a {
+    opacity: 1;
+    visibility: visible;
+}
+
+//#endregion
 
 /*sociales*/
 

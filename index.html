@@ -10,16 +10,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-
-    <script type="text/javascript" src="js/gauge.js"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/switch.css">
+    <link rel="stylesheet" href="css/notyf.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -43,7 +36,7 @@
                     </select>
                 </div>
                 <label class="rocker rocker-small">
-                    <input type="checkbox" id="switch" checked>
+                    <input type="checkbox" class="switch" checked>
                     <span class="switch-left">ON</span>
                     <span class="switch-right">OFF</span>
                 </label>
@@ -84,9 +77,11 @@
         </section>
 
         <section class="contenedor">
-            <div class="graph-lineal">
+            <div class="gauge-graph graph-lineal">
                 <h3>Grafica Lineal</h3>
-                <canvas class="flex-center" id="chartDegree"></canvas>
+                <div>
+                    <canvas class="flex-center" id="chartDegree"></canvas>
+                </div>
             </div>
             <div class="grid-graph">
                 <div class="gauge-graph">
@@ -146,9 +141,34 @@
             </aside>
         </div>
 
-        <p class="copyright">Todos los derechos reservados &copy;</p>
+        <p class="copyright">Todos los derechos reservados &reg; - Jesen23 &copy;</p>
     </footer>
 
+
+    <div class="button hide">
+        <label class="rocker rocker-small">
+            <input type="checkbox" class="switch" checked>
+            <span class="switch-left">ON</span>
+            <span class="switch-right">OFF</span>
+        </label>
+    </div>
+
+    <div style="display: none;" class="adminActions">
+        <input type="checkbox" name="adminToggle" class="adminToggle" />
+        <a class="adminButton" href="#!"><span class="material-icons">power_settings_new</span></a>
+        <div class="adminButtons">
+            <a href="#" title="Add Company"><i class="fa fa-building"></i></a>
+            <a href="#" title="Edit Company"><i class="fa fa-pen"></i></a>
+            <a href="#" title="Add User"><i class="fa fa-user-plus"></i></a>
+            <a href="#" title="Edit User"><i class="fa fa-user-edit"></i></a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/import/sweetalert.js"></script>
+    <script type="text/javascript" src="js/import/howler.js"></script>
+    <script type="text/javascript" src="js/import/chart.js"></script>
+    <script type="text/javascript" src="js/import/notyf.js"></script>
+    <script type="text/javascript" src="js/import/gauge.js"></script>
     <script src="js/main.js"></script>
 </body>
 
