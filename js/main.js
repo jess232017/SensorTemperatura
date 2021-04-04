@@ -4,11 +4,12 @@ var myChart;
 var txtDegree;
 var Contador = 0;
 var lastTempt = 0;
-var btnHideable;
+var fabSwitch;
+var btnSwitch;
 var varSwitch = true;
 var notyfDemo = new Notyf({
     position: {
-        x: 'right',
+        x: 'left',
         y: 'top',
     },
 });
@@ -17,24 +18,24 @@ var chartDegree = document.getElementById('chartDegree').getContext('2d');
 function Init() {
     document.addEventListener('DOMContentLoaded', () => {
         txtDegree = document.querySelectorAll('.visual-number');
-        btnHideable = document.querySelector('.button');
+        btnSwitch = document.querySelector('.switch');
+        fabSwitch = document.querySelector('#fab');
+
+        btnSwitch.addEventListener('click', switchSensor);
+
+        fabSwitch.addEventListener('click', switchSensor);
 
         getWeather();
-        switchControl();
         showTemperatura();
         setGaugeTemperature();
         setInterval(leerTemperatura, 1250);
     })
 }
 
-function switchControl() {
-    var btnSwitch = document.querySelectorAll('.switch');
-    btnSwitch[0].addEventListener('click', () => {
-        btnSwitch[1].checked = varSwitch = !varSwitch;
-    });
-    btnSwitch[1].addEventListener('click', () => {
-        btnSwitch[0].checked = varSwitch = !varSwitch;
-    });
+function switchSensor() {
+    varSwitch = !varSwitch;
+    btnSwitch.checked = varSwitch;
+    fabSwitch.style.color = (varSwitch) ? '#ffffff' : '#000000';
 }
 
 function showTemperatura() {
@@ -101,8 +102,24 @@ function leerTemperatura() {
         removeData(myChart);
     }
 
+    //Notificar si la temperatura es alta
     if (aux > 38 && lastTempt != aux) {
-        if (!Swal.isVisible() && false) {
+        console.log(Notification.permission);
+
+        //Si esta disponible a traves de las notificaciones del sistema
+        if (Notification.permission == "granted") {
+            Push.create("¡Temperatura muy alta!", {
+                body: `Los ${aux}°C supera al rango maximo establecido`,
+                icon: '../img/alert.png',
+                timeout: 4000,
+                onClick: function() {
+                    window.focus();
+                    this.close();
+                }
+            });
+
+            //Si no desde la misma interfaz de la pagina web
+        } else if (!Swal.isVisible() && false) {
             new Howl({ src: ['../sound/Alerty.mp3'] }).play();
 
             Swal.fire({
@@ -113,6 +130,7 @@ function leerTemperatura() {
                 timerProgressBar: true,
                 footer: '<a href="#">¿Que hacer frente al Covid-19?</a>'
             });
+            //Si existe una notificacion previa enviarla de fondo
         } else {
             new Howl({ src: ['../sound/Alert.mp3'] }).play();
 
@@ -259,15 +277,34 @@ var sticky = header.offsetTop;
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
     if (window.pageYOffset > sticky) {
-        btnHideable.classList.remove("hide");
+        fabSwitch.classList.remove("hide");
         header.classList.add("sticky");
         nextContent.style.marginTop = header.offsetHeight + 'px';
     } else {
-        btnHideable.classList.add("hide");
+        fabSwitch.classList.add("hide");
         header.classList.remove("sticky");
         nextContent.style.marginTop = 0;
     }
 }
 
+function toggle(element, event) {
+    let key = element.nextElementSibling.innerText
+    switch (key) {
+        case "darkmode":
+            alert('muy pronto');
+            break;
+
+        case "turn-sensor":
+            switchSensor();
+            break;
+
+        case "notifications":
+            Push.create('Se ha activado las notificaciones!')
+            break;
+
+        default:
+            break;
+    }
+}
 
 Init();

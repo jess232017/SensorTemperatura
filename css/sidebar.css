@@ -1,0 +1,225 @@
+#sidebar-nav {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 320px;
+    background-color: #efefef;
+    box-shadow: 0 0 12px 6px #3f3f3f;
+    transform: translateX(+400px);
+    transition: transform 0.5s ease-in-out;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.align-center>img {
+    margin-left: 10px;
+}
+
+.titulo {
+    font: 600 20px SegoeUI-SemiBold-final, Segoe UI Semibold, SegoeUI-Regular-final, Segoe UI, "Segoe UI Web (West European)", Segoe, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, Tahoma, Helvetica, Arial, sans-serif;
+    display: inline-block;
+    margin: 0;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 16px;
+    padding-top: 20px;
+    padding-bottom: 18px;
+    vertical-align: middle;
+}
+
+.close-button {
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    border-radius: 2px;
+    height: 40px;
+    width: 40px;
+    min-width: 0;
+    position: absolute;
+    top: 12px;
+    left: calc(100% - 44px);
+    padding: 5px;
+    border-width: 0;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+}
+
+#sidebar-nav #sidebar-nav-list {
+    padding: 16px;
+    position: relative;
+    background-color: #efefef;
+}
+
+#sidebar-nav #sidebar-nav-list .sidebar-nav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.25s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+#sidebar-nav:target {
+    transform: translateX(0px);
+    box-shadow: 0 0 5px 4px #3f3f3f;
+}
+
+#sidebar-nav:target .sidebar-nav-item {
+    -webkit-animation: nav-item-fade-in 1s ease-in-out;
+    animation: nav-item-fade-in 1s ease-in-out;
+}
+
+#sidebar-nav:target+#nav-screen-overlay {
+    display: block;
+    pointer-events: auto;
+    opacity: 0.3;
+}
+
+#nav-screen-overlay {
+    position: fixed;
+    z-index: 2;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0f0f0f;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+@-webkit-keyframes nav-item-fade-in {
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes nav-item-fade-in {
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+
+/**
+    Toggle
+**/
+
+
+/*Oculta el input*/
+
+.toggle input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.toggle {
+    display: table;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.toggle input:focus+div {
+    text-decoration: underline;
+}
+
+.toggle>div {
+    cursor: pointer;
+    border-radius: 2rem;
+    width: 45px;
+    height: 22px;
+    background: white;
+    border: 2px solid grey;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    -webkit-transition: 200ms ease-out;
+    transition: 200ms ease-out;
+    font-size: 0;
+}
+
+.toggle>div:hover {
+    box-shadow: 0 0 6px #005ca4;
+}
+
+.toggle>div:before {
+    will-change: translate;
+    display: block;
+    position: absolute;
+    top: calc(50% - .45rem);
+    left: .1rem;
+    content: '';
+    width: .9rem;
+    height: .9rem;
+    background: grey;
+    border-radius: 50%;
+    -webkit-transition: 200ms;
+    transition: 200ms;
+}
+
+.toggle>div:after {
+    font-size: 1rem;
+    position: absolute;
+    right: -50%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    content: attr(data-off);
+    pointer-events: none;
+}
+
+.toggle input:checked+div {
+    background: #0078d7;
+    border-color: #0078d7;
+}
+
+.toggle input:checked+div:before {
+    color: #0078d7;
+    -webkit-transform: translateX(350%);
+    transform: translateX(350%);
+    -webkit-transform: translateX(calc(2.5*46% + 4px));
+    transform: translateX(calc(2.5*46% + 4px));
+    background: white;
+}
+
+.toggle input:checked+div:after {
+    content: attr(data-on);
+}
+
+input:focus+div:after {
+    text-decoration: underline;
+}

@@ -66,6 +66,10 @@ select {
     border-radius: 5px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .padding-10px {
     padding: 10px;
 }
@@ -392,3 +396,36 @@ aside p {
 .hide {
     display: none;
 }
+
+
+/********/
+
+#fab {
+    z-index: 1;
+    right: 30px;
+    width: 60px;
+    bottom: 30px;
+    height: 60px;
+    color: white;
+    position: fixed;
+    border-radius: 50%;
+    background-color: #409ae4;
+    font-family: 'material icons';
+    box-shadow: 0 2px 8px #3f3f3f;
+    text-align: center;
+    line-height: 60px;
+    font-size: 1.75em;
+    cursor: pointer;
+    transition: all 0s, opacity 1.5s ease-in;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#fab:active {
+    transform: scale(0.95);
+}
+
+
+/** sidebar **/
