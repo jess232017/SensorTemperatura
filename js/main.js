@@ -17,31 +17,29 @@ var notyfDemo = new Notyf({
 var chartDegree;
 
 function Init() {
-    document.addEventListener('DOMContentLoaded', () => {
-        chartDegree = document.querySelector('#chartDegree').getContext('2d');
-        txtDegree = document.querySelectorAll('.visual-number');
-        fabSwitch = document.querySelector('#fab');
+    chartDegree = document.querySelector('#chartDegree').getContext('2d');
+    txtDegree = document.querySelectorAll('.visual-number');
+    fabSwitch = document.querySelector('#fab');
 
-        window.onscroll = function() { myFunction() };
-        fabSwitch.addEventListener('click', switchSensor);
+    window.onscroll = function() { myFunction() };
+    fabSwitch.addEventListener('click', switchSensor);
 
-        //Guardar variable de notificaciones inhabilitada dentro del sistema
-        let pushActive = myStorage.getItem('pushActive');
+    //Guardar variable de notificaciones inhabilitada dentro del sistema
+    let pushActive = myStorage.getItem('pushActive');
 
-        if (typeof pushActive == 'undefined') {
-            localStorage.setItem('pushActive', false);
-        } else {
-            console.log('checkedchecked', pushActive);
-            if (pushActive === 'true') {
-                document.getElementById("push").checked = true;
-            }
+    if (typeof pushActive == 'undefined') {
+        localStorage.setItem('pushActive', false);
+    } else {
+        console.log('checkedchecked', pushActive);
+        if (pushActive === 'true') {
+            document.getElementById("push").checked = true;
         }
+    }
 
-        getWeather();
-        showTemperatura();
-        setGaugeTemperature();
-        setInterval(leerTemperatura, 1250);
-    })
+    getWeather();
+    showTemperatura();
+    setGaugeTemperature();
+    setInterval(leerTemperatura, 1250);
 }
 
 function switchSensor() {
