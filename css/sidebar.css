@@ -79,18 +79,18 @@
     animation-fill-mode: forwards;
 }
 
-#sidebar-nav:target {
+#sidebar-nav.activo {
     transform: translateX(0px);
     box-shadow: 0 0 5px 4px #3f3f3f;
     box-shadow: -2px 2px 6px -2px #3f3f3f;
 }
 
-#sidebar-nav:target .sidebar-nav-item {
+#sidebar-nav.activo .sidebar-nav-item {
     -webkit-animation: nav-item-fade-in 1s ease-in-out;
     animation: nav-item-fade-in 1s ease-in-out;
 }
 
-#sidebar-nav:target+#nav-screen-overlay {
+#sidebar-nav.activo+#nav-screen-overlay {
     display: block;
     pointer-events: auto;
     opacity: 0.3;

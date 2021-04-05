@@ -30,7 +30,7 @@
     <nav id="sidebar-nav">
         <header id="sidebar-header">
             <p class="titulo">Configuracion</p>
-            <a href="#" class="btn-setting close-button">&#xe5cd;</a>
+            <a onclick="sideClose(this, event)" class="btn-setting close-button">&#xe5cd;</a>
         </header>
         <ul id="sidebar-nav-list">
             <li class="sidebar-nav-item">
@@ -52,7 +52,6 @@
                     <div>notifications</div>
                 </label>
             </li>
-
             <li class="sidebar-nav-item">
                 <div class="align-center">
                     <span class="txt-option">Tomar Temperatura</span>
@@ -79,15 +78,9 @@
                         <option value="eng">Ingles</option>
                     </select>
                 </div>
-                <a class="btn-setting" href="#sidebar-nav" target="_self">
+                <a id="btn-setting" onclick="setting(this, event)" class="btn-setting">
                     <span class="material-icons">settings</span>
                 </a>
-                <!--
-                <label style="display: none;" class="rocker rocker-small">
-                    <input type="checkbox" class="switch" checked>
-                    <span class="switch-left">ON</span>
-                    <span class="switch-right">OFF</span>
-                </label>-->
             </div>
         </div>
 

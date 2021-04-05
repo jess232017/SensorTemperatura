@@ -292,6 +292,7 @@ function myFunction() {
         header.classList.remove("sticky");
         nextContent.style.marginTop = 0;
     }
+
 }
 
 function toggle(element, event) {
@@ -307,20 +308,52 @@ function toggle(element, event) {
 
         case "notifications":
             //Cambia el estado de las notificaciones push
-            let aux = localStorage.getItem('pushActive');
-            let aux2 = (aux != 'true') ? 'true' : 'false';
-            localStorage.setItem('pushActive', aux2);
+            if (localStorage.getItem('pushActive') != 'true') {
 
-            if (aux2 === 'true') {
                 Push.create('Notificaciones Activadas', {
                     body: "Ha activado las notificaciones con exito",
+                }).then(response => {
+
+                    localStorage.setItem('pushActive', 'true');
+
+                }).catch(error => {
+
+                    alert('Debe activar las notificaciones para este sitio primero ' + error);
+                    localStorage.setItem('pushActive', 'false');
+                    element.checked = false;
+
                 });
+
+            } else {
+                localStorage.setItem('pushActive', 'false');
             }
+
             break;
 
         default:
             break;
     }
+}
+
+function setting(element, event) {
+    event.preventDefault();
+    const sideMenu = document.getElementById('sidebar-nav');
+
+    if (element.classList.contains('activo')) {
+        element.classList.remove('activo');
+        sideMenu.classList.remove('activo');
+    } else {
+        element.classList.add('activo');
+        sideMenu.classList.add('activo');
+    }
+}
+
+function sideClose(element, event) {
+    event.preventDefault();
+
+    const btnSetting = document.getElementById('btn-setting');
+    element.parentElement.parentElement.classList.remove('activo');
+    btnSetting.classList.remove('activo');
 }
 
 Init();
