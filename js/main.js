@@ -1,3 +1,5 @@
+var myStorage = window.localStorage;
+
 var gauge;
 var gaugeHumidity;
 var myChart;
@@ -5,7 +7,6 @@ var txtDegree;
 var Contador = 0;
 var lastTempt = 0;
 var fabSwitch;
-var btnSwitch;
 var varSwitch = true;
 var notyfDemo = new Notyf({
     position: {
@@ -13,17 +14,28 @@ var notyfDemo = new Notyf({
         y: 'top',
     },
 });
-var chartDegree = document.getElementById('chartDegree').getContext('2d');
+var chartDegree;
 
 function Init() {
     document.addEventListener('DOMContentLoaded', () => {
+        chartDegree = document.querySelector('#chartDegree').getContext('2d');
         txtDegree = document.querySelectorAll('.visual-number');
-        btnSwitch = document.querySelector('.switch');
         fabSwitch = document.querySelector('#fab');
 
-        btnSwitch.addEventListener('click', switchSensor);
-
+        window.onscroll = function() { myFunction() };
         fabSwitch.addEventListener('click', switchSensor);
+
+        //Guardar variable de notificaciones inhabilitada dentro del sistema
+        let pushActive = myStorage.getItem('pushActive');
+
+        if (typeof pushActive == 'undefined') {
+            localStorage.setItem('pushActive', false);
+        } else {
+            console.log('checkedchecked', pushActive);
+            if (pushActive === 'true') {
+                document.getElementById("push").checked = true;
+            }
+        }
 
         getWeather();
         showTemperatura();
@@ -34,7 +46,6 @@ function Init() {
 
 function switchSensor() {
     varSwitch = !varSwitch;
-    btnSwitch.checked = varSwitch;
     fabSwitch.style.color = (varSwitch) ? '#ffffff' : '#000000';
 }
 
@@ -104,10 +115,9 @@ function leerTemperatura() {
 
     //Notificar si la temperatura es alta
     if (aux > 38 && lastTempt != aux) {
-        console.log(Notification.permission);
 
         //Si esta disponible a traves de las notificaciones del sistema
-        if (Notification.permission == "granted") {
+        if (Notification.permission == "granted" && myStorage.getItem('pushActive') === 'true') {
             Push.create("¡Temperatura muy alta!", {
                 body: `Los ${aux}°C supera al rango maximo establecido`,
                 icon: '../img/alert.png',
@@ -119,7 +129,7 @@ function leerTemperatura() {
             });
 
             //Si no desde la misma interfaz de la pagina web
-        } else if (!Swal.isVisible() && false) {
+        } else if (!Swal.isVisible()) {
             new Howl({ src: ['../sound/Alerty.mp3'] }).play();
 
             Swal.fire({
@@ -243,7 +253,6 @@ function setGaugeTemperature() {
 function getWeather() {
     fetch("https://api.openweathermap.org/data/2.5/weather?id=3617763&appid=63ea8a31096b0c9250a8505ff8f2c8a9&units=metric").then(response => {
             response.json().then(data => {
-                console.log(data);
 
                 let imgWeather = document.querySelector('#imgWeather');
                 let txtWeather = document.querySelector('#txtWeather');
@@ -264,8 +273,6 @@ function getRndTemperature(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 //#endregion
-
-window.onscroll = function() { myFunction() };
 
 // Get the header
 var header = document.querySelector(".opcion-fixed");
@@ -299,7 +306,16 @@ function toggle(element, event) {
             break;
 
         case "notifications":
-            Push.create('Se ha activado las notificaciones!')
+            //Cambia el estado de las notificaciones push
+            let aux = localStorage.getItem('pushActive');
+            let aux2 = (aux != 'true') ? 'true' : 'false';
+            localStorage.setItem('pushActive', aux2);
+
+            if (aux2 === 'true') {
+                Push.create('Notificaciones Activadas', {
+                    body: "Ha activado las notificaciones con exito",
+                });
+            }
             break;
 
         default:
