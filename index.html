@@ -11,53 +11,10 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600&display=swap' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/notyf.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
-    <!-- Elementos flotantes-->
-    <div class="hide" id="fab">&#xe8ac;</div>
-
-    <nav id="sidebar-nav">
-        <header id="sidebar-header">
-            <p class="titulo">Configuracion</p>
-            <a onclick="sideClose(this, event)" class="btn-setting close-button">&#xe5cd;</a>
-        </header>
-        <ul id="sidebar-nav-list">
-            <li class="sidebar-nav-item">
-                <div class="align-center">
-                    <span class="txt-option">Modo oscuro</span>
-                    <img src="https://img.icons8.com/windows/19/000000/info.png" alt="informacion" width="19" height="19" />
-                </div>
-                <label class="toggle">
-                    <input type="checkbox" onclick="toggle(this,event)">
-                    <div>darkmode</div>
-                </label>
-            </li>
-            <li class="sidebar-nav-item">
-                <div class="align-center">
-                    <span class="txt-option">Notificaciones de escritorio</span>
-                </div>
-                <label class="toggle">
-                    <input id="push" type="checkbox" onclick="toggle(this,event)">
-                    <div>notifications</div>
-                </label>
-            </li>
-            <li class="sidebar-nav-item">
-                <div class="align-center">
-                    <span class="txt-option">Tomar Temperatura</span>
-                </div>
-                <label class="toggle">
-                    <input type="checkbox" onclick="toggle(this,event)" checked>
-                    <div>turn-sensor</div>
-                </label>
-            </li>
-        </ul>
-    </nav>
-
     <!-- Inicia elementos comunes -->
     <header>
         <div class="opcion">
@@ -186,6 +143,50 @@
 
         <p class="copyright ">Todos los derechos reservados &reg; - Jesen23 &copy;</p>
     </footer>
+
+    <!-- Elementos flotantes-->
+    <div class="hide" id="fab">&#xe8ac;</div>
+    <nav id="sidebar-nav">
+        <header id="sidebar-header">
+            <p class="titulo">Configuracion</p>
+            <a onclick="sideClose(this, event)" class="btn-setting close-button">&#xe5cd;</a>
+        </header>
+        <ul id="sidebar-nav-list">
+            <li class="sidebar-nav-item">
+                <div class="align-center">
+                    <span class="txt-option">Modo oscuro</span>
+                    <img src="https://img.icons8.com/windows/19/000000/info.png" alt="informacion" width="19" height="19" />
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" onclick="toggle(this,event)">
+                    <div>darkmode</div>
+                </label>
+            </li>
+            <li class="sidebar-nav-item">
+                <div class="align-center">
+                    <span class="txt-option">Notificaciones de escritorio</span>
+                </div>
+                <label class="toggle">
+                    <input id="push" type="checkbox" onclick="toggle(this,event)">
+                    <div>notifications</div>
+                </label>
+            </li>
+            <li class="sidebar-nav-item">
+                <div class="align-center">
+                    <span class="txt-option">Tomar Temperatura</span>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" onclick="toggle(this,event)" checked>
+                    <div>turn-sensor</div>
+                </label>
+            </li>
+        </ul>
+    </nav>
+    <!-- Fin elementos flotantes-->
+
+
+    <!--Script JS de la pagina -->
+
     <script type="text/javascript" src="js/import/chart.js"></script>
     <script type="text/javascript" src="js/import/gauge.js"></script>
 

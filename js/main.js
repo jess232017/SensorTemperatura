@@ -307,6 +307,7 @@ function toggle(element, event) {
         case "notifications":
             //Cambia el estado de las notificaciones push
             if (localStorage.getItem('pushActive') != 'true') {
+                new Notification("Gracias majo!");
 
                 Push.create('Notificaciones Activadas', {
                     body: "Ha activado las notificaciones con exito",
