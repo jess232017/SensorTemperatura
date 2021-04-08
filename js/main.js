@@ -117,11 +117,27 @@ function leerTemperatura() {
 
 
     if (aux > 38 && lastTempt != aux) {
-        alert(Notification.permission + ' /n ' + Push.Permission.has())
+        //alert(Notification.permission + ' /n ' + Push.Permission.has())
         console.log(Push.Permission.get());
         //Si esta disponible a traves de las notificaciones del sistema
+        var title = "Xitrus"
+        var extra = {
+            icon: "http://xitrus.es/imgs/logo_claro.png",
+            body: "Cierra o pulsa la notificación"
+        }
+        var noti = new Notification(title, extra)
+        noti.onclick = {
+            // Al hacer click
+        }
+        noti.onclose = {
+            // Al cerrar
+        }
+
+
         if (Notification.permission == "granted" && myStorage.getItem('pushActive') === 'true') {
-            Push.create("¡Temperatura muy alta!", {
+
+
+            /*Push.create("¡Temperatura muy alta!", {
                 body: `Los ${aux}°C supera al rango maximo establecido`,
                 icon: '../img/alert.png',
                 timeout: 4000,
@@ -129,7 +145,7 @@ function leerTemperatura() {
                     window.focus();
                     this.close();
                 }
-            });
+            });*/
 
             //Si no desde la misma interfaz de la pagina web
         } else if (!Swal.isVisible()) {
