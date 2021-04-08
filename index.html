@@ -12,9 +12,20 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 </head>
 
 <body>
+    <form action="">
+        <input type="number" name="temperatura" id="temperatura" required>
+        <input type="submit" value="Enviar" id="btnEnviar">
+    </form>
+
     <!-- Inicia elementos comunes -->
     <header>
         <div class="opcion">
@@ -189,6 +200,7 @@
 
     <script type="text/javascript" src="js/import/chart.js"></script>
     <script type="text/javascript" src="js/import/gauge.js"></script>
+
 
     <!-- Evita que se carguen los script JS mientras no se haya cargado la pagina -->
     <script type="text/javascript">

@@ -8,15 +8,15 @@ var Contador = 0;
 var lastTempt = 0;
 var fabSwitch;
 var varSwitch = true;
-var notifier = new Notifier();
-var notyfDemo = new Notyf({
+//var notifier = new Notifier();
+/*var notyfDemo = new Notyf({
     position: {
         x: 'left',
         y: 'top',
     },
-});
+});*/
 var chartDegree;
-
+/*
 Push.config({
     serviceWorker: './js/sw.js', // Sets a custom service worker script
     fallback: function(payload) {
@@ -24,10 +24,50 @@ Push.config({
         // "payload" is an object containing the 
         // title, body, tag, and icon of the notification 
     }
-});
+});*/
+
+//navigator.serviceWorker.register('./js/sw.js');
+
+function initFirebase() {
+    var firebaseConfig = {
+        apiKey: "AIzaSyCi6xuTAzN3SdQV7WOHWYOgK1aabuOZHcA",
+        authDomain: "sensor-de-temperatura-a0371.firebaseapp.com",
+        databaseURL: 'https://sensor-de-temperatura-a0371-default-rtdb.firebaseio.com',
+        projectId: "sensor-de-temperatura-a0371",
+        storageBucket: "sensor-de-temperatura-a0371.appspot.com",
+        messagingSenderId: "251434379203",
+        appId: "1:251434379203:web:1c923b67801ba4c7e3bf76",
+        measurementId: "G-S380YW4E3B"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const dbRefObject = firebase.database().ref().child('temperatura');
+
+    //Sincronizar cambios en el objecto
+    dbRefObject.on('value', data => leerTemperatura(data));
+
+    document.querySelector('#btnEnviar').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        let valTemperature = document.querySelector('#temperatura').value;
+
+        firebase.database().ref().set({
+            temperatura: valTemperature,
+        }, (error) => {
+            if (error) {
+                // The write failed...
+            } else {
+                // Data saved successfully!
+            }
+        });
+    })
+}
 
 
-navigator.serviceWorker.register('./js/sw.js');
+
+//#region Obtencion de datos
 
 function showNotification() {
     Notification.requestPermission(function(result) {
@@ -68,7 +108,8 @@ function Init() {
     getWeather();
     showTemperatura();
     setGaugeTemperature();
-    setInterval(leerTemperatura, 1250);
+    initFirebase();
+    //setInterval(leerTemperatura, 1250);
 }
 
 function switchSensor() {
@@ -111,8 +152,7 @@ function showTemperatura() {
     });
 }
 
-function leerTemperatura() {
-
+function leerTemperatura(data) {
     if (!varSwitch) {
         txtDegree.forEach(item => {
             item.classList.add('disabled');
@@ -124,7 +164,9 @@ function leerTemperatura() {
         });
     }
 
-    let aux = getRndTemperature(20, 50);
+    //let aux = getRndTemperature(20, 50);
+    //Ahora desde firebase
+    let aux = data.val();
 
     txtDegree.forEach(item => {
         item.innerText = `${aux}`;
@@ -190,6 +232,8 @@ function leerTemperatura() {
 
     lastTempt = aux;
 }
+
+//#endregion
 
 //#region Graficos de la temperatura
 
@@ -310,6 +354,7 @@ function getRndTemperature(min, max) {
 }
 //#endregion
 
+//#region Interfaz
 // Get the header
 var header = document.querySelector(".opcion-fixed");
 var nextContent = document.querySelector('.main');
@@ -335,8 +380,7 @@ function toggle(element, event) {
     let key = element.nextElementSibling.innerText
     switch (key) {
         case "darkmode":
-            //notifier.notify("info", "Aun estamos trabando, Disponible muy pronto!");
-            Push.create('Notificaciones Activadas');
+            notifier.notify("info", "Aun estamos trabando, Disponible muy pronto!");
             showNotification();
             break;
 
@@ -425,5 +469,7 @@ function notifyMe(aux) {
         }
     }, 3250);
 }
+
+//#endregion
 
 Init();
