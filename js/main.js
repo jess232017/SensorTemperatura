@@ -96,7 +96,7 @@ function leerTemperatura() {
         });
     }
 
-    let aux = getRndTemperature(-50, 50);
+    let aux = getRndTemperature(20, 50);
 
     txtDegree.forEach(item => {
         item.innerText = `${aux}`;
@@ -120,18 +120,14 @@ function leerTemperatura() {
         //alert(Notification.permission + ' /n ' + Push.Permission.has())
         console.log(Push.Permission.get());
         //Si esta disponible a traves de las notificaciones del sistema
-        var title = "Xitrus"
-        var extra = {
-            icon: "http://xitrus.es/imgs/logo_claro.png",
-            body: "Cierra o pulsa la notificación"
-        }
-        var noti = new Notification(title, extra)
-        noti.onclick = {
-            // Al hacer click
-        }
-        noti.onclose = {
-            // Al cerrar
-        }
+        navigator.serviceWorker.register('./js/sw.js');
+        Notification.requestPermission(function(result) {
+            if (result === 'granted') {
+                navigator.serviceWorker.ready.then(function(registration) {
+                    registration.showNotification('Notification with ServiceWorker');
+                });
+            }
+        });
 
 
         if (Notification.permission == "granted" && myStorage.getItem('pushActive') === 'true') {
