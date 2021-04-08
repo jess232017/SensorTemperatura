@@ -17,6 +17,15 @@ var notyfDemo = new Notyf({
 });
 var chartDegree;
 
+Push.config({
+    serviceWorker: './js/sw.js', // Sets a custom service worker script
+    fallback: function(payload) {
+        // Code that executes on browsers with no notification support
+        // "payload" is an object containing the 
+        // title, body, tag, and icon of the notification 
+    }
+});
+
 
 navigator.serviceWorker.register('./js/sw.js');
 
@@ -327,6 +336,7 @@ function toggle(element, event) {
     switch (key) {
         case "darkmode":
             //notifier.notify("info", "Aun estamos trabando, Disponible muy pronto!");
+            Push.create('Notificaciones Activadas');
             showNotification();
             break;
 
