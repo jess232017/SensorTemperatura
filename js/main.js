@@ -17,6 +17,25 @@ var notyfDemo = new Notyf({
 });
 var chartDegree;
 
+
+navigator.serviceWorker.register('./js/sw.js');
+
+function showNotification() {
+    Notification.requestPermission(function(result) {
+        if (result === 'granted') {
+            console.log(result);
+            navigator.serviceWorker.ready.then(function(registration) {
+                registration.showNotification('Vibration Sample', {
+                    body: 'Buzz! Buzz!',
+                    icon: '../images/touch/chrome-touch-icon-192x192.png',
+                    vibrate: [200, 100, 200, 100, 200, 100, 200],
+                    tag: 'vibration-sample'
+                });
+            });
+        }
+    });
+}
+
 function Init() {
     chartDegree = document.querySelector('#chartDegree').getContext('2d');
     txtDegree = document.querySelectorAll('.visual-number');
@@ -118,17 +137,9 @@ function leerTemperatura() {
 
     if (aux > 38 && lastTempt != aux) {
         //alert(Notification.permission + ' /n ' + Push.Permission.has())
-        console.log(Push.Permission.get());
-        //Si esta disponible a traves de las notificaciones del sistema
-        navigator.serviceWorker.register('./js/sw.js');
-        Notification.requestPermission(function(result) {
-            if (result === 'granted') {
-                navigator.serviceWorker.ready.then(function(registration) {
-                    registration.showNotification('Notification with ServiceWorker');
-                });
-            }
-        });
+        showNotification();
 
+        return;
 
         if (Notification.permission == "granted" && myStorage.getItem('pushActive') === 'true') {
 
@@ -315,7 +326,8 @@ function toggle(element, event) {
     let key = element.nextElementSibling.innerText
     switch (key) {
         case "darkmode":
-            notifier.notify("info", "Aun estamos trabando, Disponible muy pronto!");
+            //notifier.notify("info", "Aun estamos trabando, Disponible muy pronto!");
+            showNotification();
             break;
 
         case "turn-sensor":
