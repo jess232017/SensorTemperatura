@@ -8,6 +8,7 @@ var Contador = 0;
 var lastTempt = 0;
 var fabSwitch;
 var varSwitch = true;
+var notifier = new Notifier();
 var notyfDemo = new Notyf({
     position: {
         x: 'left',
@@ -45,6 +46,7 @@ function Init() {
 function switchSensor() {
     varSwitch = !varSwitch;
     fabSwitch.style.color = (varSwitch) ? '#ffffff' : '#000000';
+    document.querySelector('#turn-sensor').checked = varSwitch;
 }
 
 function showTemperatura() {
@@ -112,8 +114,11 @@ function leerTemperatura() {
     }
 
     //Notificar si la temperatura es alta
-    if (aux > 38 && lastTempt != aux) {
 
+
+    if (aux > 38 && lastTempt != aux) {
+        alert(Notification.permission + ' /n ' + Push.Permission.has())
+        console.log(Push.Permission.get());
         //Si esta disponible a traves de las notificaciones del sistema
         if (Notification.permission == "granted" && myStorage.getItem('pushActive') === 'true') {
             Push.create("¡Temperatura muy alta!", {
@@ -129,8 +134,8 @@ function leerTemperatura() {
             //Si no desde la misma interfaz de la pagina web
         } else if (!Swal.isVisible()) {
             new Howl({ src: ['../sound/Alerty.mp3'] }).play();
-
-            Swal.fire({
+            notifyMe(aux);
+            /* Swal.fire({
                 title: "¡Temperatura muy alta!",
                 text: `Los ${aux}°C supera al rango maximo establecido`,
                 icon: "warning",
@@ -142,10 +147,12 @@ function leerTemperatura() {
         } else {
             new Howl({ src: ['../sound/Alert.mp3'] }).play();
 
-            notyfDemo.error({
+            notifier.notify("warning", `Los ${aux}°C supera el rango maximo establecido!`).push();
+
+            /*notyfDemo.error({
                 message: `Los ${aux}°C supera el rango maximo establecido!`,
                 duration: 3000,
-            });
+            });*/
         }
     }
 
@@ -169,7 +176,6 @@ function removeData(chart) {
     });
     chart.update();
 }
-
 
 //Gauge Temperature
 function setGaugeTemperature() {
@@ -297,7 +303,7 @@ function toggle(element, event) {
     let key = element.nextElementSibling.innerText
     switch (key) {
         case "darkmode":
-            alert('muy pronto');
+            notifier.notify("info", "Aun estamos trabando, Disponible muy pronto!");
             break;
 
         case "turn-sensor":
@@ -307,11 +313,10 @@ function toggle(element, event) {
         case "notifications":
             //Cambia el estado de las notificaciones push
             if (localStorage.getItem('pushActive') != 'true') {
-                new Notification("Gracias majo!");
 
                 Push.create('Notificaciones Activadas', {
                     body: "Ha activado las notificaciones con exito",
-                }).then(response => {
+                }).then((response) => {
 
                     localStorage.setItem('pushActive', 'true');
 
@@ -353,6 +358,38 @@ function sideClose(element, event) {
     const btnSetting = document.getElementById('btn-setting');
     element.parentElement.parentElement.classList.remove('activo');
     btnSetting.classList.remove('activo');
+}
+
+function notifyMe(aux) {
+    const notifyMe = document.createElement('div');
+    notifyMe.id = 'notify-me';
+    notifyMe.classList.add('fixed-not');
+    notifyMe.classList.add('flex-start');
+
+    notifyMe.innerHTML = `
+        <img class="margin" src="https://img.icons8.com/fluent/48/000000/high-risk.png" />
+        <div class="">
+            <p class="title">¡Temperatura muy alta</p>
+            <p class="subtitle">Los ${aux}°C supera el rango maximo establecido!</p>
+        </div>
+    `;
+
+    const body = document.querySelector('body');
+    body.appendChild(notifyMe);
+
+    if (screen.width <= 768) {
+        body.style.marginBottom = (notifyMe.offsetHeight - 5) + 'px';
+        body.scrollTop = (body.scrollTop - (notifyMe.offsetHeight - 5)) + 'px';
+        document.querySelector('#fab').style.bottom = (10 + notifyMe.offsetHeight) + 'px';
+    }
+
+    setTimeout(function() {
+        notifyMe.remove();
+        if (screen.width <= 768) {
+            body.style.marginBottom = '0px';
+            document.querySelector('#fab').style.bottom = '30px'
+        }
+    }, 3250);
 }
 
 Init();
