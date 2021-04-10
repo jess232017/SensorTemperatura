@@ -99,7 +99,6 @@ function Init() {
     if (typeof pushActive == 'undefined') {
         localStorage.setItem('pushActive', false);
     } else {
-        console.log('checkedchecked', pushActive);
         if (pushActive === 'true') {
             document.getElementById("push").checked = true;
         }

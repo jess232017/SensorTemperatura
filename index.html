@@ -13,11 +13,6 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 </head>
 
 <body>
@@ -51,7 +46,7 @@
                 <div class="grid-center">
                     <div class="arduino-logo">
                         <img src="https://img.icons8.com/fluent/65/000000/arduino.png " alt="logo arduino" width="65" height="65" />
-                        <h1>Temperature Sensor</h1>
+                        <h1>Control de Temperatura</h1>
                     </div>
                     <div class="flex-center padding-10px">
                         <p id="txtCiudad">Man</p>
@@ -61,7 +56,7 @@
                     <a href="#sensor-graph">
                         <div class="flex-end padding-10px">
                             <span class="material-icons mini-icon">thermostat</span>
-                            <span class="mini visual-number ">24</span>
+                            <span class="mini visual-number ">0</span>
                         </div>
                     </a>
                 </div>
@@ -77,7 +72,7 @@
                     <div class="visual-sensor">
                         <span class="material-icons icon">thermostat</span>
                         <h2>Temperatura obtenida</h2>
-                        <span class="visual-number">24</span>
+                        <span class="visual-number">0</span>
                     </div>
                 </div>
             </div>
@@ -97,7 +92,7 @@
                         <div>
                             <canvas id="gauge-temperature"></canvas>
                             <span class="material-icons mini-icon">thermostat</span>
-                            <span class="mini visual-number">24</span>
+                            <span class="mini visual-number">0</span>
                         </div>
                     </div>
                     <div class="gauge-graph">
@@ -105,7 +100,7 @@
                         <div>
                             <canvas id="gauge-humidity"></canvas>
                             <span class="material-icons mini-icon">thermostat</span>
-                            <span class="mini visual-number">24</span>
+                            <span class="mini visual-number">0</span>
                         </div>
                     </div>
                 </div>
@@ -193,31 +188,45 @@
             </li>
         </ul>
     </nav>
-    <!-- Fin elementos flotantes-->
+    <!-- Fin elementos flotantes
+    <script defer="" type="text/javascript" src="js/import/Sweetalert.js"></script>
+    <script defer="" type="text/javascript" src="js/import/Notifier.js"></script>
+    <script defer="" type="text/javascript" src="js/import/Howler.js"></script>
+    <script defer="" type="text/javascript" src="js/import/Chart.js"></script>
+    <script defer="" type="text/javascript" src="js/import/Gauge.js"></script>
+    <script defer="" type="text/javascript" src="js/import/Notyf.js"></script>
+    <script defer="" type="text/javascript" src="js/import/Push.js"></script>
+    <script defer="" type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script defer="" type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script defer="" type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script defer="" type="text/javascript" src="js/main.js"></script>-->
 
-
-    <!--Script JS de la pagina -->
-
-    <script type="text/javascript" src="js/import/chart.js"></script>
-    <script type="text/javascript" src="js/import/gauge.js"></script>
-
-
-    <!-- Evita que se carguen los script JS mientras no se haya cargado la pagina -->
+    <!-- Evita que se carguen los script JS mientras no se haya cargado la pagina-->
     <script type="text/javascript">
         function downloadJSAtOnload() {
-            appendScript("js/import/Sweetalert.js");
-            appendScript("js/import/Notifier.js");
-            appendScript("js/import/Howler.js");
-            /*appendScript("js/import/Chart.js");
-            appendScript("js/import/Gauge.js");*/
-            appendScript("js/import/Notyf.js");
-            appendScript("js/import/Push.js");
-            appendScript("js/main.js");
+            /*appendScript("js/import/Sweetalert.js");*/
+
+            loadScripts(['js/import/Sweetalert.js', 'js/import/Notifier.js', 'js/import/Howler.js',
+                'js/import/Chart.js', 'js/import/Gauge.js', 'js/import/Notyf.js', 'js/import/Push.js',
+                'https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js',
+                'https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js',
+                'https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js',
+                'js/main.js'
+            ])
         }
 
-        function appendScript(Recurso) {
+        function loadScripts(sources) {
+            sources.forEach(src => {
+                var script = document.createElement('script');
+                script.src = src;
+                script.async = false; //<-- the important part
+                document.body.appendChild(script); //<-- make sure to append to body instead of head 
+            });
+        }
+
+        function appendScript(Recurso, defer = true) {
             let element = document.createElement("script");
-            element.defer = true;
+            element.defer = defer;
             element.type = "text/javascript";
             element.src = Recurso;
             document.body.appendChild(element);
@@ -229,7 +238,6 @@
             window.attachEvent("onload", downloadJSAtOnload);
         else window.onload = downloadJSAtOnload;
     </script>
-
     <style>
         .fixed-not {
             position: fixed;
