@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Description" content="Aplicacion web para conocer la Temperatura registrada por el sensor">
-    <title>Sensor de Temperatura</title>
+    <title>SCT UNI</title>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600&display=swap' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
@@ -16,16 +16,51 @@
 </head>
 
 <body>
-    <form action="">
+    <form style="display: none;" action="">
         <input type="number" name="temperatura" id="temperatura" required>
         <input type="submit" value="Enviar" id="btnEnviar">
     </form>
 
     <!-- Inicia elementos comunes -->
-    <header>
-        <div class="opcion">
+    <header class="opcion-fixed">
+        <!--Logo and header-->
+        <div class="contenedor">
+            <div class="flex-h">
+                <div class="flex-start logo padding-10px">
+                    <img src="https://img.icons8.com/color/100/000000/speedometer.png" alt="SCT Logo" width="48" height="48" />
+                    <h1>SCT</h1>
+                </div>
+                <div style="display: none;" class="flex-end padding-10px">
+                    <p id="txtCiudad">Man</p>
+                    <img id="imgWeather" src="img/000.gif" alt="imagen del Clima" width="45" height="45">
+                    <p id="txtWeather">0</p>
+                </div>
+                <nav class="flex-h">
+                    <a href="./admin/" id="btn-nav" class="btn-nav">
+                        <span class="txt-nav">Ingresar</span>
+                    </a>
+
+                    <a id="btn-setting" onclick="setting(this, event)" class="btn-nav">
+                        <span class="material-icons">settings</span>
+                    </a>
+                </nav>
+                <a style="display: none;" href="#sensor-graph">
+                    <div class="flex-end padding-10px">
+                        <span class="material-icons mini-icon">thermostat</span>
+                        <span class="mini visual-number ">0</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!--Navegacion-->
+        <div style="display: none;" class="opcion">
             <div class="contenedor flex-h">
-                <div class="combo">
+                <div class="flex-start">
+                    <img src="https://img.icons8.com/color/100/000000/speedometer.png" alt="SCT Logo" width="45" height="45" />
+                    <h1>SCT</h1>
+                </div>
+                <div style="display: none;" class="combo">
+                    <img src="https://img.icons8.com/color/100/000000/speedometer.png" alt="SCT Logo" width="45" height="45" />
                     <select required name="metricUnit" id="metricUnit">
                         <option value="celcius " selected>°C</option>
                         <option value="fahrenheit ">°F</option>
@@ -35,49 +70,25 @@
                         <option value="eng">Ingles</option>
                     </select>
                 </div>
-                <a id="btn-setting" onclick="setting(this, event)" class="btn-setting">
-                    <span class="material-icons">settings</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="opcion-fixed">
-            <div class="contenedor">
-                <div class="grid-center">
-                    <div class="arduino-logo">
-                        <img src="https://img.icons8.com/fluent/65/000000/arduino.png " alt="logo arduino" width="65" height="65" />
-                        <h1>Control de Temperatura</h1>
-                    </div>
-                    <div class="flex-center padding-10px">
-                        <p id="txtCiudad">Man</p>
-                        <img id="imgWeather" src="img/000.gif" alt="imagen del Clima" width="48" height="48">
-                        <p id="txtWeather">0</p>
-                    </div>
-                    <a href="#sensor-graph">
-                        <div class="flex-end padding-10px">
-                            <span class="material-icons mini-icon">thermostat</span>
-                            <span class="mini visual-number ">0</span>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </header>
 
-    <!-- Graficos -->
+    <!--  Hero y Graficos -->
     <main class="main">
+        <!-- Hero -->
         <section class="bg-cyan">
             <div class="contenedor">
                 <div class="contain-center">
-                    <div class="visual-sensor">
-                        <span class="material-icons icon">thermostat</span>
-                        <h2>Temperatura obtenida</h2>
-                        <span class="visual-number">0</span>
+                    <div class="">
+                        <span style="display: none;" class="material-icons icon">thermostat</span>
+                        <h2>Sistema de control de temperatura</h2>
+                        <span style="display: none;" class="visual-number">0</span>
                     </div>
                 </div>
             </div>
         </section>
-
+        <!-- Grafico -->
         <section class="contenedor">
             <div class="gauge-graph graph-lineal">
                 <h3>Grafica Lineal</h3>
@@ -151,11 +162,11 @@
     </footer>
 
     <!-- Elementos flotantes-->
-    <div class="hide" id="fab">&#xe8ac;</div>
+    <div class="" id="fab">&#xea77;</div>
     <nav id="sidebar-nav">
         <header id="sidebar-header">
             <p class="titulo">Configuracion</p>
-            <a onclick="sideClose(this, event)" class="btn-setting close-button">&#xe5cd;</a>
+            <a onclick="sideClose(this, event)" class="btn-nav close-button">&#xe5cd;</a>
         </header>
         <ul id="sidebar-nav-list">
             <li class="sidebar-nav-item">
@@ -202,42 +213,7 @@
     <script defer="" type="text/javascript" src="js/main.js"></script>-->
 
     <!-- Evita que se carguen los script JS mientras no se haya cargado la pagina-->
-    <script type="text/javascript">
-        function downloadJSAtOnload() {
-            /*appendScript("js/import/Sweetalert.js");*/
-
-            loadScripts(['js/import/Sweetalert.js', 'js/import/Notifier.js', 'js/import/Howler.js',
-                'js/import/Chart.js', 'js/import/Gauge.js', 'js/import/Notyf.js', 'js/import/Push.js',
-                'https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js',
-                'https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js',
-                'https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js',
-                'js/main.js'
-            ])
-        }
-
-        function loadScripts(sources) {
-            sources.forEach(src => {
-                var script = document.createElement('script');
-                script.src = src;
-                script.async = false; //<-- the important part
-                document.body.appendChild(script); //<-- make sure to append to body instead of head 
-            });
-        }
-
-        function appendScript(Recurso, defer = true) {
-            let element = document.createElement("script");
-            element.defer = defer;
-            element.type = "text/javascript";
-            element.src = Recurso;
-            document.body.appendChild(element);
-        }
-
-        if (window.addEventListener)
-            window.addEventListener("load", downloadJSAtOnload, false);
-        else if (window.attachEvent)
-            window.attachEvent("onload", downloadJSAtOnload);
-        else window.onload = downloadJSAtOnload;
-    </script>
+    <script src="js/loader.js"></script>
     <style>
         .fixed-not {
             position: fixed;

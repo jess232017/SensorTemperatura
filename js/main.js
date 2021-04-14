@@ -364,11 +364,11 @@ var sticky = header.offsetTop;
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
     if (window.pageYOffset > sticky) {
-        fabSwitch.classList.remove("hide");
+        //fabSwitch.classList.remove("hide");
         header.classList.add("sticky");
         nextContent.style.marginTop = header.offsetHeight + 'px';
     } else {
-        fabSwitch.classList.add("hide");
+        //fabSwitch.classList.add("hide");
         header.classList.remove("sticky");
         nextContent.style.marginTop = 0;
     }
