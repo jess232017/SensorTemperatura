@@ -64,7 +64,7 @@ select,
     padding: 0px 10px;
     font-size: 16px;
     line-height: 1.75;
-    color: rgb(206, 202, 202);
+    color: gray;
 }
 
 select {
@@ -135,7 +135,7 @@ a {
 .btn-nav {
     margin: 0;
     padding: 11px 13px 9px 13px;
-    color: rgb(206, 202, 202);
+    color: gray;
     border-bottom: 2px solid transparent;
     transition: border .3s ease-in;
 }
@@ -145,7 +145,7 @@ a {
     background-color: rgba(255, 255, 255, 0.164);
     border-bottom: 2px solid;
     &>span {
-        color: white;
+        color: rgb(44, 43, 43);
         user-select: none;
     }
 }
