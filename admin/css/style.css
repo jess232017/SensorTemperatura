@@ -1,0 +1,67 @@
+/** Global **/
+
+h1.logo {
+    margin: 0px 5px;
+    font-size: 15px;
+}
+
+.c-sidebar-brand>h1 {
+    font-size: 25px;
+    margin: 0px 0px 3px 8px;
+}
+
+li.c-sidebar-nav-item {
+    padding: 0;
+}
+
+.grid-R250px {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.grid-R250px>.card {
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .grid-R250px {
+        gap: 1.5rem;
+    }
+}
+
+
+/*  Tablas */
+
+table {
+    max-width: 100%!important;
+}
+
+span.dtr-title {
+    color: black;
+}
+
+span.dtr-data {
+    color: #333;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    background-color: #39f;
+    margin-top: 13px;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+    background-color: #d33333;
+}
+
+html:not([dir=rtl]) .custom-select-sm {
+    padding-right: 1.5rem;
+}
+
+
+/*#321fdb*/

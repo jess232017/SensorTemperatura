@@ -1,0 +1,103 @@
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+    Tomar Temperatura
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="mb-5 p-4 bg-white shadow-sm" style="margin: 0!important;">
+                <h3>Realizar Registro</h3>
+                <div id="stpIngresar" class="bs-stepper linear">
+                    <div class="bs-stepper-header" role="tablist">
+                        <div class="step active" data-target="#test-l-1">
+                            <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="test-l-1" aria-selected="true">
+                        <span class="bs-stepper-circle">1</span>
+                        <span class="bs-stepper-label">Código</span>
+                      </button>
+                        </div>
+                        <div class="bs-stepper-line"></div>
+                        <div class="step" data-target="#test-l-2">
+                            <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="test-l-2" aria-selected="false" disabled="disabled">
+                        <span class="bs-stepper-circle">2</span>
+                        <span class="bs-stepper-label">Temperatura</span>
+                      </button>
+                        </div>
+                        <div class="bs-stepper-line"></div>
+                        <div class="step" data-target="#test-l-3">
+                            <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="test-l-3" aria-selected="false" disabled="disabled">
+                        <span class="bs-stepper-circle">3</span>
+                        <span class="bs-stepper-label">Guardar</span>
+                      </button>
+                        </div>
+                    </div>
+                    <div class="bs-stepper-content">
+                        <form onsubmit="return false">
+                            <div id="test-l-1" role="tabpanel" class="bs-stepper-pane active dstepper-block" aria-labelledby="stepper1trigger1">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Código</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                    width="20" height="20"
+                                                    viewBox="0 0 172 172"
+                                                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g id="original-icon" fill="#666666"><path d="M26.875,32.25c-8.83935,0 -16.125,7.28565 -16.125,16.125v75.25c0,8.83935 7.28565,16.125 16.125,16.125h118.25c8.83935,0 16.125,-7.28565 16.125,-16.125v-75.25c0,-8.83935 -7.28565,-16.125 -16.125,-16.125zM26.875,43h118.25c3.04443,0 5.375,2.33057 5.375,5.375v75.25c0,3.04443 -2.33057,5.375 -5.375,5.375h-118.25c-3.04443,0 -5.375,-2.33057 -5.375,-5.375v-75.25c0,-3.04443 2.33057,-5.375 5.375,-5.375zM59.125,53.75c-11.8208,0 -21.5,9.6792 -21.5,21.5c0,5.98389 2.56153,11.37989 6.55078,15.28516c-7.15967,4.8501 -11.92578,13.10156 -11.92578,22.33984h10.75c0,-8.96533 7.15967,-16.125 16.125,-16.125c8.96533,0 16.125,7.15967 16.125,16.125h10.75c0,-9.23828 -4.76611,-17.48974 -11.92578,-22.33984c3.98926,-3.90527 6.55078,-9.30127 6.55078,-15.28516c0,-11.8208 -9.6792,-21.5 -21.5,-21.5zM96.75,59.125v10.75h43v-10.75zM59.125,64.5c6.00489,0 10.75,4.74512 10.75,10.75c0,6.00489 -4.74511,10.75 -10.75,10.75c-6.00488,0 -10.75,-4.74511 -10.75,-10.75c0,-6.00488 4.74512,-10.75 10.75,-10.75zM96.75,80.625v10.75h43v-10.75zM96.75,102.125v10.75h26.875v-10.75z"></path></g></g>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <input class="form-control" type="text" placeholder="Código de Identidad">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
+                            </div>
+                            <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Temperatura</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                    width="20" height="20"
+                                                    viewBox="0 0 172 172"
+                                                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#666666"><path d="M64.5,21.5v61.64453c-9.40625,6.82373 -16.125,17.23779 -16.125,29.73047c0,20.72315 16.90185,37.625 37.625,37.625c20.72315,0 37.625,-16.90185 37.625,-37.625c0,-12.49268 -6.71875,-22.90674 -16.125,-29.73047v-7.89453h10.75v-10.75h-10.75v-10.75h10.75v-10.75h-10.75v-10.75h10.75v-10.75zM75.25,32.25h21.5v55.93359l2.6875,1.51172c8.04151,4.66114 13.4375,13.22754 13.4375,23.17969c0,14.90723 -11.96777,26.875 -26.875,26.875c-14.90722,0 -26.875,-11.96777 -26.875,-26.875c0,-9.95215 5.39599,-18.51855 13.4375,-23.17969l2.6875,-1.51172zM80.625,43v54.75781c-6.23584,2.22559 -10.75,8.12549 -10.75,15.11719c0,8.90234 7.22266,16.125 16.125,16.125c8.90234,0 16.125,-7.22266 16.125,-16.125c0,-6.9917 -4.51416,-12.8916 -10.75,-15.11719v-54.75781z"></path></g></g>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <input class="form-control" type="text" placeholder="Temperatura en Celsius">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+                                <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
+                            </div>
+                            <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="stepper1trigger3">
+                                <button class="btn btn-primary mt-5" onclick="stepper.previous()">Anterior</button>
+                                <button type="submit" class="btn btn-primary mt-5">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="no-disponible" tabindex="-1" role="dialog" aria-labelledby="no-disponible" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">En construcion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                 </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

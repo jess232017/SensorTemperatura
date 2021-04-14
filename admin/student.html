@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="stylesheet" href="./css/student.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SCT UNI</title>
+
+
+    <!-- Stepper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--  Datatables  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css" />
+
+    <!--  extension responsive  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+    <!-- CoreUI -->
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" />
+
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<body class="c-app">
+
+    <!-- Sidebar content here -->
+    <aside class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <!-- Logo -->
+    <div class="c-sidebar-brand d-lg-down-none">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,21.5c-43.46583,0 -78.83333,35.3675 -78.83333,78.83333c0,13.8675 3.65254,27.49816 10.55404,39.43066l2.07162,3.58333l8.87435,-0.014h14.33333v-14.33333h-14.79525c-4.39317,-8.85083 -6.70475,-18.6835 -6.70475,-28.66667c0,-35.56817 28.939,-64.5 64.5,-64.5c35.561,0 64.5,28.93183 64.5,64.5c0,9.98317 -2.30442,19.80867 -6.70475,28.66667h-14.79525v14.33333h14.33333h7.16667h1.70768l2.07162,-3.56934c6.9015,-11.9325 10.55403,-25.56316 10.55403,-39.43066c0,-43.46583 -35.3675,-78.83333 -78.83333,-78.83333zM86,43c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM60.91667,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM110.63542,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM43,68.08333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM132.7933,73.45833c0,0 -49.82121,12.89093 -49.92871,12.91959l-0.41992,0.09798l0.014,0.02799c-6.192,1.57667 -10.79199,7.14293 -10.79199,13.82943c0,7.91917 6.41417,14.33333 14.33333,14.33333c3.64783,0 6.94641,-1.40299 9.47624,-3.65332zM35.83333,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM136.16667,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM64.5,129.014v14.33333h43v-14.33333z"></path></g></g></svg>
+        <h1>SCT UNI</h1>
+    </div>
+
+    <ul class="c-sidebar-nav">
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="index.html">
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="./assets/brand/free.svg#speedometer"></use>
+                </svg> Dashboard
+            </a>
+        </li>
+
+        <!-- Registro -->
+        <div>
+            <li class="c-sidebar-nav-title">Registro</li>
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="temperature.html">
+                    <img class="c-sidebar-nav-icon" src="./img/student.svg" alt="Estudiantes"> Temperatura
+                </a>
+            </li>
+        </div>
+
+        <!--Gestion de personas-->
+        <div>
+            <li class="c-sidebar-nav-title">Gestion</li>
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="student-info.html">
+                    <img class="c-sidebar-nav-icon" src="./img/student.svg" alt="Estudiantes"> Estudiantes
+                </a>
+            </li>
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="#Pronto">
+                    <img class="c-sidebar-nav-icon" src="./img/student.svg" alt="Estudiantes"> Profesores
+                    <span class="badge bg-warning">Pronto</span>
+                </a>
+            </li>
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="#Pronto">
+                    <img class="c-sidebar-nav-icon" src="./img/student.svg" alt="Estudiantes"> Administrativo
+                    <span class="badge bg-warning">Pronto</span>
+                </a>
+            </li>
+        </div>
+
+        <!--Template-->
+        <div style="display: none;">
+            <li class="c-sidebar-nav-title">Components</li>
+
+            <li class="c-sidebar-nav-dropdown">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <svg class="c-sidebar-nav-icon">
+                        <use xlink:href="./assets/brand/free.svg#star"></use>
+                    </svg> Icons
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="icons/coreui-icons-free.html"> CoreUI Icons<span class="badge badge-success">Free</span></a></li>
+                    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="icons/coreui-icons-brand.html"> CoreUI Icons - Brand</a></li>
+                    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="icons/coreui-icons-flag.html"> CoreUI Icons - Flag</a></li>
+                </ul>
+            </li>
+
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="widgets.html">
+                    <svg class="c-sidebar-nav-icon">
+                        <use xlink:href="./assets/brand/free.svg#calculator"></use>
+                    </svg> Widgets<span class="badge badge-info">NEW</span>
+                </a>
+            </li>
+        </div>
+    </ul>
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
+</aside>
+
+    <main class="c-wrapper">
+
+        <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+    <!-- Header content here -->
+    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+        <img src="./img/menu.svg" alt="menu">
+    </button>
+    <a class="c-header-brand d-lg-none" href="#">
+        <div class="flex-h">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#4f5d73;"><g fill="#4f5d73" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#4f5d73"><path d="M86,21.5c-43.46583,0 -78.83333,35.3675 -78.83333,78.83333c0,13.8675 3.65254,27.49816 10.55404,39.43066l2.07162,3.58333l8.87435,-0.014h14.33333v-14.33333h-14.79525c-4.39317,-8.85083 -6.70475,-18.6835 -6.70475,-28.66667c0,-35.56817 28.939,-64.5 64.5,-64.5c35.561,0 64.5,28.93183 64.5,64.5c0,9.98317 -2.30442,19.80867 -6.70475,28.66667h-14.79525v14.33333h14.33333h7.16667h1.70768l2.07162,-3.56934c6.9015,-11.9325 10.55403,-25.56316 10.55403,-39.43066c0,-43.46583 -35.3675,-78.83333 -78.83333,-78.83333zM86,43c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM60.91667,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM110.63542,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM43,68.08333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM132.7933,73.45833c0,0 -49.82121,12.89093 -49.92871,12.91959l-0.41992,0.09798l0.014,0.02799c-6.192,1.57667 -10.79199,7.14293 -10.79199,13.82943c0,7.91917 6.41417,14.33333 14.33333,14.33333c3.64783,0 6.94641,-1.40299 9.47624,-3.65332zM35.83333,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM136.16667,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM64.5,129.014v14.33333h43v-14.33333z"></path></g></g></svg>
+            <h1 class="logo">SCT UNI</h1>
+        </div>
+    </a>
+    <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+    <img src="./img/menu.svg" alt="menu">
+    </button>
+    <ul class="c-header-nav d-md-down-none">
+        <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Dashboard</a></li>
+        <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Usuarios</a></li>
+        <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Configuracion</a></li>
+    </ul>
+    <ul class="c-header-nav ml-auto mr-4">
+        <li class="c-header-nav-item d-md-down-none mx-2">
+            <a class="c-header-nav-link" href="#">
+                <svg class="c-icon">
+        <use xlink:href="./assets/brand/free.svg#bell"></use>
+    </svg>
+            </a>
+        </li>
+        <li class="c-header-nav-item d-md-down-none mx-2">
+            <a class="c-header-nav-link" href="#">
+                <svg class="c-icon">
+            <use xlink:href="./assets/brand/free.svg#list-rich"></use>
+        </svg>
+            </a>
+        </li>
+        <li class="c-header-nav-item d-md-down-none mx-2">
+            <a class="c-header-nav-link" href="#">
+                <svg class="c-icon">
+            <use xlink:href="./assets/brand/free.svg#envelope-open"></use>
+        </svg>
+            </a>
+        </li>
+        <li class="c-header-nav-item dropdown">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="c-avatar">
+                    <img class="c-avatar-img" src="./assets/img/avatars/3.jpg" alt="user@email.com">
+                </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right pt-0">
+                <div class="dropdown-header bg-light py-2"><strong>Cuenta</strong></div>
+                <a class="dropdown-item" href="#">
+                    <svg class="c-icon mr-2">
+                <use xlink:href="./assets/brand/free.svg#bell"></use>
+            </svg> Alertas<span class="badge badge-info ml-auto">42</span>
+                </a>
+
+                <a class="dropdown-item" href="#">
+                    <svg class="c-icon mr-2">
+                <use xlink:href="./assets/brand/free.svg#envelope-open"></use>
+            </svg> Mensajes<span class="badge badge-success ml-auto">42</span>
+                </a>
+
+                <div class="dropdown-header bg-light py-2"><strong>Configuracion</strong></div>
+
+                <a class="dropdown-item" href="#">
+                    <svg class="c-icon mr-2">
+                <use xlink:href="./assets/brand/free.svg#user"></use>
+            </svg> Perfil
+                </a>
+                <a class="dropdown-item" href="#">
+                    <svg class="c-icon mr-2">
+                <use xlink:href="./assets/brand/free.svg#settings"></use>
+            </svg> Configuracion
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="login.html">
+                    <svg class="c-icon mr-2">
+                <use xlink:href="./assets/brand/free.svg#lock-locked"></use>
+            </svg> Bloquear Cuenta
+                </a>
+                <a class="dropdown-item" href="login.html">
+                    <svg class="c-icon mr-2">
+                <use xlink:href="./assets/brand/free.svg#account-logout"></use>
+                    </svg> Salir
+                </a>
+            </div>
+        </li>
+    </ul>
+</header>
+
+        <section class="c-body">
+
+            <main class="c-main">
+                <div class="container-fluid">
+                    <div class="fade-in">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="card bg-pattern">
+                                        <div class="card-body">
+                                            <div class="float-right">
+                                                <i class="fa fa-archive text-primary h4 ml-3"></i>
+                                            </div>
+                                            <h5 class="font-size-20 mt-0 pt-1">24</h5>
+                                            <p class="text-muted mb-0">Total Projects</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="card bg-pattern">
+                                        <div class="card-body">
+                                            <div class="float-right">
+                                                <i class="fa fa-th text-primary h4 ml-3"></i>
+                                            </div>
+                                            <h5 class="font-size-20 mt-0 pt-1">18</h5>
+                                            <p class="text-muted mb-0">Completed Projects</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="card bg-pattern">
+                                        <div class="card-body">
+                                            <div class="float-right">
+                                                <i class="fa fa-file text-primary h4 ml-3"></i>
+                                            </div>
+                                            <h5 class="font-size-20 mt-0 pt-1">06</h5>
+                                            <p class="text-muted mb-0">Pending Projects</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group mb-0">
+                                                    <label>Search</label>
+                                                    <div class="input-group mb-0">
+                                                        <input type="text" class="form-control" placeholder="Search..." aria-describedby="project-search-addon" />
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-danger" type="button" id="project-search-addon"><i class="fa fa-search search-icon font-12"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+
+                        </div>
+
+                        <div class="container">
+                            <div class="container-fluid p-0">
+                                <h1 class="h3 mb-3">Estudiantes</h1>
+                                <div class="row">
+                                    <div class="col-xl-8">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="card-actions float-right" style="display: none;">
+                                                    <div class="dropdown show">
+                                                        <a href="#" id="dropdownMenuLink" data-toggle="dropdown" data-display="static">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                                                        </a>
+
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                                            <a class="dropdown-item" href="#">Action</a>
+                                                            <a class="dropdown-item" href="#">Another action</a>
+                                                            <a class="dropdown-item" href="#">Something else here</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h5 class="card-title mb-0">Estudiantes</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <table id="table-user" class="table table-striped" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Id</th>
+                                                            <th>Nombres</th>
+                                                            <th>Apellidos</th>
+                                                            <th>Sexo</th>
+                                                            <th>Direccion</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                                            <td>Garrett Winters</td>
+                                                            <td>Good Guys</td>
+                                                            <td>garrett@winters.com</td>
+                                                            <td><span class="badge bg-success">Active</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                                            <td>Ashton Cox</td>
+                                                            <td>Levitz Furniture</td>
+                                                            <td>ashton@cox.com</td>
+                                                            <td><span class="badge bg-success">Active</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                                            <td>Sonya Frost</td>
+                                                            <td>Child World</td>
+                                                            <td>sonya@frost.com</td>
+                                                            <td><span class="badge bg-danger">Deleted</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                                            <td>Jena Gaines</td>
+                                                            <td>Helping Hand</td>
+                                                            <td>jena@gaines.com</td>
+                                                            <td><span class="badge bg-warning">Inactive</span></td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="card-actions float-right">
+                                                    <div class="dropdown show">
+                                                        <a href="#" data-toggle="dropdown" data-display="static">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                                                        </a>
+
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item" href="#">Action</a>
+                                                            <a class="dropdown-item" href="#">Another action</a>
+                                                            <a class="dropdown-item" href="#">Something else here</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h5 class="card-title mb-0">Angelica Ramos</h5>
+                                            </div>
+
+                                            <div class="main-box">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="profile-img img-responsive img-mini center-block">
+                                                    <div class="profile-label">
+                                                        <span class="badge badge-info">Estudiante</span>
+                                                    </div>
+
+                                                    <div class="profile-since">
+                                                        Registrado el: 23/01/2021
+                                                    </div>
+                                                </div>
+
+
+                                                <table class="table table-condensed table-hover nowrap dataTable no-footer dtr-column collapsed">
+                                                    <tbody class="mini-info">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <td>Angelica Ramos</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Company</th>
+                                                            <td>The Wiz</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Email</th>
+                                                            <td>angelica@ramos.com</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Phone</th>
+                                                            <td>+1234123123123</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Registros</th>
+                                                            <td>10</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Normal</th>
+                                                            <td>9</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Alta</th>
+                                                            <td>1</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+
+                                                <div class="profile-message-btn center-block text-center">
+                                                    <br>
+                                                    <a href="#" class="btn btn-danger">
+                                                        <i class="fas fa-thermometer-three-quarters"></i> Tomar Temperatura
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-body">
+
+                                                <strong>Alertas</strong>
+
+                                                <ul class="timeline mt-2 mb-0">
+                                                    <li class="timeline-item">
+                                                        <strong>Signed out</strong>
+                                                        <span class="float-right text-muted text-sm">30m ago</span>
+                                                        <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+                                                    </li>
+                                                    <li class="timeline-item">
+                                                        <strong>Created invoice #1204</strong>
+                                                        <span class="float-right text-muted text-sm">2h ago</span>
+                                                        <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
+                                                    </li>
+                                                    <li class="timeline-item">
+                                                        <strong>Discarded invoice #1147</strong>
+                                                        <span class="float-right text-muted text-sm">3h ago</span>
+                                                        <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+                                                    </li>
+                                                    <li class="timeline-item">
+                                                        <strong>Signed in</strong>
+                                                        <span class="float-right text-muted text-sm">3h ago</span>
+                                                        <p>Curabitur ligula sapien, tincidunt non, euismod vitae...</p>
+                                                    </li>
+                                                    <li class="timeline-item">
+                                                        <strong>Signed up</strong>
+                                                        <span class="float-right text-muted text-sm">2d ago</span>
+                                                        <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <footer class="c-footer">
+    <!-- Footer content here -->
+    <div><a href="#">STC UNI</a> © 2020 Dev@Team.</div>
+    <div class="ml-auto">Proyecto de&nbsp;<a href="#">AMC-1</a></div>
+</footer>
+    </main>
+
+    <!-- Optional JavaScript -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+<script src="../../js/loader.js"></script>
+
+
+<!-- Stepper -->
+<script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+
+<!-- Core UI -->
+
+<script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+<script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<!--   Datatables-->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
+
+<!-- extension responsive -->
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+
+<script src="../js/import/Chart.js"></script>
+<script src="./js/firebase.js"></script>
+<script src="./js/main.js"></script>
+</body>
+
+</html>

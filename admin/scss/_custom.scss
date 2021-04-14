@@ -1,0 +1,32 @@
+.c-sidebar-brand>h1 {
+    font-size: 25px;
+    margin: 0px 0px 3px 8px;
+}
+
+li.c-sidebar-nav-item {
+    padding: 0;
+}
+
+.grid-R250px {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.grid-R250px>.card {
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .grid-R250px {
+        gap: 1.5rem;
+    }
+}
+
+
+/*  Tablas */
+
+table {
+    max-width: 100%;
+}
