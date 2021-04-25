@@ -1,0 +1,31 @@
+.grid {
+    display: block;
+}
+
+.bg-white {
+    background-color: white;
+    border-bottom: 1px solid rgb(204, 201, 201);
+}
+
+@media (max-width: 889px) {
+    .pb-5,
+    .py-5 {
+        padding: 0!important;
+    }
+}
+
+@media (min-width: 890px) {
+    .bg-white:first-of-type {
+        border: none;
+        border-right: 1px solid rgb(204, 201, 201);
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: 55% 45%;
+    }
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 960px;
+    }
+}

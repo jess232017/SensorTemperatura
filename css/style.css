@@ -1194,7 +1194,7 @@ a {
 }
 
 canvas {
-  min-width: 100%;
+  width: 100%;
 }
 
 .gauge-graph {
@@ -1557,12 +1557,47 @@ input:focus + div:after {
   -webkit-transition: all 0s, opacity 1.5s ease-in;
   transition: all 0s, opacity 1.5s ease-in;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
+.fab {
+  font-size: 3.75em;
+  border-radius: 50%;
+  padding: 6px 18px;
+  background-color: #409ae4;
+  font-family: 'material icons';
+  cursor: pointer;
+  -webkit-transition: all 0s, opacity 1.5s ease-in;
+  transition: all 0s, opacity 1.5s ease-in;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@media (min-width: 768px) {
+  .fab {
+    padding: 16px 28px;
+  }
+}
+
+.fab:active,
 #fab:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
+}
+
+.fab-contain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
 }

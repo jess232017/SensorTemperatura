@@ -54,7 +54,7 @@ function initFirebase() {
         let valTemperature = document.querySelector('#temperatura').value;
 
         firebase.database().ref().set({
-            temperatura: valTemperature,
+            temperatura: valTemperature
         }, (error) => {
             if (error) {
                 // The write failed...

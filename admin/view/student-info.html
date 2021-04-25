@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<link rel="stylesheet" href="./css/student.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> @@include('../includes/head.html')
+@@include('./includes/head.html')
 
 <body class="c-app">
 
     <!-- Sidebar content here -->
-    @@include('../includes/sidebar.html')
+    @@include('./includes/sidebar.html')
 
-    <main class="c-wrapper">
+    <main class="c-wrapper c-fixed-components">
 
-        @@include('../includes/header.html')
+        @@include('./includes/header.html')
 
         <section class="c-body">
 
@@ -43,7 +41,7 @@
                                         </div>
 
                                         <div class="profile-message-btn center-block text-center">
-                                            @@include('../includes/element/modal.html')
+                                            @@include('./includes/element/modal.html')
                                         </div>
                                     </div>
                                 </div>
@@ -233,124 +231,28 @@
 
                                                 </div>
 
-                                                <div class="tab-pane fade" id="tab-registros">
-                                                    <ul class="widget-users row">
-                                                        <li class="col-md-6">
-                                                            <div class="img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="details">
-                                                                <div class="name">
-                                                                    <a href="#">John Doe </a>
-                                                                </div>
-                                                                <div class="time">
-                                                                    <i class="fa fa-clock-o"></i> Last online: 5 minutes ago
-                                                                </div>
-                                                                <div class="type">
-                                                                    <span class="label label-danger">Admin</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="col-md-6">
-                                                            <div class="img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="details">
-                                                                <div class="name">
-                                                                    <a href="#">Mila Kunis</a>
-                                                                </div>
-                                                                <div class="time online">
-                                                                    <i class="fa fa-check-circle"></i> Online
-                                                                </div>
-                                                                <div class="type">
-                                                                    <span class="label label-warning">Pending</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="col-md-6">
-                                                            <div class="img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="details">
-                                                                <div class="name">
-                                                                    <a href="#">Ryan Gossling</a>
-                                                                </div>
-                                                                <div class="time online">
-                                                                    <i class="fa fa-check-circle"></i> Online
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="col-md-6">
-                                                            <div class="img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="details">
-                                                                <div class="name">
-                                                                    <a href="#">Robert Downey Jr.</a>
-                                                                </div>
-                                                                <div class="time">
-                                                                    <i class="fa fa-clock-o"></i> Last online: Thursday
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="col-md-6">
-                                                            <div class="img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="details">
-                                                                <div class="name">
-                                                                    <a href="#">Emma Watson</a>
-                                                                </div>
-                                                                <div class="time">
-                                                                    <i class="fa fa-clock-o"></i> Last online: 1 week ago
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="col-md-6">
-                                                            <div class="img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="details">
-                                                                <div class="name">
-                                                                    <a href="#">George Clooney</a>
-                                                                </div>
-                                                                <div class="time">
-                                                                    <i class="fa fa-clock-o"></i> Last online: 1 month ago
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="col-md-6">
-                                                            <div class="img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="details">
-                                                                <div class="name">
-                                                                    <a href="#">Mila Kunis</a>
-                                                                </div>
-                                                                <div class="time online">
-                                                                    <i class="fa fa-check-circle"></i> Online
-                                                                </div>
-                                                                <div class="type">
-                                                                    <span class="label label-warning">Pending</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="col-md-6">
-                                                            <div class="img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="details">
-                                                                <div class="name">
-                                                                    <a href="#">Ryan Gossling</a>
-                                                                </div>
-                                                                <div class="time online">
-                                                                    <i class="fa fa-check-circle"></i> Online
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <br>
-                                                    <a href="#" class="btn btn-success pull-right">View all users</a>
+                                                <div class="tab-pane fade p-3 border" id="tab-registros">
+                                                    <div>
+                                                        <div class="table-responsive">
+                                                            <table id="table-user" class="table table-hover table-outline">
+                                                                <thead class="thead-light">
+                                                                    <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Nombres</th>
+                                                                        <th>Apellidos</th>
+                                                                        <th>Sexo</th>
+                                                                        <th>Direccion</th>
+                                                                        <th>Telefono</th>
+                                                                        <th>Correo</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <br>
+                                                        <a href="student.html" class="btn btn-success pull-right">Ver todos los usuarios</a>
+                                                    </div>
                                                 </div>
 
                                                 <div class="tab-pane fade" id="tab-chat">
@@ -471,10 +373,10 @@
             </main>
         </section>
 
-        @@include('../includes/footer.html')
+        @@include('./includes/footer.html')
     </main>
 
-    @@include('../includes/script.html')
+    @@include('./includes/script.html')
 </body>
 
 </html>

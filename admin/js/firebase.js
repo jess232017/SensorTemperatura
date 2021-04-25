@@ -11,6 +11,8 @@ var firebaseConfig = {
 
 //Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+var dbAsistencias = db.ref().child('asistencias');
 
 //#region Tabla de usuarios
 var tableUser = $('#table-user').DataTable({
@@ -20,7 +22,7 @@ var tableUser = $('#table-user').DataTable({
     }
 });
 
-const dbRefUsuarios = firebase.database().ref().child('Usuarios');
+const dbRefUsuarios = db.ref().child('Usuarios');
 dbRefUsuarios.on('value', snap => {
     var Usuarios = snap.val(),
         result = [];
@@ -49,10 +51,69 @@ dbRefUsuarios.on('value', snap => {
 
 //#endregion
 
-var stepper = new Stepper(document.querySelector('#stpIngresar'))
+//#region Formulario
+var Pushed = false;
+var btnMas = document.querySelector('#btnMas');
+btnMas.addEventListener('click', function() {
+    btnMas.innerText = (Pushed) ? 'Ver más' : 'Ver menos';
+    Pushed = !Pushed;
+});
+
+var idCode, temperatura, hora, fecha, descripcion;
 
 function nextStep() {
-    stepper.next();
+    let Current = new Date();
+
+    idCode = $('#txtCodigo').val();
+    temperatura = $('#txtTemperatura').val();
+    hora = Current.toLocaleTimeString();
+    fecha = Current.toLocaleDateString();
+    descripcion = "";
+
+    if (Pushed) {
+        hora = $('#txtHora').val();
+        fecha = $('#txtFecha').val();
+        descripcion = $('#txtDescripcion').val();
+    }
+
+    if (idCode === '' || temperatura === '' || ((hora === '' || fecha === '') && Pushed)) {
+        alert('Debe completar la informacion');
+    } else {
+        console.log(idCode, temperatura, hora, fecha, descripcion);
+        stepper.next()
+    }
+
 }
 
-document.querySelector('table').style.width = '100%';
+// Guardar
+$('form').submit(function(e) {
+    e.preventDefault();
+    alert("intando enviar");
+
+    let idFirebase = $('#idAsistencia').val();
+
+    //Si el id esta vacio entonces crear un nuevo elemento
+    if (idFirebase == '') {
+        idFirebase = dbAsistencias.push().key;
+    };
+
+    data = {
+        codigo: idCode,
+        fecha: fecha,
+        hora: hora,
+        temperatura: temperatura,
+        descripcion: descripcion
+    };
+
+    actualizacionData = {};
+    actualizacionData[`/${idFirebase}`] = data;
+    dbAsistencias.update(actualizacionData);
+    idFirebase = '';
+    $('form').trigger('reset');
+    $('#tomarDatos').modal('hide');
+});
+
+
+//#endregion
+
+var stepper = new Stepper(document.querySelector('#stpIngresar'), { linear: false })

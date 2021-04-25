@@ -1,5 +1,6 @@
 var myChart;
-var chartDegree = document.querySelector('#main-chart').getContext('2d');
+
+var chartDegree = document.querySelector("#main-chart").getContext('2d');
 var data = [
     [
         "Tiger Nixon",
@@ -18,7 +19,6 @@ var data = [
         "$5,300"
     ]
 ]
-showTemperatura();
 
 function showTemperatura() {
     myChart = new Chart(chartDegree, {
@@ -34,29 +34,58 @@ function showTemperatura() {
                 borderColor: "blue"
             }]
         },
-        actions: [{
-                name: 'Randomize',
-                handler(chart) {
-                    chart.data.datasets.forEach(dataset => {
-                        dataset.data = Utils.numbers({ count: chart.data.labels.length, min: -100, max: 100 });
-                    });
-                    chart.update();
-                }
-            },
-            {
-                name: 'Remove Dataset',
-                handler(chart) {
-                    chart.data.datasets.pop();
-                    chart.update();
-                }
-            },
-        ],
     });
 }
-
-
-
 
 $('#example').DataTable({
     responsive: true
 });
+
+function setGaugeTemperature() {
+    var aux = {
+        angle: -0.09,
+        animationSpeed: 63,
+        colorStart: "#6FADCF",
+        colorStop: "#8FC0DA",
+        currval: 1500,
+        fontSize: 42,
+        generateGradient: true,
+        lineWidth: 0.43,
+        pointer: { length: 0.31, color: "#000000", strokeWidth: 0.115 },
+        radiusScale: 1,
+        renderTicks: {
+            divColor: "#333333",
+            divLength: 0.45,
+            divWidth: 1.1,
+            divisions: 3,
+            subColor: "#666666",
+            subDivisions: 3,
+            subLength: 0.5,
+            subWidth: 0.6
+        },
+        staticLabels: {
+            font: "10px sans-serif", // Specifies font
+            labels: [-40, -20, 0, 20, 40], // Print labels at these values
+            color: "#000000", // Optional: Label text color
+            fractionDigits: 0 // Optional: Numerical precision. 0=round off.
+        },
+        strokeColor: "#E0E0E0",
+        staticZones: [
+            { strokeStyle: "#6495ed", min: -50, max: -20 },
+            { strokeStyle: "#96acd6", min: -21, max: 20 },
+            { strokeStyle: "#FFDD00", min: 19, max: 33 }, // Yellow
+            { strokeStyle: "#30B32D", min: 32, max: 37 }, // Green
+            { strokeStyle: "#F03E3E", min: 37, max: 50 }, // Yellow
+        ],
+    }
+
+    let target = document.querySelector('#gauge-temperature'); // your canvas element
+    gauge = new Gauge(target).setOptions(aux); // create sexy gauge!
+    gauge.maxValue = 50; // set max gauge value
+    gauge.setMinValue(-50); // Prefer setter over gauge.minValue = 0
+    gauge.animationSpeed = 32; // set animation speed (32 is default value)
+    gauge.set(50); // set actual value
+}
+
+showTemperatura();
+setGaugeTemperature();

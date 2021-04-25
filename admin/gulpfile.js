@@ -16,8 +16,8 @@ function precargar() {
 exports.default = function() {
     // You can use a single task
     watch('./view/*.html', precargar);
-    watch('./includes/*.html', precargar);
-    watch('./includes/element/*.html', precargar);
+    watch('./view/*/*.html', precargar);
+    watch('./view/*/*/*.html', precargar);
     // Or a composed task
     //watch('src/*.js', series(clean, javascript));
 };

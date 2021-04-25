@@ -240,12 +240,35 @@ input:focus+div:after {
     font-size: 1.75em;
     cursor: pointer;
     transition: all 0s, opacity 1.5s ease-in;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
 
+.fab {
+    font-size: 3.75em;
+    border-radius: 50%;
+    padding: 6px 18px;
+    background-color: #409ae4;
+    font-family: 'material icons';
+    //box-shadow: 0 2px 8px #3f3f3f;
+    cursor: pointer;
+    transition: all 0s, opacity 1.5s ease-in;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .fab {
+        padding: 16px 28px;
+    }
+}
+
+.fab:active,
 #fab:active {
     transform: scale(0.95);
+}
+
+.fab-contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
