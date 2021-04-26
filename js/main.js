@@ -86,8 +86,8 @@ function showNotification() {
 }
 
 function Init() {
-    chartDegree = document.querySelector('#chartDegree').getContext('2d');
-    txtDegree = document.querySelectorAll('.visual-number');
+    /*chartDegree = document.querySelector('#chartDegree').getContext('2d');
+    txtDegree = document.querySelectorAll('.visual-number');*/
     fabSwitch = document.querySelector('#fab');
 
     window.onscroll = function() { myFunction() };
@@ -104,10 +104,10 @@ function Init() {
         }
     }
 
-    getWeather();
+    /*getWeather();
     showTemperatura();
     setGaugeTemperature();
-    initFirebase();
+    initFirebase();*/
     //setInterval(leerTemperatura, 1250);
 }
 

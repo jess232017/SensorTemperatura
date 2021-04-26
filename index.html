@@ -8,8 +8,10 @@
     <meta name="Description" content="Aplicacion web para conocer la Temperatura registrada por el sensor">
     <title>SCT UNI</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600&display=swap' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" />
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -30,11 +32,6 @@
                     <img src="https://img.icons8.com/color/100/000000/speedometer.png" alt="SCT Logo" width="48" height="48" />
                     <h1>SCT</h1>
                 </div>
-                <div style="display: none;" class="flex-end padding-10px">
-                    <p id="txtCiudad">Man</p>
-                    <img id="imgWeather" src="img/000.gif" alt="imagen del Clima" width="45" height="45">
-                    <p id="txtWeather">0</p>
-                </div>
                 <nav class="flex-h">
                     <a href="./admin/login.html" id="btn-nav" class="btn-nav">
                         <span class="txt-nav">Ingresar</span>
@@ -44,32 +41,6 @@
                         <span class="material-icons">settings</span>
                     </a>
                 </nav>
-                <a style="display: none;" href="#sensor-graph">
-                    <div class="flex-end padding-10px">
-                        <span class="material-icons mini-icon">thermostat</span>
-                        <span class="mini visual-number ">0</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <!--Navegacion-->
-        <div style="display: none;" class="opcion">
-            <div class="contenedor flex-h">
-                <div class="flex-start">
-                    <img src="https://img.icons8.com/color/100/000000/speedometer.png" alt="SCT Logo" width="45" height="45" />
-                    <h1>SCT</h1>
-                </div>
-                <div style="display: none;" class="combo">
-                    <img src="https://img.icons8.com/color/100/000000/speedometer.png" alt="SCT Logo" width="45" height="45" />
-                    <select required name="metricUnit" id="metricUnit">
-                        <option value="celcius " selected>°C</option>
-                        <option value="fahrenheit ">°F</option>
-                    </select>
-                    <select name="language" id="language">
-                        <option value="esp">Español</option>
-                        <option value="eng">Ingles</option>
-                    </select>
-                </div>
             </div>
         </div>
     </header>
@@ -80,46 +51,120 @@
         <div class="bg-cyan">
             <div class="contenedor">
                 <div class="contain-center">
-                    <div class="">
-                        <span style="display: none;" class="material-icons icon">thermostat</span>
-                        <h2>Sistema de control de temperatura</h2>
-                        <span style="display: none;" class="visual-number">0</span>
+                    <div class="banner-block">
+                        <img class="img-hero" src="./img/covid.png" alt="" style="width: 100%;">
+                        <div class="content mr-5">
+                            <div class="d-flex flex-column justify-content-center ">
+                                <h1 class="heading full-text">
+                                    <span>SISTEMA</span>
+                                    <div class="heading-sm">
+                                        <span class="sup">CONTROL de</span>
+                                        <span class="sub">TEMPERATURA</span>
+                                    </div>
+                                </h1>
+                                <h1 class="heading short-text">STC</h1>
+                                <p>
+                                    El coronavirus (COVID-19) se informó por primera vez en Wuhan, Hubei, China, en diciembre de 2019. El 11 de Marzo de 2020 la Organización Mundial de la Salud (OMS) reconoció el brote como una pandemia.
+                                </p>
+
+                                <div class="flex-h mt-4 mb-5">
+                                    <a href="admin/login.html" class="btn-circled scrollto">
+                                        <span class="ms-2 mr-3">Entrar a SCT - UNI</span>
+                                        <span class="material-icons">shield</span>
+                                    </a>
+                                    <a target="_blank" href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public" class="btn-circled btn-transparent scrollto">
+                                        <span class="ms-2 mr-3">Informacion de la OMS</span>
+                                        <span class="material-icons">east</span>
+                                    </a>
+                                </div>
+
+                                <div class="status">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-12">
+                                            <h5 class="">Estadistica en Nicaragua</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row g-gs">
+
+                                        <div class="col-sm-4 col-6">
+                                            <div class="status-item">
+                                                <h6 class="title">Confirmados</h6>
+                                                <div class="h3 count">
+                                                    <div id="logCases" class="text-warning">6835</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-6">
+                                            <div class="status-item">
+                                                <h6 class="title">Muertes </h6>
+                                                <div class="h3 count">
+                                                    <div id="logDeaths" class="text-warning">181</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-6">
+                                            <div class="status-item">
+                                                <h6 class="title">Recuperación</h6>
+                                                <div class="h3 count">
+                                                    <div id="logRecovered" class="text-warning">4225</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="status-note text-secondary">
+                                        * Datos Nacionales actualizados: gracias a <a target="_blank" class="text-secondary" href="https://github.com/javieraviles/covidAPI/blob/master/README.md">https://coronavirus-19-api.herokuapp.com</a>
+                                    </div>
+                                </div>
+                                <!-- .status -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <img src="/img/remodelacja.png" style="width: 100%;" alt="">
+        <div class="section-cta">
+            <div class="contenedor grid-notes pt-5 pb-5">
+                <div class="flex-h">
+                    <div class="align-self-center pr-5">
+                        <span class="material-icons" style="font-size: 35px;">warning</span>
+                    </div>
+                    <p class="notes"><strong>Quédese en casa y llame a su médico:</strong> Si cree que ha estado expuesto al COVID-19 y desarrolla fiebre y cualquier síntoma, como tos o dificultad para respirar, o llame a la línea de atención del MINSA 132, lo antes posible
+                        para obtener asesoramiento médico.</p>
+                </div>
+                <a href=" http://www.minsa.gob.ni/" class="btn-circled scrollto" target="_blank">
+                    <span class="material-icons mr-2">feedback </span>
+                    <span>Más información.</span>
+                </a>
+            </div>
+        </div>
 
-
-        <!-- Grafico -->
+        <!-- Datos -->
         <div class="contenedor">
-            <div class="gauge-graph graph-lineal">
-                <h3>Grafica Lineal</h3>
-                <div>
-                    <canvas class="flex-center" id="chartDegree"></canvas>
+            <h1 class="m-5">Información de interés</h1>
+            <div class="box">
+                <h5 class="card-header">Casos activos en Nicaragua</h5>
+                <div class="card-body">
+                    <div id="covid-api" class="grid-fast-card">
+
+                    </div>
+                    <p class="status-note">
+                        * Datos Nacionales actualizados: gracias a https://coronavirus-19-api.herokuapp.com
+                    </p>
+                    <a target="_blank" href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" class="btn btn-primary mt-2">Ver Mapa</a>
                 </div>
             </div>
-            <div id="sensor-graph">
-                <div class="grid-graph">
-                    <div class="gauge-graph">
-                        <h3>Temperatura</h3>
-                        <div>
-                            <canvas id="gauge-temperature"></canvas>
-                            <span class="material-icons mini-icon">thermostat</span>
-                            <span class="mini visual-number">0</span>
-                        </div>
-                    </div>
-                    <div class="gauge-graph">
-                        <h3>Humedad</h3>
-                        <div>
-                            <canvas id="gauge-humidity"></canvas>
-                            <span class="material-icons mini-icon">thermostat</span>
-                            <span class="mini visual-number">0</span>
-                        </div>
-                    </div>
+
+
+            <div class="box">
+                <h5 class="card-header">Enlace</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Revise las ultimas Recomendaciones de la OMS</h5>
+                    <p class="card-text">Conozca la información más reciente sobre el brote de COVID-19 consultando las actualizaciones periódicas del sitio web de la OMS y de las autoridades nacionales y locales de salud pública de su lugar de residencia.</p>
+                    <a target="_blank" href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public" class="btn btn-primary mt-2">Visitar pagina</a>
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -161,7 +206,7 @@
             </aside>
         </div>
 
-        <p class="copyright ">Todos los derechos reservados &reg; - Jesen23 &copy;</p>
+        <p class="copyright ">Todos los derechos reservados &reg; SCT - UNI &copy;</p>
     </footer>
 
     <!-- Elementos flotantes-->
@@ -203,81 +248,23 @@
         </ul>
     </nav>
     <!-- Fin elementos flotantes-->
-    <script defer="" type="text/javascript" src="js/import/Sweetalert.js"></script>
-    <script defer="" type="text/javascript" src="js/import/Notifier.js"></script>
-    <script defer="" type="text/javascript" src="js/import/Howler.js"></script>
-    <script defer="" type="text/javascript" src="js/import/Chart.js"></script>
-    <script defer="" type="text/javascript" src="js/import/Gauge.js"></script>
-    <script defer="" type="text/javascript" src="js/import/Notyf.js"></script>
-    <script defer="" type="text/javascript" src="js/import/Push.js"></script>
-    <script defer="" type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-    <script defer="" type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
-    <script defer="" type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
-    <script defer="" type="text/javascript" src="js/main.js"></script>
 
-    <!-- Evita que se carguen los script JS mientras no se haya cargado la pagina
-    <script src="js/loader.js"></script>-->
-    <style>
-        .fixed-not {
-            position: fixed;
-            margin-right: 10px;
-            bottom: 10px;
-            left: 10px;
-            z-index: 1000;
-            padding: 20px;
-            transition: all 2s ease-in-out, opacity 1.5s ease-in;
-            user-select: none;
-            background-color: rgba(42, 42, 42, 0.85);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border-radius: 5px;
-        }
-        
-        @media (max-width: 768px) {
-            .fixed-not {
-                background-color: rgba(42, 42, 42);
-                border-radius: 0;
-                margin-right: 0;
-                bottom: -5px;
-                left: 0;
-            }
-        }
-        
-        .fixed-not::before {
-            position: absolute;
-            content: '';
-            background: rgb(49, 49, 49, 0.5);
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            width: 100%;
-            height: 5px;
-            bottom: 0;
-            left: 0;
-        }
-        
-        img.margin {
-            margin-right: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            img.margin {
-                margin-right: 20px;
-                width: 0px;
-            }
-        }
-        
-        .title {
-            color: white;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            color: white;
-            font-weight: 200;
-        }
-    </style>
+    <script type="text/javascript" src="js/import/Sweetalert.js"></script>
+    <script type="text/javascript" src="js/import/Notifier.js"></script>
+    <script type="text/javascript" src="js/import/Howler.js"></script>
+    <script type="text/javascript" src="js/import/Chart.js"></script>
+    <script type="text/javascript" src="js/import/Gauge.js"></script>
+    <script type="text/javascript" src="js/import/Notyf.js"></script>
+    <script type="text/javascript" src="js/import/Push.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="js/apis.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
 </body>
 
