@@ -8,25 +8,7 @@ var Contador = 0;
 var lastTempt = 0;
 var fabSwitch;
 var varSwitch = true;
-//var notifier = new Notifier();
-/*var notyfDemo = new Notyf({
-    position: {
-        x: 'left',
-        y: 'top',
-    },
-});*/
 var chartDegree;
-/*
-Push.config({
-    serviceWorker: './js/sw.js', // Sets a custom service worker script
-    fallback: function(payload) {
-        // Code that executes on browsers with no notification support
-        // "payload" is an object containing the 
-        // title, body, tag, and icon of the notification 
-    }
-});*/
-
-//navigator.serviceWorker.register('./js/sw.js');
 
 function initFirebase() {
     var firebaseConfig = {
@@ -43,51 +25,35 @@ function initFirebase() {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    const dbRefObject = firebase.database().ref().child('temperatura');
+    var dbRefObject = firebase.database().ref().child('sensores/sensor-01');
 
     //Sincronizar cambios en el objecto
-    dbRefObject.on('value', data => leerTemperatura(data));
+    dbRefObject.on('value', data => {
+        let info = data.val();
+        document.querySelector('#temperatura').value = info.temperatura;
+        document.querySelector('#carnet').value = info.codigo;
+    });
 
     document.querySelector('#btnEnviar').addEventListener('click', (e) => {
         e.preventDefault();
 
-        let valTemperature = document.querySelector('#temperatura').value;
+        let valTemperatura = document.querySelector('#temperatura').value;
+        let valCarnet = document.querySelector('#carnet').value;
 
-        firebase.database().ref().set({
-            temperatura: valTemperature
-        }, (error) => {
-            if (error) {
-                // The write failed...
-            } else {
-                // Data saved successfully!
-            }
+        data = {
+            codigo: valCarnet,
+            temperatura: valTemperatura
+        };
+
+        dbRefObject.update(data, error => {
+            console.log(error);
         });
     })
 }
 
-
-
 //#region Obtencion de datos
-
-function showNotification() {
-    Notification.requestPermission(function(result) {
-        if (result === 'granted') {
-            console.log(result);
-            navigator.serviceWorker.ready.then(function(registration) {
-                registration.showNotification('Vibration Sample', {
-                    body: 'Buzz! Buzz!',
-                    icon: '../images/touch/chrome-touch-icon-192x192.png',
-                    vibrate: [200, 100, 200, 100, 200, 100, 200],
-                    tag: 'vibration-sample'
-                });
-            });
-        }
-    });
-}
-
 function Init() {
-    /*chartDegree = document.querySelector('#chartDegree').getContext('2d');
-    txtDegree = document.querySelectorAll('.visual-number');*/
+    initFirebase();
     fabSwitch = document.querySelector('#fab');
 
     window.onscroll = function() { myFunction() };
@@ -103,12 +69,6 @@ function Init() {
             document.getElementById("push").checked = true;
         }
     }
-
-    /*getWeather();
-    showTemperatura();
-    setGaugeTemperature();
-    initFirebase();*/
-    //setInterval(leerTemperatura, 1250);
 }
 
 function switchSensor() {

@@ -252,7 +252,7 @@
                             <div class="container-fluid p-0">
                                 <h1 class="h3 mb-3">Asistencias</h1>
                                 <div class="row">
-                                    <div class="col-xl-8">
+                                    <div id="div-list">
                                         <div class="card">
                                             <div class="card-header">
                                                 <div class="card-actions float-right" style="display: none;">
@@ -290,81 +290,64 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-4">
+                                    <div id="div-person" class="col-xl-4 hide">
                                         <div class="card">
-                                            <div class="card-header">
-                                                <div class="card-actions float-right">
-                                                    <div class="dropdown show">
-                                                        <a href="#" data-toggle="dropdown" data-display="static">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                                                        </a>
+    <div class="card-header">
+        <h5 id="txt-Nombre" class="card-title mb-0">Angelica Ramos</h5>
+    </div>
 
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h5 class="card-title mb-0">Angelica Ramos</h5>
-                                            </div>
+    <div class="main-box">
+        <div class="d-flex flex-column align-items-center">
+            <img id="imgPerson" src="../img/unknown.jpg" alt="imagen de persona" class="img-thumbnail profile-img img-responsive img-mini center-block">
+            <div class="profile-label">
+                <a id="link-person" target="_blank" class="badge badge-info" href="student.html">Estudiante</a>
+            </div>
 
-                                            <div class="main-box">
-                                                <div class="d-flex flex-column align-items-center">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="profile-img img-responsive img-mini center-block">
-                                                    <div class="profile-label">
-                                                        <span class="badge badge-info">Estudiante</span>
-                                                    </div>
+            <div class="profile-since">
+                Registrado el: 23/01/2021
+            </div>
+        </div>
 
-                                                    <div class="profile-since">
-                                                        Registrado el: 23/01/2021
-                                                    </div>
-                                                </div>
+        <table class="table table-condensed table-hover nowrap dataTable no-footer dtr-column collapsed">
+            <tbody class="mini-info">
+                <tr>
+                    <th># Carnet</th>
+                    <td id="tdCarnet">None</td>
+                </tr>
+                <tr>
+                    <th>Apellidos</th>
+                    <td id="tdApellido">None</td>
+                </tr>
+                <tr>
+                    <th>Carrera</th>
+                    <td id="tdCarrera">None</td>
+                </tr>
+                <tr>
+                    <th>Direccion</th>
+                    <td id="tdDireccion">+1234123123123</td>
+                </tr>
+                <tr>
+                    <th>Registros</th>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>Alta</th>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <th>Alta</th>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
 
-
-                                                <table class="table table-condensed table-hover nowrap dataTable no-footer dtr-column collapsed">
-                                                    <tbody class="mini-info">
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <td>Angelica Ramos</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Company</th>
-                                                            <td>The Wiz</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Email</th>
-                                                            <td>angelica@ramos.com</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Phone</th>
-                                                            <td>+1234123123123</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Registros</th>
-                                                            <td>10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Normal</th>
-                                                            <td>9</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Alta</th>
-                                                            <td>1</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-
-                                                <div class="profile-message-btn center-block text-center">
-                                                    <br>
-                                                    <!-- -->
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tomarDatos">
+        <div class="profile-message-btn center-block text-center">
+            <br> <button id="btnModal" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tomarDatos">
     Tomar Temperatura
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="tomarDatos" tabindex="-1" role="dialog" aria-labelledby="Tomar Datos" aria-hidden="true">
+<div class="modal fade" id="tomarDatos" tabindex="-1" role="dialog" aria-labelledby="tomarDatos" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="p-4 bg-white shadow-sm">
@@ -398,7 +381,7 @@
                         </div>
                     </div>
                     <div class="bs-stepper-content">
-                        <form onsubmit="return false">
+                        <form id="frm-attend">
                             <div id="panel-datos" role="tabpanel" class="bs-stepper-pane active dstepper-block" aria-labelledby="salto-1">
                                 <div class="form-group">
                                     <label for="txtCodigo">Código</label>
@@ -482,17 +465,16 @@
                             <div id="panel-guardar" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="salto-2">
                                 <div class="card profile-header p-4">
                                     <div class="profile-image">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Foto">
-                                        <a id="txtIded" href="#" class="badge badge-dark mt-2">2017-0505U</a>
+                                        <img id="cardImagen" src="../img/unknown.jpg" alt="Foto">
+                                        <a id="txtIded" target="_blank" href="student.html" class="badge badge-dark mt-2">Null</a>
                                     </div>
-
                                     <div>
-                                        <p id="txtNombre" class="font-weight-bold">Jesus Enmanuel Hernandez Gonzalez</p>
-                                        <p id="txtCarrera">Ingenieria en Computacion</p>
+                                        <p id="txtNombre" class="font-weight-bold">Null</p>
+                                        <p id="txtCarrera">Null</p>
                                         <p id="txtFacultad">F.E.C</p>
                                         <div class="card p-2 mt-2 info-save">
-                                            <p>El <span id="regTipo" class="font-weight-bold">estudiante</span> Registra una Temperatura de <span id="regTemp" class="font-weight-bold">33</span>º a las
-                                                <span id="regHora" class="font-weight-bold">22:48:23</span> el dia </p> <span id="regFecha" class="font-weight-bold">24/04/2021</span>
+                                            <p>El <span id="regTipo" class="font-weight-bold">estudiante</span> Registra una Temperatura de <span id="regTemp" class="font-weight-bold">33º</span> a las
+                                                <span id="regHora" class="font-weight-bold">22:48:23</span> el dia <span id="regFecha" class="font-weight-bold">24/04/2021</span> </p>
                                         </div>
                                     </div>
                                 </div>
@@ -510,43 +492,31 @@
         </div>
     </div>
 </div>
-                                                </div>
-                                            </div>
+        </div>
+    </div>
 
-                                            <div class="card-body">
+    <div class="card-body">
 
-                                                <strong>Alertas</strong>
+        <strong>Alertas</strong>
+        <ul id="listAlertas" class="timeline mt-2 mb-0">
+            <li id="remove-me" class="d-flex justify-content-center">
+                <div class="align-items-center text-white bg-primary border-0">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            No hay ninguna alerta
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-item hide">
+                <strong>Signed out</strong>
+                <span class="float-right text-muted text-sm">30m ago</span>
+                <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+            </li>
+        </ul>
 
-                                                <ul class="timeline mt-2 mb-0">
-                                                    <li class="timeline-item">
-                                                        <strong>Signed out</strong>
-                                                        <span class="float-right text-muted text-sm">30m ago</span>
-                                                        <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
-                                                    </li>
-                                                    <li class="timeline-item">
-                                                        <strong>Created invoice #1204</strong>
-                                                        <span class="float-right text-muted text-sm">2h ago</span>
-                                                        <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
-                                                    </li>
-                                                    <li class="timeline-item">
-                                                        <strong>Discarded invoice #1147</strong>
-                                                        <span class="float-right text-muted text-sm">3h ago</span>
-                                                        <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
-                                                    </li>
-                                                    <li class="timeline-item">
-                                                        <strong>Signed in</strong>
-                                                        <span class="float-right text-muted text-sm">3h ago</span>
-                                                        <p>Curabitur ligula sapien, tincidunt non, euismod vitae...</p>
-                                                    </li>
-                                                    <li class="timeline-item">
-                                                        <strong>Signed up</strong>
-                                                        <span class="float-right text-muted text-sm">2d ago</span>
-                                                        <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
+    </div>
+</div>
                                     </div>
                                 </div>
 
@@ -568,6 +538,8 @@
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+
 <script src="../../js/loader.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

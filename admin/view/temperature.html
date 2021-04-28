@@ -33,10 +33,6 @@
                             </div>
                             <div class="card-body fab-contain">
                                 <canvas id="gauge-temperature"></canvas>
-                                <div style="display: none;">
-                                    <span class="material-icons mini-icon">thermostat</span>
-                                    <span class="mini visual-number">0</span>
-                                </div>
                             </div>
                         </div>
 
@@ -59,6 +55,21 @@
                             <div class="card-header">Temperatura anormal</div>
                             <div class="card-body">
                                 <!--Reporte de Temperaturas Altas -->
+                                <table id="table-hight" class="table table-striped" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>IdFirebase</th>
+                                            <th>Codigo</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Temperatura</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 

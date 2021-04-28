@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Aplicacion web para conocer la Temperatura registrada por el sensor">
+    <title>SCT UNI</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600&display=swap' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <style>
+        h1.nofound {
+            font-size: 7.5em;
+            margin: 15px 0px;
+            font-weight: bold;
+        }
+        
+        a.inicio {
+            padding: 20px;
+            font-size: 15px;
+        }
+    </style>
+
+    <!-- Inicia elementos comunes -->
+    <header class="opcion-fixed">
+        <!--Logo and header-->
+        <div class="contenedor">
+            <div class="flex-h">
+                <div class="flex-start logo padding-10px">
+                    <img src="https://img.icons8.com/color/100/000000/speedometer.png" alt="SCT Logo" width="48" height="48" />
+                    <h1>SCT</h1>
+                </div>
+                <nav class="flex-h">
+                    <a href="./admin/login.html" id="btn-nav" class="btn-nav">
+                        <span class="txt-nav">Ingresar</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero -->
+        <div class="bg-cyan">
+            <div class="contenedor">
+                <div class="contain-center">
+                    <div class="banner-block">
+                        <div class="align-self-center">
+                            <h1 class="nofound">404</h1>
+                            <h2>Upss! Pagina no encontrada.</h2>
+                            <p>La pagina que buscas no existe, como llegaste aqui es un misterio, pero puedes clickear el boton de abajo para ir a la pagina de inicio.
+                            </p>
+                            <div class="d-flex justify-content-center mt-4">
+                                <a href="index.html" class="btn-circled inicio">Volver a la pagina de Inicio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-cta mt-4">
+            <div class="contenedor grid-notes pt-5 pb-5">
+                <div class="flex-h">
+                    <div class="align-self-center pr-5">
+                        <span class="material-icons" style="font-size: 35px;">warning</span>
+                    </div>
+                    <p class="notes"><strong>Quédese en casa y llame a su médico:</strong> Si cree que ha estado expuesto al COVID-19 y desarrolla fiebre y cualquier síntoma, como tos o dificultad para respirar, o llame a la línea de atención del MINSA 132, lo antes posible
+                        para obtener asesoramiento médico.</p>
+                </div>
+                <a href=" http://www.minsa.gob.ni/" class="btn-circled scrollto" target="_blank">
+                    <span class="material-icons mr-2">feedback </span>
+                    <span>Más información.</span>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Pie de pagina -->
+    <footer class="footer d-flex" style="height: 100vh;">
+        <div class="" style="width: 100%;">
+            <div class="d-flex justify-content-center" style="height: 93%;">
+                <div class="contenedor align-items-center">
+                    <aside>
+                        <div class="bullet-point">
+                            <div class="circle-icon">
+                                <span class="material-icons">school</span>
+                            </div>
+                            <p>Universidad Nacional de Ingenieria</p>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="circle-icon">
+                                <span class="material-icons">engineering</span>
+                            </div>
+                            <p>Facultad de Electrotecnia y Computación</p>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="circle-icon">
+                                <span class="material-icons">work</span>
+                            </div>
+                            <p>Proyecto de AMC1</p>
+                        </div>
+                    </aside>
+                    <aside>
+                        <h3>Integrantes:</h3>
+                        <ul>
+                            <li>Jesus Hernández</li>
+                            <li>Nathanael González</li>
+                            <li>Juan López</li>
+                        </ul>
+                    </aside>
+                    <aside>
+                        <h3>Sobre el Proyecto</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis molestiae numquam cupiditate explicabo, itaque libero laborum ea autem corporis alias vero cum ullam quibusdam harum est accusamus ex hic asperiores perferendis nam
+                            voluptates similique tempora officia amet! Eaque, animi expedita?</p>
+                    </aside>
+                </div>
+            </div>
+
+
+            <p class="copyright" style="width: 100%;">Todos los derechos reservados &reg; SCT - UNI &copy;</p>
+        </div>
+    </footer>
+</body>
+
+</html>

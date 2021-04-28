@@ -22,10 +22,10 @@
                             <div class="row" id="user-profile">
                                 <div class="col-lg-3 col-md-4 col-sm-4">
                                     <div class="main-box clearfix">
-                                        <h2>John Doe </h2>
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="profile-img img-responsive center-block">
+                                        <h2 id="txt-Nombre">John Doe </h2>
+                                        <img id="imgPerson" src="../img/unknown.jpg" alt="" class="profile-img img-responsive center-block">
                                         <div class="profile-label">
-                                            <span class="badge badge-info">Estudiante</span>
+                                            <a id="link-person" class="badge badge-info" href="#">Estudiante</a>    
                                         </div>
 
                                         <div class="profile-since">
@@ -48,7 +48,7 @@
 
                                 <div class="col-lg-9 col-md-8 col-sm-8">
                                     <div class="main-box clearfix">
-                                        <div class="profile-header">
+                                        <div class="d-flex justify-content-between">
                                             <h3><span>Datos personales</span></h3>
                                             <a href="#" class="btn btn-primary edit-profile">
                                                 <i class="fa fa-pencil-square fa-lg"></i> Actualizar datos
@@ -61,24 +61,16 @@
                                                     <div class="profile-user-details-label">
                                                         No. carné:
                                                     </div>
-                                                    <div class="profile-user-details-value">
-                                                        2017-0505U
-                                                    </div>
-                                                </div>
-                                                <div class="profile-user-details clearfix">
-                                                    <div class="profile-user-details-label">
-                                                        Nombres:
-                                                    </div>
-                                                    <div class="profile-user-details-value">
-                                                        Juan Carlos
+                                                    <div id="tdCarnet" class="profile-user-details-value">
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class="profile-user-details clearfix">
                                                     <div class="profile-user-details-label">
                                                         Apellidos:
                                                     </div>
-                                                    <div class="profile-user-details-value">
-                                                        Lopez Arauz
+                                                    <div id="tdApellido" class="profile-user-details-value">
+
                                                     </div>
                                                 </div>
                                                 <div class="profile-user-details clearfix">
@@ -93,9 +85,8 @@
                                                     <div class="profile-user-details-label">
                                                         Direccion:
                                                     </div>
-                                                    <div class="profile-user-details-value">
-                                                        10880 Malibu Point,
-                                                        <br> Malibu, Calif., 90265
+                                                    <div id="tdDireccion" class="profile-user-details-value">
+
                                                     </div>
                                                 </div>
                                                 <div class="profile-user-details clearfix">
@@ -123,108 +114,26 @@
                                                 <li>
                                                     <a href="#tab-registros" class="nav-link active" aria-current="page" data-toggle="tab">Registros</a>
                                                 </li>
-                                                <li class="nav-item">
-                                                    <a href="#tab-alertas" data-toggle="tab" class="nav-link">Alertas</a>
-                                                </li>
-                                                <li style="display: none;">
-                                                    <a href="#tab-chat" class="nav-link" data-toggle="tab">Chat</a>
+                                                <li class="nav-item" id="#tab2">
+                                                    <a id="tabAlertas" href="#tab-alertas" data-toggle="tab" class="nav-link">Alertas</a>
                                                 </li>
                                             </ul>
 
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="tab-alertas">
-
+                                                    <div id="remove-me" class="d-flex justify-content-center">
+                                                        <div class="align-items-center text-white bg-primary border-0">
+                                                            <div class="d-flex">
+                                                                <div class="toast-body">
+                                                                    No hay ninguna alerta
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="table-responsive">
                                                         <table class="table">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <i class="fa fa-comment"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        John Doe posted a comment in <a href="#">Avengers Initiative</a> project.
-                                                                    </td>
-                                                                    <td>
-                                                                        2014/08/08 12:08
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <i class="fa fa-truck"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        John Doe changed order status from <span class="label label-primary">Pending</span> to <span class="label label-success">Completed</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        2014/08/08 12:08
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <i class="fa fa-check"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        John Doe posted a comment in <a href="#">Lost in Translation opening scene</a> discussion.
-                                                                    </td>
-                                                                    <td>
-                                                                        2014/08/08 12:08
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <i class="fa fa-users"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        John Doe posted a comment in <a href="#">Avengers Initiative</a> project.
-                                                                    </td>
-                                                                    <td>
-                                                                        2014/08/08 12:08
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <i class="fa fa-heart"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        John Doe changed order status from <span class="label label-warning">On Hold</span> to <span class="label label-danger">Disabled</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        2014/08/08 12:08
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <i class="fa fa-check"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        John Doe posted a comment in <a href="#">Lost in Translation opening scene</a> discussion.
-                                                                    </td>
-                                                                    <td>
-                                                                        2014/08/08 12:08
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <i class="fa fa-truck"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        John Doe changed order status from <span class="label label-primary">Pending</span> to <span class="label label-success">Completed</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        2014/08/08 12:08
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <i class="fa fa-users"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        John Doe posted a comment in <a href="#">Avengers Initiative</a> project.
-                                                                    </td>
-                                                                    <td>
-                                                                        2014/08/08 12:08
-                                                                    </td>
-                                                                </tr>
+                                                            <tbody id="listAlertas">
+                                                                
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -233,131 +142,23 @@
 
                                                 <div class="tab-pane fade p-3 border" id="tab-registros">
                                                     <div>
-                                                        <div class="table-responsive">
-                                                            <table id="table-user" class="table table-hover table-outline">
-                                                                <thead class="thead-light">
-                                                                    <tr>
-                                                                        <th>Id</th>
-                                                                        <th>Nombres</th>
-                                                                        <th>Apellidos</th>
-                                                                        <th>Sexo</th>
-                                                                        <th>Direccion</th>
-                                                                        <th>Telefono</th>
-                                                                        <th>Correo</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
+                                                        <table id="table-attend-personal" class="table table-striped" style="width:100%">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>IdFirebase</th>
+                                                                    <th>Codigo</th>
+                                                                    <th>Fecha</th>
+                                                                    <th>Hora</th>
+                                                                    <th>Temperatura</th>
+                                                                    <th>Acciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                        
+                                                            </tbody>
+                                                        </table>
                                                         <br>
                                                         <a href="student.html" class="btn btn-success pull-right">Ver todos los usuarios</a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="tab-pane fade" id="tab-chat">
-                                                    <div class="conversation-wrapper">
-                                                        <div class="conversation-content">
-                                                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 340px;">
-                                                                <div class="conversation-inner" style="overflow: hidden; width: auto; height: 340px;">
-
-                                                                    <div class="conversation-item item-left clearfix">
-                                                                        <div class="conversation-user">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                                        </div>
-                                                                        <div class="conversation-body">
-                                                                            <div class="name">
-                                                                                Ryan Gossling
-                                                                            </div>
-                                                                            <div class="time hidden-xs">
-                                                                                September 21, 2013 18:28
-                                                                            </div>
-                                                                            <div class="text">
-                                                                                I don't think they tried to market it to the billionaire, spelunking, base-jumping crowd.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="conversation-item item-right clearfix">
-                                                                        <div class="conversation-user">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                                        </div>
-                                                                        <div class="conversation-body">
-                                                                            <div class="name">
-                                                                                Mila Kunis
-                                                                            </div>
-                                                                            <div class="time hidden-xs">
-                                                                                September 21, 2013 12:45
-                                                                            </div>
-                                                                            <div class="text">
-                                                                                Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="conversation-item item-right clearfix">
-                                                                        <div class="conversation-user">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                                        </div>
-                                                                        <div class="conversation-body">
-                                                                            <div class="name">
-                                                                                Mila Kunis
-                                                                            </div>
-                                                                            <div class="time hidden-xs">
-                                                                                September 21, 2013 12:45
-                                                                            </div>
-                                                                            <div class="text">
-                                                                                Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="conversation-item item-left clearfix">
-                                                                        <div class="conversation-user">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                                        </div>
-                                                                        <div class="conversation-body">
-                                                                            <div class="name">
-                                                                                Ryan Gossling
-                                                                            </div>
-                                                                            <div class="time hidden-xs">
-                                                                                September 21, 2013 18:28
-                                                                            </div>
-                                                                            <div class="text">
-                                                                                I don't think they tried to market it to the billionaire, spelunking, base-jumping crowd.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="conversation-item item-right clearfix">
-                                                                        <div class="conversation-user">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="">
-                                                                        </div>
-                                                                        <div class="conversation-body">
-                                                                            <div class="name">
-                                                                                Mila Kunis
-                                                                            </div>
-                                                                            <div class="time hidden-xs">
-                                                                                September 21, 2013 12:45
-                                                                            </div>
-                                                                            <div class="text">
-                                                                                Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                                <div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);"></div>
-                                                                <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="conversation-new-message">
-                                                            <form>
-                                                                <div class="form-group">
-                                                                    <textarea class="form-control" rows="2" placeholder="Enter your message..."></textarea>
-                                                                </div>
-
-                                                                <div class="clearfix">
-                                                                    <button type="submit" class="btn btn-success pull-right">Send message</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

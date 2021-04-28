@@ -1,9 +1,9 @@
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tomarDatos">
+<button id="btnModal" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tomarDatos">
     Tomar Temperatura
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="tomarDatos" tabindex="-1" role="dialog" aria-labelledby="Tomar Datos" aria-hidden="true">
+<div class="modal fade" id="tomarDatos" tabindex="-1" role="dialog" aria-labelledby="tomarDatos" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="p-4 bg-white shadow-sm">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="bs-stepper-content">
-                        <form onsubmit="return false">
+                        <form id="frm-attend">
                             <div id="panel-datos" role="tabpanel" class="bs-stepper-pane active dstepper-block" aria-labelledby="salto-1">
                                 <div class="form-group">
                                     <label for="txtCodigo">Código</label>
@@ -121,17 +121,16 @@
                             <div id="panel-guardar" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="salto-2">
                                 <div class="card profile-header p-4">
                                     <div class="profile-image">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Foto">
-                                        <a id="txtIded" href="#" class="badge badge-dark mt-2">2017-0505U</a>
+                                        <img id="cardImagen" src="../img/unknown.jpg" alt="Foto">
+                                        <a id="txtIded" target="_blank" href="student.html" class="badge badge-dark mt-2">Null</a>
                                     </div>
-
                                     <div>
-                                        <p id="txtNombre" class="font-weight-bold">Jesus Enmanuel Hernandez Gonzalez</p>
-                                        <p id="txtCarrera">Ingenieria en Computacion</p>
+                                        <p id="txtNombre" class="font-weight-bold">Null</p>
+                                        <p id="txtCarrera">Null</p>
                                         <p id="txtFacultad">F.E.C</p>
                                         <div class="card p-2 mt-2 info-save">
-                                            <p>El <span id="regTipo" class="font-weight-bold">estudiante</span> Registra una Temperatura de <span id="regTemp" class="font-weight-bold">33</span>º a las
-                                                <span id="regHora" class="font-weight-bold">22:48:23</span> el dia </p> <span id="regFecha" class="font-weight-bold">24/04/2021</span>
+                                            <p>El <span id="regTipo" class="font-weight-bold">estudiante</span> Registra una Temperatura de <span id="regTemp" class="font-weight-bold">33º</span> a las
+                                                <span id="regHora" class="font-weight-bold">22:48:23</span> el dia <span id="regFecha" class="font-weight-bold">24/04/2021</span> </p>
                                         </div>
                                     </div>
                                 </div>

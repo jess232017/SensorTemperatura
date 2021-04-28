@@ -19,7 +19,8 @@
 
 <body>
     <form style="display: none;" action="">
-        <input type="number" name="temperatura" id="temperatura" required>
+        <input type="number" name="temperatura" id="temperatura" placeholder="temperatura" required>
+        <input type="tel" name="carnet" id="carnet" placeholder="# Carnet" required>
         <input type="submit" value="Enviar" id="btnEnviar">
     </form>
 
@@ -52,9 +53,9 @@
             <div class="contenedor">
                 <div class="contain-center">
                     <div class="banner-block">
-                        <img class="img-hero" src="./img/covid.png" alt="" style="width: 100%;">
+                        <img class="img-hero" src="./img/covid.png" alt="COVID-19">
                         <div class="content mr-5">
-                            <div class="d-flex flex-column justify-content-center ">
+                            <div class="d-flex flex-column justify-content-center">
                                 <h1 class="heading full-text">
                                     <span>SISTEMA</span>
                                     <div class="heading-sm">
@@ -79,40 +80,29 @@
                                 </div>
 
                                 <div class="status">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-12">
-                                            <h5 class="">Estadistica en Nicaragua</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row g-gs">
-
-                                        <div class="col-sm-4 col-6">
-                                            <div class="status-item">
-                                                <h6 class="title">Confirmados</h6>
-                                                <div class="h3 count">
-                                                    <div id="logCases" class="text-warning">6835</div>
-                                                </div>
+                                    <h5 class="">Estadistica en Nicaragua</h5>
+                                    <div class="grid-fast-card mini">
+                                        <div class="status-item">
+                                            <h6 class="title">Confirmados</h6>
+                                            <div class="h3 count">
+                                                <div id="logCases" class="text-warning">6835</div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4 col-6">
-                                            <div class="status-item">
-                                                <h6 class="title">Muertes </h6>
-                                                <div class="h3 count">
-                                                    <div id="logDeaths" class="text-warning">181</div>
-                                                </div>
+                                        <div class="status-item">
+                                            <h6 class="title">Muertes </h6>
+                                            <div class="h3 count">
+                                                <div id="logDeaths" class="text-warning">181</div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4 col-6">
-                                            <div class="status-item">
-                                                <h6 class="title">Recuperación</h6>
-                                                <div class="h3 count">
-                                                    <div id="logRecovered" class="text-warning">4225</div>
-                                                </div>
+                                        <div class="status-item">
+                                            <h6 class="title">Recuperación</h6>
+                                            <div class="h3 count">
+                                                <div id="logRecovered" class="text-warning">4225</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="status-note text-secondary">
-                                        * Datos Nacionales actualizados: gracias a <a target="_blank" class="text-secondary" href="https://github.com/javieraviles/covidAPI/blob/master/README.md">https://coronavirus-19-api.herokuapp.com</a>
+                                        * Datos Nacionales obtenidos de: <a target="_blank" class="text-secondary" style="text-decoration: underline;" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE COVID-19 Data</a>
                                     </div>
                                 </div>
                                 <!-- .status -->
@@ -148,9 +138,9 @@
                     <div id="covid-api" class="grid-fast-card">
 
                     </div>
-                    <p class="status-note">
-                        * Datos Nacionales actualizados: gracias a https://coronavirus-19-api.herokuapp.com
-                    </p>
+                    <div class="status-note">
+                        * Datos Nacionales obtenidos de: <a target="_blank" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE COVID-19 Data</a>
+                    </div>
                     <a target="_blank" href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" class="btn btn-primary mt-2">Ver Mapa</a>
                 </div>
             </div>

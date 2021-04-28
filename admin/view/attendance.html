@@ -26,7 +26,7 @@
                             <div class="container-fluid p-0">
                                 <h1 class="h3 mb-3">Asistencias</h1>
                                 <div class="row">
-                                    <div class="col-xl-8">
+                                    <div id="div-list">
                                         <div class="card">
                                             <div class="card-header">
                                                 <div class="card-actions float-right" style="display: none;">
@@ -64,113 +64,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-4">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <div class="card-actions float-right">
-                                                    <div class="dropdown show">
-                                                        <a href="#" data-toggle="dropdown" data-display="static">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                                                        </a>
-
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h5 class="card-title mb-0">Angelica Ramos</h5>
-                                            </div>
-
-                                            <div class="main-box">
-                                                <div class="d-flex flex-column align-items-center">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="profile-img img-responsive img-mini center-block">
-                                                    <div class="profile-label">
-                                                        <span class="badge badge-info">Estudiante</span>
-                                                    </div>
-
-                                                    <div class="profile-since">
-                                                        Registrado el: 23/01/2021
-                                                    </div>
-                                                </div>
-
-
-                                                <table class="table table-condensed table-hover nowrap dataTable no-footer dtr-column collapsed">
-                                                    <tbody class="mini-info">
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <td>Angelica Ramos</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Company</th>
-                                                            <td>The Wiz</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Email</th>
-                                                            <td>angelica@ramos.com</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Phone</th>
-                                                            <td>+1234123123123</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Registros</th>
-                                                            <td>10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Normal</th>
-                                                            <td>9</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Alta</th>
-                                                            <td>1</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-
-                                                <div class="profile-message-btn center-block text-center">
-                                                    <br>
-                                                    <!-- -->
-                                                    @@include('./includes/element/modal.html')
-                                                </div>
-                                            </div>
-
-                                            <div class="card-body">
-
-                                                <strong>Alertas</strong>
-
-                                                <ul class="timeline mt-2 mb-0">
-                                                    <li class="timeline-item">
-                                                        <strong>Signed out</strong>
-                                                        <span class="float-right text-muted text-sm">30m ago</span>
-                                                        <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
-                                                    </li>
-                                                    <li class="timeline-item">
-                                                        <strong>Created invoice #1204</strong>
-                                                        <span class="float-right text-muted text-sm">2h ago</span>
-                                                        <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
-                                                    </li>
-                                                    <li class="timeline-item">
-                                                        <strong>Discarded invoice #1147</strong>
-                                                        <span class="float-right text-muted text-sm">3h ago</span>
-                                                        <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
-                                                    </li>
-                                                    <li class="timeline-item">
-                                                        <strong>Signed in</strong>
-                                                        <span class="float-right text-muted text-sm">3h ago</span>
-                                                        <p>Curabitur ligula sapien, tincidunt non, euismod vitae...</p>
-                                                    </li>
-                                                    <li class="timeline-item">
-                                                        <strong>Signed up</strong>
-                                                        <span class="float-right text-muted text-sm">2d ago</span>
-                                                        <p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
+                                    <div id="div-person" class="col-xl-4 hide">
+                                        @@include('./includes/element/person-card.html')
                                     </div>
                                 </div>
 

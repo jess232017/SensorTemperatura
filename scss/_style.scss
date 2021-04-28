@@ -132,6 +132,7 @@ a {
     }
     .img-hero {
         display: block;
+        width: 100%;
     }
 }
 
@@ -144,6 +145,10 @@ a {
     -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
+}
+
+.grid-fast-card.mini {
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
 }
 
 .grid-fast-card>.card {
@@ -194,6 +199,7 @@ a {
     color: gray;
     border-bottom: 2px solid transparent;
     transition: border .3s ease-in;
+    text-decoration: none!important;
 }
 
 .btn-nav:hover {
@@ -526,6 +532,9 @@ aside p {
     font-size: 0.75rem;
     color: #555d6e;
     padding-top: 0.3rem;
+    &>a {
+        text-decoration: underline;
+    }
 }
 
 .h3.count {
@@ -625,4 +634,9 @@ aside p {
 
 h5.card-header {
     color: #465675;
+}
+
+.card-empty {
+    padding: .75rem;
+    background-color: #321fdb;
 }
