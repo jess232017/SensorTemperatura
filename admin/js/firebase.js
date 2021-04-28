@@ -84,7 +84,7 @@ dbAsistencias.on('value', snap => {
         if (item.temperatura > 37) {
             tablehight.rows.add([dataSet]).draw();
         }
-        if(item.codigo === idPerson){
+        if (item.codigo === idPerson) {
             tablePerson.rows.add([dataSet]).draw();
         }
     }
@@ -106,11 +106,10 @@ function getAttendees(idCode, callback) {
 }
 
 function setImgfromFirebase(path, element) {
-    let  storageRef = storage.ref('/imagenes/');
+    let storageRef = storage.ref('/imagenes/');
     storageRef.child(`${path}.jpg`).getDownloadURL().then(url => {
-        var img = document.querySelector(element);
-        img.src = url;
-    }).catch(function(error) {
+        $(element).attr("src", url);
+    }).catch(error => {
         alert('el usuario no posee imagen ' + error)
     });
 }
@@ -228,3 +227,13 @@ $('form').submit(function(e) {
     CerrarModal("div#tomarDatos");
 });
 //#endregion
+
+//#region Solicitar permiso Push Notificacion
+firebase.messaging().requestPermission()
+    .then(function(token) {
+        console.log('Permiso recibido 2. ' + token);
+        // En el parámetro "token" tienes el código para poder enviar las notificaciones
+    })
+    .catch(function(err) {
+        console.log('No se ha obtenido permiso', err);
+    });

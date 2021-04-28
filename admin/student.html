@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SCT UNI</title>
 
+    <link rel="manifest" href="./manifest.json">
+
     <link rel="stylesheet" href="./css/student.css">
 
     <!-- Icon -->
@@ -34,7 +36,15 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="./css/style.css" />
 
-
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "478939bb-8e38-49fc-84fc-7115a4e05b8a",
+            });
+        });
+    </script>
 </head>
 
 <body class="c-app">
@@ -65,7 +75,6 @@
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="attendance.html">
                     <img class="c-sidebar-nav-icon" src="./img/attend.svg" alt="Estudiantes"> Asistencias
-
                 </a>
             </li>
         </div>
@@ -295,9 +304,47 @@
         </table>
 
         <div class="profile-message-btn center-block text-center">
-            <br> <button id="btnModal" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tomarDatos">
-    Tomar Temperatura
-</button>
+            <br>
+            <button id="btnModal" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tomarDatos">
+                Tomar Temperatura
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <strong>Alertas</strong>
+        <ul id="listAlertas" class="timeline mt-2 mb-0">
+            <li id="remove-me" class="d-flex justify-content-center">
+                <div class="align-items-center text-white bg-primary border-0">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            No hay ninguna alerta
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-item hide">
+                <strong>Signed out</strong>
+                <span class="float-right text-muted text-sm">30m ago</span>
+                <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+            </li>
+        </ul>
+
+    </div>
+</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <footer class="c-footer">
+    <div id="fab" data-toggle="modal" data-target="#tomarDatos">&#xe145;</div>
 
 <!-- Modal -->
 <div class="modal fade" id="tomarDatos" tabindex="-1" role="dialog" aria-labelledby="tomarDatos" aria-hidden="true">
@@ -349,6 +396,9 @@
                                             </span>
                                         </div>
                                         <input id="txtCodigo" class="form-control" type="text" required placeholder="Código de Identidad">
+                                        <div id="errorCodigo" class="invalid-feedback">
+                                            Debe ingresar un codigo valido.
+                                        </div>
                                     </div>
                                     <label for="txtTemperatura">Temperatura</label>
                                     <div class="input-group">
@@ -362,6 +412,9 @@
                                             </span>
                                         </div>
                                         <input id="txtTemperatura" class="form-control" type="number" required placeholder="Temperatura en Celsius">
+                                        <div class="invalid-feedback">
+                                            La temperatura no es valido.
+                                        </div>
                                     </div>
 
                                     <div class="collapse" id="inputDetalles">
@@ -377,6 +430,9 @@
                                             </span>
                                             </div>
                                             <input id="txtFecha" class="form-control" type="date" placeholder="Temperatura en Celsius">
+                                            <div class="invalid-feedback">
+                                                La fecha no es valida.
+                                            </div>
                                         </div>
 
                                         <label for="txtHora">Hora</label>
@@ -391,6 +447,9 @@
                                             </span>
                                             </div>
                                             <input id="txtHora" class="form-control" type="time" placeholder="Temperatura en Celsius">
+                                            <div class="invalid-feedback">
+                                                La hora no es valida.
+                                            </div>
                                         </div>
 
                                         <label for="txtDescripcion">Descripcion</label>
@@ -445,53 +504,37 @@
         </div>
     </div>
 </div>
-        </div>
-    </div>
-
-    <div class="card-body">
-
-        <strong>Alertas</strong>
-        <ul id="listAlertas" class="timeline mt-2 mb-0">
-            <li id="remove-me" class="d-flex justify-content-center">
-                <div class="align-items-center text-white bg-primary border-0">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            No hay ninguna alerta
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="timeline-item hide">
-                <strong>Signed out</strong>
-                <span class="float-right text-muted text-sm">30m ago</span>
-                <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
-            </li>
-        </ul>
-
-    </div>
-</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </section>
-
-        <footer class="c-footer">
     <!-- Footer content here -->
     <div><a href="#">STC UNI</a> © 2020 Dev@Team.</div>
     <div class="ml-auto">Proyecto de&nbsp;<a href="#">AMC-1</a></div>
 </footer>
     </main>
 
-    <!-- Firebase = {Base de datos} -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('./service-worker.js?' + Math.random() + '').
+            then(function(registration) {
+                // Registro fue exitoso 
+                console.log('Registered!');
+            }, function(err) {
+                // El registro fallo :(
+                console.log('ServiceWorker registration failed: ', err);
+            }).catch(function(err) {
+                console.log(err);
+            });
+        });
+    } else {
+        console.log('service worker is not supported');
+    }
+</script>
+
+<!-- Firebase = {Base de datos} -->
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
 
 <script src="../../js/loader.js"></script>
 

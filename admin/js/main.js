@@ -1,5 +1,16 @@
+var stepper = new Stepper(document.querySelector('#stpIngresar'), { linear: true })
 
-var stepper = new Stepper(document.querySelector('#stpIngresar'), { linear: false })
+//#region Opacar menu
+var path = window.location.pathname;
+var page = path.split("/").pop();
+console.log(page);
+
+if (page != "") {
+    document.querySelector(`a[href='${page}']`).style.backgroundColor = "#323d4c";
+} else {
+    document.querySelector(`a[href='index.html']`).style.backgroundColor = "#323d4c";
+}
+//#endregion
 
 //#region Graficos
 var myChart;
@@ -89,28 +100,34 @@ var idCode, temperatura, hora, fecha, descripcion;
 
 function nextStep() {
     let Current = new Date();
-
     idCode = $('#txtCodigo').val();
     temperatura = $('#txtTemperatura').val();
-    hora = Current.toLocaleTimeString();
-    fecha = Current.toLocaleDateString();
-    descripcion = "";
-
+    if (Pushed) {
+        hora = $('#txtHora').val();
+        fecha = $('#txtFecha').val();
+        descripcion = $('#txtDescripcion').val();
+    } else {
+        hora = Current.toLocaleTimeString();
+        fecha = Current.toLocaleDateString();
+        descripcion = "";
+    }
     getStudent(idCode, validarForm);
 }
 
 function validarForm(data) {
-    if(data.exists()){
-        if (Pushed) {
-            hora = $('#txtHora').val();
-            fecha = $('#txtFecha').val();
-            descripcion = $('#txtDescripcion').val();
-        }
-            
-        if (idCode === '' || temperatura === '' || ((hora === '' || fecha === '') && Pushed)) {
-            alert('Debe completar la informacion');
+    if (data.exists()) {
+        //Pura validacion
+        let isOkay = true;
 
-        } else {
+        isOkay = validarCampo('#txtCodigo', isOkay);
+        isOkay = validarCampo('#txtTemperatura', isOkay);
+
+        if (Pushed) {
+            isOkay = validarCampo('#txtFecha', isOkay);
+            isOkay = validarCampo('#txtHora', isOkay);
+        }
+
+        if (isOkay) {
             data = data.val();
             data = data[Object.keys(data)[0]]
 
@@ -131,8 +148,21 @@ function validarForm(data) {
 
             stepper.next()
         }
-    }else{
-        alert('no hay ningun registro con este codigo');
+    } else {
+        document.querySelector('#txtCodigo').classList.add('is-invalid');
+    }
+}
+
+function validarCampo(element, isOkay) {
+    let domInput = document.querySelector(element);
+
+    if (domInput.value === '') {
+        domInput.classList.add('is-invalid');
+        return false;
+    } else {
+        domInput.classList.remove('is-invalid');
+        domInput.classList.add('is-valid');
+        return (isOkay) ? true : false;
     }
 }
 
@@ -160,24 +190,24 @@ $('#table-attend tbody').on('click', 'tr', function() {
     getAttendees(data[1], ajustAlert);
 });
 
-function ajustPerson(students) {  
-    if(students.exists()){
+function ajustPerson(students) {
+    if (students.exists()) {
         //Obtener hijos
         students = students.val();
         let fbcode = Object.keys(students)[0];
 
         let item = students[fbcode];
         item.fbcode = fbcode;
-    
-        let data = [item.fbcode, item.codigo ,item.nombres, item.apellidos, item.carrera, item.sexo, item.direccion];
+
+        let data = [item.fbcode, item.codigo, item.nombres, item.apellidos, item.carrera, item.sexo, item.direccion];
         setPersonCard(data);
-    }else{
+    } else {
         alert("no se obtuvo informacion")
     }
 }
 
 function ajustAlert(attends) {
-    if(attends.exists()){
+    if (attends.exists()) {
         attends = attends.val();
         for (let i in attends) {
             let item = attends[i];
@@ -185,14 +215,14 @@ function ajustAlert(attends) {
                 setAlertCard(item);
             }
         }
-    }else{
+    } else {
         alert("no se obtuvo informacion")
     }
 }
 
 function setPersonCard(data) {
     setImgfromFirebase(data[1], '#imgPerson');
-    
+
     $('#div-list').addClass('col-xl-8');
     $('#div-person').removeClass('hide');
     tableUser.columns.adjust().draw();
@@ -230,14 +260,14 @@ function setAlertCard(data) {
 let params = new URLSearchParams(location.search);
 var idPerson = params.get('id');
 
-if (idPerson != null){
+if (idPerson != null) {
     getStudent(idPerson, ajustPerson);
     getAttendees(idPerson, ajustAlertTable);
     $('#tabAlertas').click();
 }
 
 function ajustAlertTable(attends) {
-    if(attends.exists()){
+    if (attends.exists()) {
         attends = attends.val();
         for (let i in attends) {
             let item = attends[i];
@@ -245,7 +275,7 @@ function ajustAlertTable(attends) {
                 setAlertTable(item);
             }
         }
-    }else{
+    } else {
         alert("no se obtuvo informacion")
     }
 }

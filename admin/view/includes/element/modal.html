@@ -1,6 +1,4 @@
-<button id="btnModal" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tomarDatos">
-    Tomar Temperatura
-</button>
+<div id="fab" data-toggle="modal" data-target="#tomarDatos">&#xe145;</div>
 
 <!-- Modal -->
 <div class="modal fade" id="tomarDatos" tabindex="-1" role="dialog" aria-labelledby="tomarDatos" aria-hidden="true">
@@ -52,6 +50,9 @@
                                             </span>
                                         </div>
                                         <input id="txtCodigo" class="form-control" type="text" required placeholder="Código de Identidad">
+                                        <div id="errorCodigo" class="invalid-feedback">
+                                            Debe ingresar un codigo valido.
+                                        </div>
                                     </div>
                                     <label for="txtTemperatura">Temperatura</label>
                                     <div class="input-group">
@@ -65,6 +66,9 @@
                                             </span>
                                         </div>
                                         <input id="txtTemperatura" class="form-control" type="number" required placeholder="Temperatura en Celsius">
+                                        <div class="invalid-feedback">
+                                            La temperatura no es valido.
+                                        </div>
                                     </div>
 
                                     <div class="collapse" id="inputDetalles">
@@ -80,6 +84,9 @@
                                             </span>
                                             </div>
                                             <input id="txtFecha" class="form-control" type="date" placeholder="Temperatura en Celsius">
+                                            <div class="invalid-feedback">
+                                                La fecha no es valida.
+                                            </div>
                                         </div>
 
                                         <label for="txtHora">Hora</label>
@@ -94,6 +101,9 @@
                                             </span>
                                             </div>
                                             <input id="txtHora" class="form-control" type="time" placeholder="Temperatura en Celsius">
+                                            <div class="invalid-feedback">
+                                                La hora no es valida.
+                                            </div>
                                         </div>
 
                                         <label for="txtDescripcion">Descripcion</label>

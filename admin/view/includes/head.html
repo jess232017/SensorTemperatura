@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SCT UNI</title>
 
+    <link rel="manifest" href="./manifest.json">
+
     <link rel="stylesheet" href="./css/student.css">
 
     <!-- Icon -->
@@ -31,5 +33,13 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="./css/style.css" />
 
-
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "478939bb-8e38-49fc-84fc-7115a4e05b8a",
+            });
+        });
+    </script>
 </head>

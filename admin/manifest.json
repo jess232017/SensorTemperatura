@@ -1,0 +1,26 @@
+{
+    "short_name": "STC-UNI",
+    "name": "Sistema de Control de Temperatura",
+    "icons": [{
+            "src": "./img/launcher.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./img/launcher.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "./img/launcher.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "index.html",
+    "gcm_sender_id": "103953800507",
+    "background_color": "#212121",
+    "theme_color": "#212121",
+    "orientation": "portrait",
+    "display": "standalone"
+}
