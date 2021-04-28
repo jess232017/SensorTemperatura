@@ -3,9 +3,8 @@ var stepper = new Stepper(document.querySelector('#stpIngresar'), { linear: true
 //#region Opacar menu
 var path = window.location.pathname;
 var page = path.split("/").pop();
-console.log(page);
 
-if (page != "") {
+if (page != "" && page != "student-info.html") {
     document.querySelector(`a[href='${page}']`).style.backgroundColor = "#323d4c";
 } else {
     document.querySelector(`a[href='index.html']`).style.backgroundColor = "#323d4c";
@@ -142,9 +141,8 @@ function validarForm(data) {
 
             if (parseInt(temperatura) > 37) {
                 $("#regTemp").addClass("text-danger");
-                let mensaje = `Alerta: El estudiante de ${data.carrera} identifado como ${data.nombres} ${data.apellidos} con # carnet ${idCode} ` +
-                    `ha presentado una temperatura muy alta de ${temperatura} ºC a las ${hora}`;
-                enviarNotificacion(mensaje);
+                msAlert = `El estudiante de ${data.carrera} identificado como ${data.nombres} ${data.apellidos} con # carnet ${idCode} ` +
+                    `ha presentado una temperatura muy alta de ${temperatura}ºC a las ${hora}`;
             } else {
                 $("#regTemp").removeClass("text-danger");
             }
@@ -169,7 +167,7 @@ function validarCampo(element, isOkay) {
     }
 }
 
-function enviarNotificacion(Mensaje) {
+function enviarNotificacion(Titulo, Mensaje) {
     let myHeaders = new Headers();
     myHeaders.append("Authorization", "Basic ODU0NmI1YTMtZjAyNy00ZDRkLTgyODAtNTc3MDAzMmU0ZTQ2");
     myHeaders.append("Content-Type", "application/json");
@@ -177,6 +175,7 @@ function enviarNotificacion(Mensaje) {
 
     let raw = JSON.stringify({
         "app_id": "478939bb-8e38-49fc-84fc-7115a4e05b8a",
+        "url": "https://sensor-jstemperature.netlify.app/admin/index.html",
         "included_segments": [
             "Subscribed Users"
         ],
@@ -185,6 +184,9 @@ function enviarNotificacion(Mensaje) {
         },
         "contents": {
             "en": Mensaje
+        },
+        "headings": {
+            "en": Titulo
         }
     });
 
@@ -316,7 +318,7 @@ function ajustAlertTable(attends) {
 }
 
 function setAlertTable(data) {
-    document.querySelector('div#remove-me').remove();
+    document.querySelector('div#remove-me').style.display = "none";
     let divAlertas = document.querySelector('#listAlertas');
 
     let item = document.createElement('tr');

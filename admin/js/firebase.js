@@ -193,6 +193,9 @@ var tablePerson = $('#table-attend-personal').DataTable({
 //#endregion
 
 //#region Enviar Formulario
+//Variable con el mensaje en caso de presentar alta temperatura
+var msAlert;
+
 // Guardar
 $('form').submit(function(e) {
     e.preventDefault();
@@ -215,7 +218,9 @@ $('form').submit(function(e) {
     actualizacionData = {};
     actualizacionData[`/${idFirebase}`] = data;
     dbAsistencias.update(actualizacionData).then(() => {
-            console.log('Update successful');
+            if (parseInt(temperatura) > 37) {
+                enviarNotificacion("Alerta: Peligro biologico", msAlert);
+            }
         })
         .catch(error => {
             console.log(error);
