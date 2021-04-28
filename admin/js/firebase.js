@@ -227,13 +227,3 @@ $('form').submit(function(e) {
     CerrarModal("div#tomarDatos");
 });
 //#endregion
-
-//#region Solicitar permiso Push Notificacion
-firebase.messaging().requestPermission()
-    .then(function(token) {
-        console.log('Permiso recibido 2. ' + token);
-        // En el parámetro "token" tienes el código para poder enviar las notificaciones
-    })
-    .catch(function(err) {
-        console.log('No se ha obtenido permiso', err);
-    });

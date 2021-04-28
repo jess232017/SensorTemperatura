@@ -142,6 +142,9 @@ function validarForm(data) {
 
             if (parseInt(temperatura) > 37) {
                 $("#regTemp").addClass("text-danger");
+                let mensaje = `Alerta: El estudiante de ${data.carrera} identifado como ${data.nombres} ${data.apellidos} con # carnet ${idCode} ` +
+                    `ha presentado una temperatura muy alta de ${temperatura} ºC a las ${hora}`;
+                enviarNotificacion(mensaje);
             } else {
                 $("#regTemp").removeClass("text-danger");
             }
@@ -164,6 +167,38 @@ function validarCampo(element, isOkay) {
         domInput.classList.add('is-valid');
         return (isOkay) ? true : false;
     }
+}
+
+function enviarNotificacion(Mensaje) {
+    let myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic ODU0NmI1YTMtZjAyNy00ZDRkLTgyODAtNTc3MDAzMmU0ZTQ2");
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Cookie", "__cfduid=d27872b10d36f1b3e813c8c6f3cfc19d11619630966");
+
+    let raw = JSON.stringify({
+        "app_id": "478939bb-8e38-49fc-84fc-7115a4e05b8a",
+        "included_segments": [
+            "Subscribed Users"
+        ],
+        "data": {
+            "foo": "bar"
+        },
+        "contents": {
+            "en": Mensaje
+        }
+    });
+
+    let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("https://onesignal.com/api/v1/notifications", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 function CerrarModal(modalId) {
