@@ -227,8 +227,7 @@ $('form').submit(function(e) {
         });
 
     idFirebase = '';
-    stepper.reset();
-    document.querySelector("form#frm-attend").reset();
-    CerrarModal("div#tomarDatos");
+
+    resetModal();
 });
 //#endregion

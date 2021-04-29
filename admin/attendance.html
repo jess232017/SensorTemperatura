@@ -50,7 +50,7 @@
 <body class="c-app">
 
     <!-- Sidebar content here -->
-    <aside id="sidebar" class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show shadow-sm" id="sidebar">
+    <aside id="sidebar" class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <!-- Logo -->
     <div class="c-sidebar-brand d-lg-down-none responsive">
         <svg class="responsive" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,21.5c-43.46583,0 -78.83333,35.3675 -78.83333,78.83333c0,13.8675 3.65254,27.49816 10.55404,39.43066l2.07162,3.58333l8.87435,-0.014h14.33333v-14.33333h-14.79525c-4.39317,-8.85083 -6.70475,-18.6835 -6.70475,-28.66667c0,-35.56817 28.939,-64.5 64.5,-64.5c35.561,0 64.5,28.93183 64.5,64.5c0,9.98317 -2.30442,19.80867 -6.70475,28.66667h-14.79525v14.33333h14.33333h7.16667h1.70768l2.07162,-3.56934c6.9015,-11.9325 10.55403,-25.56316 10.55403,-39.43066c0,-43.46583 -35.3675,-78.83333 -78.83333,-78.83333zM86,43c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM60.91667,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM110.63542,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM43,68.08333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM132.7933,73.45833c0,0 -49.82121,12.89093 -49.92871,12.91959l-0.41992,0.09798l0.014,0.02799c-6.192,1.57667 -10.79199,7.14293 -10.79199,13.82943c0,7.91917 6.41417,14.33333 14.33333,14.33333c3.64783,0 6.94641,-1.40299 9.47624,-3.65332zM35.83333,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM136.16667,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM64.5,129.014v14.33333h43v-14.33333z"></path></g></g></svg>
@@ -132,9 +132,11 @@
 
         <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
     <!-- Header content here -->
-    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+
+    <button onclick="nombres()" class="c-header-toggler  d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
         <img src="./img/menu.svg" alt="menu">
     </button>
+
     <a class="c-header-brand d-lg-none" href="#">
         <div class="flex-h">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#4f5d73;"><g fill="#4f5d73" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#4f5d73"><path d="M86,21.5c-43.46583,0 -78.83333,35.3675 -78.83333,78.83333c0,13.8675 3.65254,27.49816 10.55404,39.43066l2.07162,3.58333l8.87435,-0.014h14.33333v-14.33333h-14.79525c-4.39317,-8.85083 -6.70475,-18.6835 -6.70475,-28.66667c0,-35.56817 28.939,-64.5 64.5,-64.5c35.561,0 64.5,28.93183 64.5,64.5c0,9.98317 -2.30442,19.80867 -6.70475,28.66667h-14.79525v14.33333h14.33333h7.16667h1.70768l2.07162,-3.56934c6.9015,-11.9325 10.55403,-25.56316 10.55403,-39.43066c0,-43.46583 -35.3675,-78.83333 -78.83333,-78.83333zM86,43c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM60.91667,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM110.63542,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM43,68.08333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM132.7933,73.45833c0,0 -49.82121,12.89093 -49.92871,12.91959l-0.41992,0.09798l0.014,0.02799c-6.192,1.57667 -10.79199,7.14293 -10.79199,13.82943c0,7.91917 6.41417,14.33333 14.33333,14.33333c3.64783,0 6.94641,-1.40299 9.47624,-3.65332zM35.83333,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM136.16667,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM64.5,129.014v14.33333h43v-14.33333z"></path></g></g></svg>
@@ -352,7 +354,7 @@
 
         <div class="profile-message-btn center-block text-center">
             <br>
-            <button id="btnModal" type="button" class="btn btn-danger" data-toggle="modal" data-target="#tomarDatos">
+            <button id="btnModal" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tomarDatos">
                 Tomar Temperatura
             </button>
         </div>
@@ -391,11 +393,11 @@
         </section>
 
         <footer class="c-footer">
-    <div id="fab" data-toggle="modal" data-target="#tomarDatos">&#xe145;</div>
+    <div id="fab" data-bs-toggle="modal" data-bs-target="#tomarDatos">&#xe145;</div>
 
 <!-- Modal -->
-<div class="modal fade" id="tomarDatos" tabindex="-1" role="dialog" aria-labelledby="tomarDatos" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="tomarDatos" tabindex="-1" aria-labelledby="tomarDatos" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered">
         <div class="modal-content">
             <div class="p-4 bg-white shadow-sm">
                 <h3>Realizar Registro</h3>
@@ -515,6 +517,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
                                     <button class="btn btn-dark" id="btnMas" type="button" data-toggle="collapse" data-target="#inputDetalles" aria-expanded="false" aria-controls="inputDetalles">
                                         Ver más
                                     </button>
@@ -539,7 +543,8 @@
                                 </div>
                                 <div class="d-flex justify-content-between  mt-2">
                                     <input id="idAsistencia" type="hidden" value="">
-                                    <button class="btn btn-secondary" type="button" onclick="stepper.previous()">Anterior</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button class="btn btn-dark" type="button" onclick="stepper.previous()">Anterior</button>
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
 
@@ -581,8 +586,6 @@
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
-
-<script src="../../js/loader.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -170,4 +170,17 @@ div#divPerson {
 .onesignal-customlink-subscribe.button.medium {
     border-radius: .25rem;
     padding: .375rem .75rem;
+    font-size: .875rem;
+}
+
+.onesignal-customlink-subscribe.button.medium.btn-danger:hover {
+    color: #fff;
+    background-color: #e03232;
+    border-color: #de2727;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.onesignal-customlink-explanation {
+    margin-bottom: 10px;
 }

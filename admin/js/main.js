@@ -1,4 +1,4 @@
-var stepper = new Stepper(document.querySelector('#stpIngresar'), { linear: true })
+var stepper = new Stepper(document.querySelector('#stpIngresar'), { linear: true });
 
 //#region Opacar menu
 var path = window.location.pathname;
@@ -151,6 +151,7 @@ function validarForm(data) {
         }
     } else {
         document.querySelector('#txtCodigo').classList.add('is-invalid');
+        stepper.reset();
     }
 }
 
@@ -165,6 +166,19 @@ function validarCampo(element, isOkay) {
         domInput.classList.add('is-valid');
         return (isOkay) ? true : false;
     }
+}
+
+function resetModal() {
+    stepper.reset();
+
+    document.querySelector('#txtCodigo').classList.remove('is-valid');
+    document.querySelector('#txtTemperatura').classList.remove('is-valid');
+    document.querySelector('#txtFecha').classList.remove('is-valid');
+    document.querySelector('#txtHora').classList.remove('is-valid');
+
+    document.querySelector("form#frm-attend").reset();
+
+    $("#tomarDatos").modal('hide');
 }
 
 function enviarNotificacion(Titulo, Mensaje) {
@@ -203,21 +217,11 @@ function enviarNotificacion(Titulo, Mensaje) {
         .catch(error => console.log('error', error));
 }
 
-function CerrarModal(modalId) {
-    // obtener el modal
-    const modal = document.querySelector(modalId);
-
-    // change state like in hidden modal
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden', 'true');
-    modal.setAttribute('style', 'display: none');
-
-    // obtener el modal backdrop
-    const modalBackdrops = document.getElementsByClassName('modal-backdrop');
-
-    // remover opened modal backdrop
-    document.body.removeChild(modalBackdrops[0]);
-}
+var myModalEl = document.getElementById('tomarDatos')
+myModalEl.addEventListener('hidden.bs.modal', function(event) {
+    // do something...
+    resetModal();
+});
 //#endregion
 
 //#region Person-Card
@@ -336,4 +340,22 @@ function setAlertTable(data) {
     divAlertas.appendChild(item);
 }
 
+//#endregion
+
+//#region reparar shadow effect en el sidebar
+var shadow = document.createElement('div');
+shadow.className = "c-sidebar-backdrop c-fade c-show";
+shadow.addEventListener('click', () => {
+    shadow.parentNode.removeChild(shadow);
+    sidebar.classList.remove('c-sidebar-show');
+})
+
+function nombres() {
+    let sidebar = document.querySelector('aside#sidebar');
+    document.querySelector('body').appendChild(shadow);
+    sidebar.classList.add('c-sidebar-show');
+}
+
+
+screenTop
 //#endregion
