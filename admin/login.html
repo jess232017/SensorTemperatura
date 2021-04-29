@@ -13,71 +13,116 @@
 
 <body class="c-app flex-row align-items-center">
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card-block">
-                    <h2 class="card-header text-center">STC - UNI</h2>
-                    <div class="card-group grid">
-                        <div class="bg-white init p-4">
-                            <div class="card-body">
-                                <h2>Iniciar sesión</h2>
-                                <p class="text-muted">Inicia sesión con tu cuenta</p>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                                width="20" height="20"
-                                                viewBox="0 0 172 172"
-                                                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#666666"><path d="M86,26.875c-20.72315,0 -37.625,16.90185 -37.625,37.625c0,12.95459 6.61377,24.46045 16.62891,31.24219c-19.16943,8.23047 -32.75391,27.25293 -32.75391,49.38281h10.75c0,-15.53711 8.20947,-29.05859 20.49219,-36.61719c3.61133,8.86035 12.40869,15.11719 22.50781,15.11719c10.09912,0 18.89648,-6.25683 22.50781,-15.11719c12.28271,7.55859 20.49219,21.08008 20.49219,36.61719h10.75c0,-22.12988 -13.58447,-41.15234 -32.75391,-49.38281c10.01514,-6.78174 16.62891,-18.2876 16.62891,-31.24219c0,-20.72315 -16.90185,-37.625 -37.625,-37.625zM86,37.625c14.90723,0 26.875,11.96778 26.875,26.875c0,14.90723 -11.96777,26.875 -26.875,26.875c-14.90722,0 -26.875,-11.96777 -26.875,-26.875c0,-14.90722 11.96778,-26.875 26.875,-26.875zM86,102.125c4.40918,0 8.6084,0.62989 12.59766,1.84766c-1.86865,5.18604 -6.73974,8.90234 -12.59766,8.90234c-5.85791,0 -10.72901,-3.71631 -12.59766,-8.90234c3.98926,-1.21777 8.18848,-1.84766 12.59766,-1.84766z"></path></g></g>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <input class="form-control" type="text" placeholder="Nombre de usuario">
+    <div class="c-wrapper">
+        <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+            <!-- Header content here -->
+            <button class="c-header-toggler c-class-toggler d-lg-none" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+                <img src="./img/back.svg" alt="volver">
+            </button>
+            <a class="c-header-brand d-lg-none" href="#">
+                <div class="d-flex justify-content-between align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" style=" fill:#4f5d73;"><g fill="#4f5d73" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#4f5d73"><path d="M86,21.5c-43.46583,0 -78.83333,35.3675 -78.83333,78.83333c0,13.8675 3.65254,27.49816 10.55404,39.43066l2.07162,3.58333l8.87435,-0.014h14.33333v-14.33333h-14.79525c-4.39317,-8.85083 -6.70475,-18.6835 -6.70475,-28.66667c0,-35.56817 28.939,-64.5 64.5,-64.5c35.561,0 64.5,28.93183 64.5,64.5c0,9.98317 -2.30442,19.80867 -6.70475,28.66667h-14.79525v14.33333h14.33333h7.16667h1.70768l2.07162,-3.56934c6.9015,-11.9325 10.55403,-25.56316 10.55403,-39.43066c0,-43.46583 -35.3675,-78.83333 -78.83333,-78.83333zM86,43c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM60.91667,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM110.63542,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM43,68.08333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM132.7933,73.45833c0,0 -49.82121,12.89093 -49.92871,12.91959l-0.41992,0.09798l0.014,0.02799c-6.192,1.57667 -10.79199,7.14293 -10.79199,13.82943c0,7.91917 6.41417,14.33333 14.33333,14.33333c3.64783,0 6.94641,-1.40299 9.47624,-3.65332zM35.83333,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM136.16667,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM64.5,129.014v14.33333h43v-14.33333z"></path></g></g></svg>
+                    <h1 class="logo" style="margin: 0px 5px;font-size: 15px;">SCT UNI</h1>
+                </div>
+            </a>
+            <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+            <img src="./img/back.svg" alt="volver">
+            </button>
+        </header>
+
+        <div class="c-body d-flex justify-content-center align-items-center">
+            <div class="card-block m-2">
+                <div class="card-header d-flex justify-content-center align-items-center desktop">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 172 172" style=" fill:#4f5d73;"><g fill="#4f5d73" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#4f5d73"><path d="M86,21.5c-43.46583,0 -78.83333,35.3675 -78.83333,78.83333c0,13.8675 3.65254,27.49816 10.55404,39.43066l2.07162,3.58333l8.87435,-0.014h14.33333v-14.33333h-14.79525c-4.39317,-8.85083 -6.70475,-18.6835 -6.70475,-28.66667c0,-35.56817 28.939,-64.5 64.5,-64.5c35.561,0 64.5,28.93183 64.5,64.5c0,9.98317 -2.30442,19.80867 -6.70475,28.66667h-14.79525v14.33333h14.33333h7.16667h1.70768l2.07162,-3.56934c6.9015,-11.9325 10.55403,-25.56316 10.55403,-39.43066c0,-43.46583 -35.3675,-78.83333 -78.83333,-78.83333zM86,43c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM60.91667,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM110.63542,50.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM43,68.08333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM132.7933,73.45833c0,0 -49.82121,12.89093 -49.92871,12.91959l-0.41992,0.09798l0.014,0.02799c-6.192,1.57667 -10.79199,7.14293 -10.79199,13.82943c0,7.91917 6.41417,14.33333 14.33333,14.33333c3.64783,0 6.94641,-1.40299 9.47624,-3.65332zM35.83333,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM136.16667,93.16667c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM64.5,129.014v14.33333h43v-14.33333z"></path></g></g></svg>
+                    <h1 class="mt-2 ml-2" style="font-size: 1.75rem;">SCT UNI</h1>
+                </div>
+                <div class="card-group grid">
+                    <div class="bg-white init p-4">
+                        <div class="card-body">
+                            <h2>Iniciar sesión</h2>
+                            <p class="text-muted">Inicia sesión con tu cuenta</p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                    width="20" height="20"
+                                    viewBox="0 0 172 172"
+                                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#666666"><path d="M86,26.875c-20.72315,0 -37.625,16.90185 -37.625,37.625c0,12.95459 6.61377,24.46045 16.62891,31.24219c-19.16943,8.23047 -32.75391,27.25293 -32.75391,49.38281h10.75c0,-15.53711 8.20947,-29.05859 20.49219,-36.61719c3.61133,8.86035 12.40869,15.11719 22.50781,15.11719c10.09912,0 18.89648,-6.25683 22.50781,-15.11719c12.28271,7.55859 20.49219,21.08008 20.49219,36.61719h10.75c0,-22.12988 -13.58447,-41.15234 -32.75391,-49.38281c10.01514,-6.78174 16.62891,-18.2876 16.62891,-31.24219c0,-20.72315 -16.90185,-37.625 -37.625,-37.625zM86,37.625c14.90723,0 26.875,11.96778 26.875,26.875c0,14.90723 -11.96777,26.875 -26.875,26.875c-14.90722,0 -26.875,-11.96777 -26.875,-26.875c0,-14.90722 11.96778,-26.875 26.875,-26.875zM86,102.125c4.40918,0 8.6084,0.62989 12.59766,1.84766c-1.86865,5.18604 -6.73974,8.90234 -12.59766,8.90234c-5.85791,0 -10.72901,-3.71631 -12.59766,-8.90234c3.98926,-1.21777 8.18848,-1.84766 12.59766,-1.84766z"></path></g></g>
+                                </svg>
+                            </span>
                                 </div>
-                                <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                                width="20" height="20"
-                                                viewBox="0 0 172 172"
-                                                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#666666"><path d="M86,16.125c-20.72315,0 -37.625,16.90185 -37.625,37.625v16.125h-16.125v86h107.5v-86h-16.125v-16.125c0,-20.72315 -16.90185,-37.625 -37.625,-37.625zM86,26.875c14.90723,0 26.875,11.96778 26.875,26.875v16.125h-53.75v-16.125c0,-14.90722 11.96778,-26.875 26.875,-26.875zM43,80.625h86v64.5h-86zM64.5,107.5c-2.96045,0 -5.375,2.41455 -5.375,5.375c0,2.96045 2.41455,5.375 5.375,5.375c2.96045,0 5.375,-2.41455 5.375,-5.375c0,-2.96045 -2.41455,-5.375 -5.375,-5.375zM86,107.5c-2.96045,0 -5.375,2.41455 -5.375,5.375c0,2.96045 2.41455,5.375 5.375,5.375c2.96045,0 5.375,-2.41455 5.375,-5.375c0,-2.96045 -2.41455,-5.375 -5.375,-5.375zM107.5,107.5c-2.96045,0 -5.375,2.41455 -5.375,5.375c0,2.96045 2.41455,5.375 5.375,5.375c2.96045,0 5.375,-2.41455 5.375,-5.375c0,-2.96045 -2.41455,-5.375 -5.375,-5.375z"></path></g></g>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <input class="form-control" type="password" placeholder="Contraseña">
+                                <input class="form-control" type="text" placeholder="Nombre de usuario">
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                    width="20" height="20"
+                                    viewBox="0 0 172 172"
+                                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#666666"><path d="M86,16.125c-20.72315,0 -37.625,16.90185 -37.625,37.625v16.125h-16.125v86h107.5v-86h-16.125v-16.125c0,-20.72315 -16.90185,-37.625 -37.625,-37.625zM86,26.875c14.90723,0 26.875,11.96778 26.875,26.875v16.125h-53.75v-16.125c0,-14.90722 11.96778,-26.875 26.875,-26.875zM43,80.625h86v64.5h-86zM64.5,107.5c-2.96045,0 -5.375,2.41455 -5.375,5.375c0,2.96045 2.41455,5.375 5.375,5.375c2.96045,0 5.375,-2.41455 5.375,-5.375c0,-2.96045 -2.41455,-5.375 -5.375,-5.375zM86,107.5c-2.96045,0 -5.375,2.41455 -5.375,5.375c0,2.96045 2.41455,5.375 5.375,5.375c2.96045,0 5.375,-2.41455 5.375,-5.375c0,-2.96045 -2.41455,-5.375 -5.375,-5.375zM107.5,107.5c-2.96045,0 -5.375,2.41455 -5.375,5.375c0,2.96045 2.41455,5.375 5.375,5.375c2.96045,0 5.375,-2.41455 5.375,-5.375c0,-2.96045 -2.41455,-5.375 -5.375,-5.375z"></path></g></g>
+                                </svg>
+                            </span>
                                 </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <a class="btn btn-primary px-4" href="./index.html">Acceder</a>
-                                    </div>
+                                <input class="form-control" type="password" placeholder="Contraseña">
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <a class="btn btn-primary px-4" href="./index.html">Acceder</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white office text-muted py-5 ">
-                            <div class="card-body text-center">
-                                <div>
-                                    <div class="forgetpass mt-3">
-                                        <p><a href="./index.html">¿Olvidó su nombre de usuario o contraseña?</a></p>
-                                    </div>
-                                    <p class="text-muted">Las 'Cookies' deben estar habilitadas en su navegador</p>
-                                    <p class="mt-2">Identifíquese usando su cuenta en:</p>
-                                    <div class="potentialidplist mt-3">
-                                        <div class="potentialidp">
-                                            <a href="./index.html" title="Office 365" class="btn btn-secondary btn-block">
-                                                <img src="../img/o365.png" alt="" width="24" height="24"> Office 365
-                                            </a>
-                                        </div>
+                    </div>
+                    <div class="bg-white office text-muted py-5 ">
+                        <div class="card-body text-center">
+                            <div>
+                                <div class="forgetpass mt-3">
+                                    <p><a href="./index.html">¿Olvidó su nombre de usuario o contraseña?</a></p>
+                                </div>
+                                <p class="text-muted">Las 'Cookies' deben estar habilitadas en su navegador</p>
+                                <p class="mt-2">Identifíquese usando su cuenta en:</p>
+                                <div class="potentialidplist mt-3">
+                                    <div class="potentialidp">
+                                        <a href="./index.html" title="Office 365" class="btn btn-secondary btn-block">
+                                            <img src="../img/o365.png" alt="" width="24" height="24"> Office 365
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
+        <footer class="c-footer">
+            <!-- Footer content here -->
+            <div><a href="#">STC UNI</a> © 2020 Dev@Team.</div>
+            <div class="ml-auto">Proyecto de&nbsp;<a href="#">AMC-1</a></div>
+        </footer>
     </div>
+
+
+    <style>
+        .mobile {
+            display: block!important;
+        }
+        
+        .desktop {
+            display: none!important;
+        }
+        
+        .card-header {
+            padding: .5rem 1.25rem!important;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile {
+                display: none!important;
+            }
+            .desktop {
+                display: flex!important;
+            }
+        }
+    </style>
 </body>
 
 

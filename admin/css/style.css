@@ -166,3 +166,8 @@ div#divPerson {
     width: 300px;
     max-width: 300px;
 }
+
+.onesignal-customlink-subscribe.button.medium {
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
