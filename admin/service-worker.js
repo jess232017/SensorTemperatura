@@ -1,26 +1,48 @@
 // service-worker.js
-self.addEventListener('install', function(event) {
+self.addEventListener('install', e => {
     // Instalar de inmediato
     if (self.skipWaiting) { self.skipWaiting(); }
-    event.waitUntil(
+    e.waitUntil(
         caches.open('cache01').then(function(cache) {
             return cache.addAll([
                 './',
                 //HTML
-                'attendance.html',
-                'index.html',
-                'login.js',
-                'student-info.html',
-                'student.html',
-                'temperature.html',
+                './attendance.html',
+                './index.html',
+                './login.html',
+                './student-info.html',
+                './student.html',
+                './temperature.html',
+                //CSS
+                './css/style.css',
+                '../css/style.css',
+                './css/login.css',
+                './css/student.css',
+                //CDN CSS
+                'https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css',
+                'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css',
+                'https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css',
+                'https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css',
+                'https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css',
+                'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
+
+                //No cachear en producion
+                //'https://cdn.onesignal.com/sdks/OneSignalSDK.js',
+
                 //JavaScript
                 './js/main.js',
                 './js/firebase.js',
-                //CSS
-                './css/style.css',
-                './css/login.css',
-                './css/style.css',
-                './css/student.css',
+                './js/import/chart.js',
+                './js/import/gauge.js',
+                //CDN JS
+                'https://unpkg.com/dexie@latest/dist/dexie.js',
+                'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js',
+                'https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js',
+                'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js',
+                'https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js',
+                'https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js',
+                'https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js',
+                'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js'
             ]);
         })
     );
@@ -49,8 +71,4 @@ caches.keys().then(function(cacheNames) {
 caches.keys().then(function(cacheKeys) {
     // Muestra en la consola la cache instalada 
     console.log('Versión SW: ' + cacheKeys);
-});
-
-self.addEventListener("activate", event => {
-    //console.log('Activate!');
 });
