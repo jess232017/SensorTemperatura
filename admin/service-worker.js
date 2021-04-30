@@ -45,6 +45,7 @@ self.addEventListener('install', e => {
                 'https://bernii.github.io/gauge.js/dist/gauge.min.js',
 
                 //ASSETS
+                './img/profile.png',
                 './assets/translate.json',
                 './assets/svg-symbols.css',
                 './assets/svg-symbols.svg',
