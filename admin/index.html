@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Gestor de registro de temperatura">
     <title>SCT UNI</title>
 
     <link rel="manifest" href="./manifest.json">
-
-    <link rel="stylesheet" href="./css/student.css">
 
     <!-- Icon -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
@@ -35,6 +34,7 @@
     <!-- Incluir mas diseño -->
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/fixes.css" />
 
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
@@ -583,9 +583,9 @@
 
                                 </div>
                                 <div class="status-note">
-                                    * Datos Nacionales obtenidos de: <a target="_blank" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE COVID-19 Data</a>
+                                    * Datos Nacionales obtenidos de: <a target="_blank" rel="noreferrer" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE COVID-19 Data</a>
                                 </div>
-                                <a target="_blank" href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" class="btn btn-primary mt-2">Ver Mapa</a>
+                                <a target="_blank" rel="noreferrer" href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" class="btn btn-primary mt-2">Ver Mapa</a>
                             </div>
                         </div>
 
@@ -595,7 +595,7 @@
                                 <iframe src="https://ourworldindata.org/explorers/coronavirus-data-explorer?zoomToSelection=true&pickerSort=desc&pickerMetric=population&Metric=People+vaccinated&Interval=Cumulative&Relative+to+Population=true&Align+outbreaks=false&country=NIC~CRI~SLV~HND~GTM&hideControls=true"
                                     loading="lazy" style="width: 100%; height: 450px; border: 0px none;"></iframe>
                                 <div class="status-note">
-                                    * Datos obtenidos de: <a target="_blank" href="https://ourworldindata.org/">Our World in Data</a>
+                                    * Datos obtenidos de: <a target="_blank" rel="noreferrer" href="https://ourworldindata.org/">Our World in Data</a>
                                 </div>
                             </div>
                         </div>
@@ -615,7 +615,7 @@
                                 <h5 class="card-title">Revise las ultimas Recomendaciones de la OMS</h5>
                                 <p class="card-text">Conozca la información más reciente sobre el brote de COVID-19 consultando las actualizaciones periódicas del sitio web de la OMS y de las autoridades nacionales y locales de salud pública de su lugar de residencia.</p>
                                 <br>
-                                <a target="_blank" href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public" class="btn btn-primary mt-2">Visitar pagina</a>
+                                <a target="_blank" rel="noreferrer" href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public" class="btn btn-primary mt-2">Visitar pagina</a>
                             </div>
                         </div>
                     </div>
@@ -817,6 +817,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
 
 <!-- Include Dexie -->
 <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
@@ -841,9 +842,8 @@
 <!-- Optional JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js"></script>
 <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
-<script src="./js/firebase.js"></script>
 <script src="../js/apis.js"></script>
-<script src="./js/main.js"></script>
+<script src="./js/min/main.min.js"></script>
 </body>
 
 </html>

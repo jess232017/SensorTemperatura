@@ -1,0 +1,48 @@
+/*Fixes: Utilizar cuando una clase no se use hasta el runtime*/
+
+
+/*Tablas*/
+
+span.dtr-title {
+    color: black;
+}
+
+span.dtr-data {
+    color: #333;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    background-color: #39f;
+    margin-top: 13px;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+    background-color: #d33333;
+}
+
+html:not([dir=rtl]) .custom-select-sm {
+    padding-right: 1.5rem;
+}
+
+
+/*boton de subscripcion*/
+
+.onesignal-customlink-subscribe.button.medium {
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-size: .875rem;
+}
+
+.onesignal-customlink-subscribe.button.medium.btn-danger:hover {
+    color: #fff;
+    background-color: #e03232;
+    border-color: #de2727;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.onesignal-customlink-explanation {
+    margin-bottom: 10px;
+}

@@ -24,6 +24,30 @@ const dbAsistencias = db.ref().child('asistencias');
 const dbSensor1 = db.ref().child('sensores/sensor-01');
 const txtDegree = document.querySelector('.visual-number');
 
+var connectedRef = firebase.database().ref(".info/connected");
+connectedRef.on("value", (snap) => {
+    if (snap.val() === true) {
+        console.log("connected");
+    } else {
+        console.log("not connected");
+    }
+})
+
+firebase.firestore().enablePersistence()
+    .catch((err) => {
+        if (err.code == 'failed-precondition') {
+            // Multiple tabs open, persistence can only be enabled
+            // in one tab at a a time.
+            // ...
+        } else if (err.code == 'unimplemented') {
+            // The current browser does not support all of the
+            // features required to enable persistence
+            // ...
+        }
+    });
+// Subseque
+
+
 //#region Consultas 
 dbSensor1.on('value', snap => {
     let sensor = snap.val();
@@ -45,10 +69,14 @@ dbSensor1.on('value', snap => {
 
 dbEstudiantes.on('value', snap => {
     let students = snap.val();
+    //addStudent(students);
     tableUser.clear().draw();
 
     for (let i in students) {
+
         let item = students[i];
+
+
         dataSet = [
             i,
             item.codigo,
