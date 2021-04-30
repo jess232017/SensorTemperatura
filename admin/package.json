@@ -28,6 +28,8 @@
     "get-value": "^2.0.6",
     "glob-parent": "^3.1.0",
     "graceful-fs": "^4.2.6",
+    "gulp-svg-combine": "^1.0.2",
+    "gulp-workbox": "^1.0.2",
     "has": "^1.0.3",
     "has-symbols": "^1.0.2",
     "has-value": "^1.0.0",
@@ -111,7 +113,9 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-file-include": "^2.3.0",
-    "gulp-markdown": "^6.0.0"
+    "gulp-markdown": "^6.0.0",
+    "gulp-svg-symbols": "^3.2.3",
+    "workbox-build": "^6.1.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,28 +1,9 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-sw.js');
-new workbox.cacheableResponse.CacheableResponsePlugin
-
-workbox.core.setCacheNameDetails({
-    prefix: 'STC-UNI',
-    suffix: 'v1',
-    precache: 'precache-cache',
-    runtime: 'runtime-cache'
-});
-
-workbox.routing.registerRoute(
-    /\.(?:js|css)$/, // Todos los archivos con extensión js o css
-    workbox.strategies.cacheFirst({
-        cacheName: workbox.core.cacheNames.precache, // nombre de la cache donde queremos guardar el recurso
-    })
-);
-
-
-
 // service-worker.js
 self.addEventListener('install', e => {
     // Instalar de inmediato
     if (self.skipWaiting) { self.skipWaiting(); }
     e.waitUntil(
-        caches.open('cache01').then(function(cache) {
+        caches.open('cache02').then(function(cache) {
             return cache.addAll([
                 './',
                 //HTML
@@ -64,7 +45,9 @@ self.addEventListener('install', e => {
                 'https://bernii.github.io/gauge.js/dist/gauge.min.js',
 
                 //ASSETS
-                './assets/translate.json'
+                './assets/translate.json',
+                './assets/svg-symbols.css',
+                './assets/svg-symbols.svg',
             ]);
         })
     );
@@ -79,7 +62,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 // Elimina archivos de cache viejos
-var cacheWhitelist = ['cache01'];
+var cacheWhitelist = ['cache02'];
 caches.keys().then(function(cacheNames) {
     return Promise.all(
         cacheNames.map(function(cacheName) {

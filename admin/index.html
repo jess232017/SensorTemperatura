@@ -60,7 +60,9 @@
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="index.html">
-                <img class="c-sidebar-nav-icon" src="./img/dashboard.svg" alt="Estudiantes"> Panel de Datos
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="assets/svg-symbols.svg#dashboard"></use>
+                </svg> Panel de Datos
             </a>
         </li>
 
@@ -69,12 +71,16 @@
             <li class="c-sidebar-nav-title">Registro</li>
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="temperature.html">
-                    <img class="c-sidebar-nav-icon" src="./img/thermo.svg" alt="Estudiantes"> Temperatura
+                    <svg class="c-sidebar-nav-icon">
+                        <use xlink:href="assets/svg-symbols.svg#thermo"></use>
+                    </svg> Temperatura
                 </a>
             </li>
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="attendance.html">
-                    <img class="c-sidebar-nav-icon" src="./img/attend.svg" alt="Estudiantes"> Asistencias
+                    <svg class="c-sidebar-nav-icon">
+                        <use xlink:href="assets/svg-symbols.svg#attend"></use>
+                    </svg> Asistencias
                 </a>
             </li>
         </div>
@@ -82,45 +88,28 @@
         <!--Gestion de personas-->
         <div>
             <li class="c-sidebar-nav-title">Gestion</li>
+
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="student.html">
-                    <img class="c-sidebar-nav-icon" src="./img/student.svg" alt="Estudiantes"> Estudiantes
+                    <svg class="c-sidebar-nav-icon">
+                        <use xlink:href="assets/svg-symbols.svg#student"></use>
+                    </svg> Estudiantes
                 </a>
             </li>
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="#PRONTO">
-                    <img class="c-sidebar-nav-icon" src="./img/teacher.svg" alt="Profesores"> Profesores
+                <a class="c-sidebar-nav-link" href="#pronto">
+                    <svg class="c-sidebar-nav-icon">
+                        <use xlink:href="assets/svg-symbols.svg#teacher"></use>
+                    </svg> Profesores
                     <span class="badge badge-primary">PRONTO</span>
                 </a>
             </li>
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="#PRONTO">
-                    <img class="c-sidebar-nav-icon" src="./img/employee.svg" alt="Administrativo"> Administrativo
+                <a class="c-sidebar-nav-link" href="#pronto">
+                    <svg class="c-sidebar-nav-icon">
+                        <use xlink:href="assets/svg-symbols.svg#employee"></use>
+                    </svg> Administrativo
                     <span class="badge badge-primary">PRONTO</span>
-                </a>
-            </li>
-        </div>
-
-        <!--Template-->
-        <div style="display: none;">
-            <li class="c-sidebar-nav-title">Components</li>
-
-            <li class="c-sidebar-nav-dropdown">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-
-                    <img class="c-sidebar-nav-icon" src="./img/employee.svg"> Icons
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="icons/coreui-icons-free.html"> CoreUI Icons<span class="badge badge-success">Free</span></a></li>
-                    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="icons/coreui-icons-brand.html"> CoreUI Icons - Brand</a></li>
-                    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="icons/coreui-icons-flag.html"> CoreUI Icons - Flag</a></li>
-                </ul>
-            </li>
-
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="widgets.html">
-
-                    <img class="c-sidebar-nav-icon" src="./img/employee.svg"> Widgets<span class="badge badge-info">NEW</span>
                 </a>
             </li>
         </div>
@@ -134,7 +123,9 @@
     <!-- Header content here -->
 
     <button onclick="nombres()" class="c-header-toggler  d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-        <img src="./img/menu.svg" alt="menu">
+        <svg class="c-icon c-icon-lg">
+            <use xlink:href="assets/svg-symbols.svg#menu"></use>
+        </svg>
     </button>
 
     <a class="c-header-brand d-lg-none" href="#">
@@ -144,7 +135,9 @@
         </div>
     </a>
     <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
-    <img src="./img/menu.svg" alt="menu">
+        <svg class="c-icon c-icon-lg">
+            <use xlink:href="assets/svg-symbols.svg#menu"></use>
+        </svg>
     </button>
     <ul class="c-header-nav d-md-down-none">
         <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="index.html">Dashboard</a></li>
@@ -154,12 +147,16 @@
     <ul class="c-header-nav ml-auto mr-4">
         <li class="c-header-nav-item d-md-down-none mx-2">
             <a class="c-header-nav-link" href="#">
-                <img class="c-icon" src="./img/alert.svg" alt="Alertas">
+                <svg class="c-icon">
+                    <use xlink:href="assets/svg-symbols.svg#alert"></use>
+                </svg>
             </a>
         </li>
         <li class="c-header-nav-item d-md-down-none mx-2">
             <a class="c-header-nav-link" href="#">
-                <img class="c-icon" src="./img/setting.svg" alt="Configuracion">
+                <svg class="c-icon">
+                    <use xlink:href="assets/svg-symbols.svg#setting"></use>
+                </svg>
             </a>
         </li>
         <li class="c-header-nav-item dropdown">
@@ -172,32 +169,44 @@
             <div id="submenu" class="dropdown-menu dropdown-menu-right pt-0">
                 <div class="dropdown-header bg-light py-2"><strong>Cuenta</strong></div>
                 <a class="dropdown-item" href="#">
-                    <img class="c-icon mr-2" src="./img/alert.svg" alt="Alertas"> Alertas
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#alert"></use>
+                    </svg> Alertas
                     <span class="badge badge-info ml-auto">42</span>
                 </a>
 
                 <a class="dropdown-item" href="#">
-                    <img class="c-icon mr-2" src="./img/message.svg" alt="Mensajes"> Mensajes
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#message"></use>
+                    </svg> Mensajes
                     <span class="badge badge-success ml-auto">42</span>
                 </a>
 
                 <div class="dropdown-header bg-light py-2"><strong>Configuracion</strong></div>
 
                 <a class="dropdown-item" href="#">
-                    <img class="c-icon mr-2" src="./img/profile.svg" alt="Perfil"> Perfil
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#profile"></use>
+                    </svg>Perfil
                 </a>
 
                 <a class="dropdown-item" href="#">
-                    <img class="c-icon mr-2" src="./img/setting.svg" alt="Configuracion"> Configuracion
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#setting"></use>
+                    </svg>Configuracion
                 </a>
 
                 <div class="dropdown-divider"></div>
 
                 <a class="dropdown-item" href="login.html">
-                    <img class="c-icon mr-2" src="./img/lock.svg" alt="Bloquear"> Bloquear Cuenta
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#lock"></use>
+                    </svg>Bloquear Cuenta
                 </a>
                 <a class="dropdown-item" href="login.html">
-                    <img class="c-icon mr-2" src="./img/exit.svg" alt="Salir"> Salir
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#exit"></use>
+                    </svg> Salir
                 </a>
             </div>
         </li>
@@ -212,7 +221,9 @@
     <div class="card">
         <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-gradient-success p-4 mfe-3">
-                <img class="c-icon c-icon-xl" src="img/student.svg" alt="">
+                <svg class="c-icon c-icon-xl">
+                    <use xlink:href="assets/svg-symbols.svg#student"></use>
+                </svg>
             </div>
             <div>
                 <div class="text-value text-primary">1340</div>
@@ -223,7 +234,9 @@
     <div class="card">
         <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-gradient-info p-4 mfe-3">
-                <img class="c-icon c-icon-xl" src="img/teacher.svg" alt="">
+                <svg class="c-icon c-icon-xl">
+                    <use xlink:href="assets/svg-symbols.svg#teacher"></use>
+                </svg>
             </div>
             <div>
                 <div class="text-value text-info">86</div>
@@ -234,7 +247,9 @@
     <div class="card">
         <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-gradient-warning p-4 mfe-3">
-                <img class="c-icon c-icon-xl" src="img/employee.svg" alt="">
+                <svg class="c-icon c-icon-xl">
+                    <use xlink:href="assets/svg-symbols.svg#employee"></use>
+                </svg>
             </div>
             <div>
                 <div class="text-value text-warning">120</div>
@@ -245,7 +260,9 @@
     <div class="card">
         <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-gradient-primary p-4 mfe-3">
-                <img class="c-icon c-icon-xl" src="img/visit.svg" alt="">
+                <svg class="c-icon c-icon-xl">
+                    <use xlink:href="assets/svg-symbols.svg#visit"></use>
+                </svg>
             </div>
             <div>
                 <div class="text-value text-danger">2300</div>
@@ -440,7 +457,9 @@
                                                 <hr class="mt-0">
                                                 <div class="progress-group">
                                                     <div class="progress-group-header">
-                                                        <img class="px-2" src="./img/male.svg" alt="Hombre">
+                                                        <svg class="px-2">
+                                                            <use xlink:href="assets/svg-symbols.svg#male"></use>
+                                                        </svg>
                                                         <div>Hombres</div>
                                                         <div class="mfs-auto font-weight-bold">43%</div>
                                                     </div>
@@ -452,7 +471,9 @@
                                                 </div>
                                                 <div class="progress-group mb-5">
                                                     <div class="progress-group-header">
-                                                        <img class="px-2" src="./img/girl.svg" alt="Hombre">
+                                                        <svg class="px-2">
+                                                            <use xlink:href="assets/svg-symbols.svg#girl"></use>
+                                                        </svg>
                                                         <div>Mujeres</div>
                                                         <div class="mfs-auto font-weight-bold">37%</div>
                                                     </div>
@@ -464,7 +485,9 @@
                                                 </div>
                                                 <div class="progress-group">
                                                     <div class="progress-group-header align-items-end">
-                                                        <img class="px-2" src="./img/c-21.svg" alt="Hombre">
+                                                        <svg class="px-2">
+                                                            <use xlink:href="assets/svg-symbols.svg#c-21"></use>
+                                                        </svg>
                                                         <div>Carnet 2021</div>
                                                         <div class="mfs-auto font-weight-bold mfe-2">191.235</div>
                                                         <div class="text-muted small">(56%)</div>
@@ -477,7 +500,9 @@
                                                 </div>
                                                 <div class="progress-group">
                                                     <div class="progress-group-header align-items-end">
-                                                        <img class="px-2" src="./img/c-20.svg" alt="Hombre">
+                                                        <svg class="px-2">
+                                                            <use xlink:href="assets/svg-symbols.svg#c-20"></use>
+                                                        </svg>
                                                         <div>Carnet 2020</div>
                                                         <div class="mfs-auto font-weight-bold mfe-2">51.223</div>
                                                         <div class="text-muted small">(15%)</div>
@@ -490,7 +515,9 @@
                                                 </div>
                                                 <div class="progress-group">
                                                     <div class="progress-group-header align-items-end">
-                                                        <img class="px-2" src="./img/c-19.svg" alt="Hombre">
+                                                        <svg class="px-2">
+                                                            <use xlink:href="assets/svg-symbols.svg#c-19"></use>
+                                                        </svg>
                                                         <div>Carnet 2019</div>
                                                         <div class="mfs-auto font-weight-bold mfe-2">37.564</div>
                                                         <div class="text-muted small">(11%)</div>
@@ -503,7 +530,9 @@
                                                 </div>
                                                 <div class="progress-group">
                                                     <div class="progress-group-header align-items-end">
-                                                        <img class="px-2" src="./img/visit-v2.svg" alt="Hombre">
+                                                        <svg class="px-2">
+                                                            <use xlink:href="assets/svg-symbols.svg#visit-2"></use>
+                                                        </svg>
                                                         <div>Invitados</div>
                                                         <div class="mfs-auto font-weight-bold mfe-2">27.319</div>
                                                         <div class="text-muted small">(8%)</div>

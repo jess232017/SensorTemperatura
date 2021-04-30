@@ -2,7 +2,9 @@
     <!-- Header content here -->
 
     <button onclick="nombres()" class="c-header-toggler  d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-        <img src="./img/menu.svg" alt="menu">
+        <svg class="c-icon c-icon-lg">
+            <use xlink:href="assets/svg-symbols.svg#menu"></use>
+        </svg>
     </button>
 
     <a class="c-header-brand d-lg-none" href="#">
@@ -12,7 +14,9 @@
         </div>
     </a>
     <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
-    <img src="./img/menu.svg" alt="menu">
+        <svg class="c-icon c-icon-lg">
+            <use xlink:href="assets/svg-symbols.svg#menu"></use>
+        </svg>
     </button>
     <ul class="c-header-nav d-md-down-none">
         <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="index.html">Dashboard</a></li>
@@ -22,12 +26,16 @@
     <ul class="c-header-nav ml-auto mr-4">
         <li class="c-header-nav-item d-md-down-none mx-2">
             <a class="c-header-nav-link" href="#">
-                <img class="c-icon" src="./img/alert.svg" alt="Alertas">
+                <svg class="c-icon">
+                    <use xlink:href="assets/svg-symbols.svg#alert"></use>
+                </svg>
             </a>
         </li>
         <li class="c-header-nav-item d-md-down-none mx-2">
             <a class="c-header-nav-link" href="#">
-                <img class="c-icon" src="./img/setting.svg" alt="Configuracion">
+                <svg class="c-icon">
+                    <use xlink:href="assets/svg-symbols.svg#setting"></use>
+                </svg>
             </a>
         </li>
         <li class="c-header-nav-item dropdown">
@@ -40,32 +48,44 @@
             <div id="submenu" class="dropdown-menu dropdown-menu-right pt-0">
                 <div class="dropdown-header bg-light py-2"><strong>Cuenta</strong></div>
                 <a class="dropdown-item" href="#">
-                    <img class="c-icon mr-2" src="./img/alert.svg" alt="Alertas"> Alertas
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#alert"></use>
+                    </svg> Alertas
                     <span class="badge badge-info ml-auto">42</span>
                 </a>
 
                 <a class="dropdown-item" href="#">
-                    <img class="c-icon mr-2" src="./img/message.svg" alt="Mensajes"> Mensajes
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#message"></use>
+                    </svg> Mensajes
                     <span class="badge badge-success ml-auto">42</span>
                 </a>
 
                 <div class="dropdown-header bg-light py-2"><strong>Configuracion</strong></div>
 
                 <a class="dropdown-item" href="#">
-                    <img class="c-icon mr-2" src="./img/profile.svg" alt="Perfil"> Perfil
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#profile"></use>
+                    </svg>Perfil
                 </a>
 
                 <a class="dropdown-item" href="#">
-                    <img class="c-icon mr-2" src="./img/setting.svg" alt="Configuracion"> Configuracion
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#setting"></use>
+                    </svg>Configuracion
                 </a>
 
                 <div class="dropdown-divider"></div>
 
                 <a class="dropdown-item" href="login.html">
-                    <img class="c-icon mr-2" src="./img/lock.svg" alt="Bloquear"> Bloquear Cuenta
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#lock"></use>
+                    </svg>Bloquear Cuenta
                 </a>
                 <a class="dropdown-item" href="login.html">
-                    <img class="c-icon mr-2" src="./img/exit.svg" alt="Salir"> Salir
+                    <svg class="c-icon mr-2">
+                        <use xlink:href="assets/svg-symbols.svg#exit"></use>
+                    </svg> Salir
                 </a>
             </div>
         </li>
