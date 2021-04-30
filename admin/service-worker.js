@@ -1,3 +1,22 @@
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-sw.js');
+new workbox.cacheableResponse.CacheableResponsePlugin
+
+workbox.core.setCacheNameDetails({
+    prefix: 'STC-UNI',
+    suffix: 'v1',
+    precache: 'precache-cache',
+    runtime: 'runtime-cache'
+});
+
+workbox.routing.registerRoute(
+    /\.(?:js|css)$/, // Todos los archivos con extensión js o css
+    workbox.strategies.cacheFirst({
+        cacheName: workbox.core.cacheNames.precache, // nombre de la cache donde queremos guardar el recurso
+    })
+);
+
+
+
 // service-worker.js
 self.addEventListener('install', e => {
     // Instalar de inmediato
@@ -32,8 +51,6 @@ self.addEventListener('install', e => {
                 //JavaScript
                 './js/main.js',
                 './js/firebase.js',
-                './js/import/chart.js',
-                './js/import/gauge.js',
                 //CDN JS
                 'https://unpkg.com/dexie@latest/dist/dexie.js',
                 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js',
@@ -42,7 +59,12 @@ self.addEventListener('install', e => {
                 'https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js',
                 'https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js',
                 'https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js',
-                'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js'
+                'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js',
+                'https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js',
+                'https://bernii.github.io/gauge.js/dist/gauge.min.js',
+
+                //ASSETS
+                './assets/translate.json'
             ]);
         })
     );
