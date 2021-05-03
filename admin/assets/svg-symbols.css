@@ -43,6 +43,11 @@
   height: 32px;
 }
 
+.dying {
+  width: 32px;
+  height: 32px;
+}
+
 .employee {
   width: 32px;
   height: 32px;
@@ -56,6 +61,11 @@
 .girl {
   width: 20px;
   height: 20px;
+}
+
+.good {
+  width: 32px;
+  height: 32px;
 }
 
 .lock {
@@ -86,6 +96,11 @@
 .profile {
   width: 26px;
   height: 26px;
+}
+
+.register {
+  width: 32px;
+  height: 32px;
 }
 
 .setting {

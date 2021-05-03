@@ -3,7 +3,7 @@ self.addEventListener('install', e => {
     // Instalar de inmediato
     if (self.skipWaiting) { self.skipWaiting(); }
     e.waitUntil(
-        caches.open('cache02').then(function(cache) {
+        caches.open('cache03').then(function(cache) {
             return cache.addAll([
                 './',
                 //HTML
@@ -31,7 +31,7 @@ self.addEventListener('install', e => {
                 //JavaScript
                 './js/min/main.min.js',
                 //CDN JS
-                'https://unpkg.com/dexie@latest/dist/dexie.js',
+                'https://unpkg.com/localbase/dist/localbase.min.js',
                 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js',
                 'https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js',
                 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js',
@@ -61,7 +61,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 // Elimina archivos de cache viejos
-var cacheWhitelist = ['cache02'];
+var cacheWhitelist = ['cache03'];
 caches.keys().then(function(cacheNames) {
     return Promise.all(
         cacheNames.map(function(cacheName) {

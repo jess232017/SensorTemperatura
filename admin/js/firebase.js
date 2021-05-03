@@ -24,28 +24,20 @@ const dbAsistencias = db.ref().child('asistencias');
 const dbSensor1 = db.ref().child('sensores/sensor-01');
 const txtDegree = document.querySelector('.visual-number');
 
+//#region Ajustes
+
 var connectedRef = firebase.database().ref(".info/connected");
 connectedRef.on("value", (snap) => {
-    if (snap.val() === true) {
-        console.log("connected");
-    } else {
-        console.log("not connected");
+    if (!snap.val()) {
+        if (Sensor_IdCode != "null") {
+            console.log("sin conexion a internet");
+            drawOffline();
+        }
     }
 })
 
-firebase.firestore().enablePersistence()
-    .catch((err) => {
-        if (err.code == 'failed-precondition') {
-            // Multiple tabs open, persistence can only be enabled
-            // in one tab at a a time.
-            // ...
-        } else if (err.code == 'unimplemented') {
-            // The current browser does not support all of the
-            // features required to enable persistence
-            // ...
-        }
-    });
-// Subseque
+firebase.firestore().enablePersistence();
+//#endregion
 
 
 //#region Consultas 
@@ -59,7 +51,10 @@ dbSensor1.on('value', snap => {
     document.querySelector('#txtTemperatura').value = sensor.temperatura;
 
     if (Sensor_IdCode != "null" && Sensor_IdCode !== sensor.codigo) {
-        document.querySelector('#btnModal').click();
+        if (!document.body.classList.contains('modal-open')) {
+            document.querySelector('#fab').click();
+        }
+
         document.querySelector('#txtCodigo').value = sensor.codigo;
         nextStep();
     }
@@ -69,56 +64,20 @@ dbSensor1.on('value', snap => {
 
 dbEstudiantes.on('value', snap => {
     let students = snap.val();
-    //addStudent(students);
-    tableUser.clear().draw();
 
-    for (let i in students) {
+    //Guardar la informacion en  una base de datos local
+    dbOffline.collection('students').doc('student-data1').set(students);
 
-        let item = students[i];
-
-
-        dataSet = [
-            i,
-            item.codigo,
-            item.nombres,
-            item.apellidos,
-            item.carrera,
-            item.sexo,
-            item.direccion,
-            item.telefono,
-            item.correo,
-        ];
-        tableUser.rows.add([dataSet]).draw();
-    }
-    tableUser.columns.adjust().draw();
+    drawStudentTable(students);
 });
 
 dbAsistencias.on('value', snap => {
-    var Attend = snap.val();
-    tablePerson.clear().draw();
-    tableAttend.clear().draw();
-    tablehight.clear().draw();
+    var attendances = snap.val();
 
-    for (var i in Attend) {
-        let item = Attend[i];
-        dataSet = [
-            i,
-            item.codigo,
-            item.fecha,
-            item.hora,
-            item.temperatura,
-        ];
-        tableAttend.rows.add([dataSet]).draw();
-        if (item.temperatura > 37) {
-            tablehight.rows.add([dataSet]).draw();
-        }
-        if (item.codigo === idPerson) {
-            tablePerson.rows.add([dataSet]).draw();
-        }
-    }
-    tablePerson.columns.adjust().draw();
-    tableAttend.columns.adjust().draw();
-    tablehight.columns.adjust().draw();
+    //Guardar la informacion en una base de datos local
+    dbOffline.collection('attendances').doc('attend-data1').set(attendances);
+
+    drawAttendTable(attendances);
 });
 
 function getStudent(idCode, callback) {
@@ -247,7 +206,11 @@ $('form').submit(function(e) {
     actualizacionData[`/${idFirebase}`] = data;
     dbAsistencias.update(actualizacionData).then(() => {
             if (parseInt(temperatura) > 37) {
-                enviarNotificacion("Alerta: Peligro biologico", msAlert);
+                let Titulo = "Alerta: Peligro biologico";
+                let URL = `https://stc-uni.netlify.app/admin/student-info.html?id=${codigo}`;
+                let imgSrc = document.querySelector("#cardImagen").src;
+
+                enviarNotificacion(Titulo, msAlert, URL, imgSrc);
             }
         })
         .catch(error => {

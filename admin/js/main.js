@@ -177,11 +177,9 @@ function resetModal() {
     document.querySelector('#txtHora').classList.remove('is-valid');
 
     document.querySelector("form#frm-attend").reset();
-
-    $("#tomarDatos").modal('hide');
 }
 
-function enviarNotificacion(Titulo, Mensaje) {
+function enviarNotificacion(Titulo, Mensaje, URL = "", Image = "") {
     let myHeaders = new Headers();
     myHeaders.append("Authorization", "Basic ODU0NmI1YTMtZjAyNy00ZDRkLTgyODAtNTc3MDAzMmU0ZTQ2");
     myHeaders.append("Content-Type", "application/json");
@@ -189,7 +187,8 @@ function enviarNotificacion(Titulo, Mensaje) {
 
     let raw = JSON.stringify({
         "app_id": "478939bb-8e38-49fc-84fc-7115a4e05b8a",
-        "url": "https://sensor-jstemperature.netlify.app/admin/index.html",
+        "url": URL,
+        "chrome_web_image": Image,
         "included_segments": [
             "Subscribed Users"
         ],
@@ -219,7 +218,6 @@ function enviarNotificacion(Titulo, Mensaje) {
 
 var myModalEl = document.getElementById('tomarDatos')
 myModalEl.addEventListener('hidden.bs.modal', function(event) {
-    // do something...
     resetModal();
 });
 //#endregion
@@ -249,6 +247,8 @@ function ajustPerson(students) {
 
 function ajustAlert(attends) {
     if (attends.exists()) {
+        //Limpiar la lista de alertas
+        document.querySelector('#listAlertas').innerHTML = "";
         attends = attends.val();
         for (let i in attends) {
             let item = attends[i];
@@ -276,7 +276,6 @@ function setPersonCard(data) {
     $('#link-person').attr('href', `student-info.html?id=${data[1]}`);
 
     document.querySelector('#txtCodigo').value = data[1];
-    document.querySelector('#listAlertas').innerHTML = "";
 }
 
 function setAlertCard(data) {
@@ -322,13 +321,13 @@ function ajustAlertTable(attends) {
 }
 
 function setAlertTable(data) {
-    document.querySelector('div#remove-me').style.display = "none";
+    $('#remove-me').remove();
     let divAlertas = document.querySelector('#listAlertas');
 
     let item = document.createElement('tr');
     item.innerHTML = `
         <td class="text-center">
-            <i class="fa fa-exclamation-triangle"></i>
+            <img src="https://img.icons8.com/windows/24/000000/box-important--v4.png"/>
         </td>
         <td>
             La temperatura registrada es de ${data.temperatura}º, la cual, supera el rango normal establecido.
@@ -338,6 +337,7 @@ function setAlertTable(data) {
         </td>
     `;
     divAlertas.appendChild(item);
+    console.log(item);
 }
 
 //#endregion

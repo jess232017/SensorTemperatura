@@ -18,10 +18,10 @@
                 <div class="container-fluid">
                     <div class="fade-in">
 
-                        <div class="container bootstrap snippets bootdeys">
+                        <div class="container">
                             <div class="row" id="user-profile">
                                 <div class="col-lg-3 col-md-4 col-sm-4">
-                                    <div class="main-box clearfix">
+                                    <div class="main-box">
                                         <h2 id="txt-Nombre">John Doe </h2>
                                         <img id="imgPerson" src="../img/unknown.jpg" alt="" class="profile-img img-responsive center-block">
                                         <div class="profile-label">
@@ -34,9 +34,21 @@
 
                                         <div class="profile-details">
                                             <ul class="fa-ul">
-                                                <li><i class="fa-li fa fa-tasks"></i>Registros: <span>10</span></li>
-                                                <li><i class="fa-li fa fa-comment"></i>Normal: <span>9</span></li>
-                                                <li><i class="fa-li fa fa-truck"></i>Alta: <span>1</span></li>
+                                                <li class="d-flex justify-content-start align-items-center">
+                                                    <svg class="profile-icon">
+                                                        <use xlink:href="assets/svg-symbols.svg#register"></use>
+                                                    </svg> Registros: <span class="ms-1">10</span>
+                                                </li>
+                                                <li class="d-flex justify-content-start align-items-center">
+                                                    <svg class="profile-icon">
+                                                        <use xlink:href="assets/svg-symbols.svg#good"></use>
+                                                    </svg> Normal: <span class="ms-1">5</span>
+                                                </li>
+                                                <li class="d-flex justify-content-start align-items-center">
+                                                    <svg class="profile-icon">
+                                                        <use xlink:href="assets/svg-symbols.svg#dying"></use>
+                                                    </svg> Alta: <span class="ms-1">1</span>
+                                                </li>
                                             </ul>
                                         </div>
 
@@ -49,80 +61,65 @@
                                 </div>
 
                                 <div class="col-lg-9 col-md-8 col-sm-8">
-                                    <div class="main-box clearfix">
-                                        <div class="d-flex justify-content-between">
+                                    <div class="main-box">
+                                        <div class="d-flex justify-content-between align-items-center">
                                             <h3><span>Datos personales</span></h3>
                                             <a href="#" class="btn btn-primary edit-profile">
                                                 <i class="fa fa-pencil-square fa-lg"></i> Actualizar datos
                                             </a>
                                         </div>
 
-                                        <div class="row profile-user-info">
+                                        <div class="profile-user-info">
                                             <div class="col-sm-8">
-                                                <div class="profile-user-details clearfix">
-                                                    <div class="profile-user-details-label">
-                                                        No. carné:
-                                                    </div>
-                                                    <div id="tdCarnet" class="profile-user-details-value">
-
-                                                    </div>
-                                                </div>
-                                                <div class="profile-user-details clearfix">
-                                                    <div class="profile-user-details-label">
-                                                        Apellidos:
-                                                    </div>
-                                                    <div id="tdApellido" class="profile-user-details-value">
-
-                                                    </div>
-                                                </div>
-                                                <div class="profile-user-details clearfix">
-                                                    <div class="profile-user-details-label">
-                                                        Sexo:
-                                                    </div>
-                                                    <div class="profile-user-details-value">
-                                                        M
-                                                    </div>
-                                                </div>
-                                                <div class="profile-user-details clearfix">
-                                                    <div class="profile-user-details-label">
-                                                        Direccion:
-                                                    </div>
-                                                    <div id="tdDireccion" class="profile-user-details-value">
-
-                                                    </div>
-                                                </div>
-                                                <div class="profile-user-details clearfix">
-                                                    <div class="profile-user-details-label">
-                                                        Correo:
-                                                    </div>
-                                                    <div class="profile-user-details-value">
-                                                        johndoe@bootdey.com
-                                                    </div>
-                                                </div>
-                                                <div class="profile-user-details clearfix">
-                                                    <div class="profile-user-details-label">
-                                                        Teléfono 1:
-                                                    </div>
-                                                    <div class="profile-user-details-value">
-                                                        011 223 344 556 677
-                                                    </div>
-                                                </div>
+                                                <table class="table table-condensed table-hover nowrap dataTable no-footer dtr-column collapsed">
+                                                    <tbody class="mini-info no-border">
+                                                        <tr>
+                                                            <th># Carnet</th>
+                                                            <td id="tdCarnet">None</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Apellidos</th>
+                                                            <td id="tdApellido">None</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Sexo</th>
+                                                            <td id="tdSexo">M</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Carrera</th>
+                                                            <td id="tdCarrera">None</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Direccion</th>
+                                                            <td id="tdDireccion">+1234123123123</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Correo</th>
+                                                            <td>person@std.uni.edu.ni</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Telefono 1</th>
+                                                            <td>8699-3452</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
+
                                         </div>
 
-                                        <div class="tabs-wrapper profile-tabs">
 
-                                            <ul class="nav nav-tabs">
-                                                <li>
-                                                    <a href="#tab-registros" class="nav-link active" aria-current="page" data-toggle="tab">Registros</a>
-                                                </li>
-                                                <li class="nav-item" id="#tab2">
-                                                    <a id="tabAlertas" href="#tab-alertas" data-toggle="tab" class="nav-link">Alertas</a>
-                                                </li>
-                                            </ul>
+                                        <ul class="nav nav-tabs" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="pills-registros-tab" data-bs-toggle="pill" data-bs-target="#pills-registros" type="button" role="tab" aria-controls="pills-registros" aria-selected="false">Registros</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="pills-alertas-tab" data-bs-toggle="pill" data-bs-target="#pills-alertas" type="button" role="tab" aria-controls="pills-alertas" aria-selected="true">Alertas</button>
+                                            </li>
+                                        </ul>
 
-                                            <div class="tab-content">
-                                                <div class="tab-pane fade in active" id="tab-alertas">
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade" id="pills-alertas" role="tabpanel" aria-labelledby="pills-alertas-tab">
+                                                <div class="mt-4">
                                                     <div id="remove-me" class="d-flex justify-content-center">
                                                         <div class="align-items-center text-white bg-primary border-0">
                                                             <div class="d-flex">
@@ -139,33 +136,32 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-
                                                 </div>
+                                            </div>
+                                            <div class="tab-pane fade show active" id="pills-registros" role="tabpanel" aria-labelledby="pills-registros-tab">
+                                                <div class="mt-4">
+                                                    <table id="table-attend-personal" class="table table-striped" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>IdFirebase</th>
+                                                                <th>Codigo</th>
+                                                                <th>Fecha</th>
+                                                                <th>Hora</th>
+                                                                <th>Temperatura</th>
+                                                                <th>Acciones</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                                <div class="tab-pane fade p-3 border" id="tab-registros">
-                                                    <div>
-                                                        <table id="table-attend-personal" class="table table-striped" style="width:100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>IdFirebase</th>
-                                                                    <th>Codigo</th>
-                                                                    <th>Fecha</th>
-                                                                    <th>Hora</th>
-                                                                    <th>Temperatura</th>
-                                                                    <th>Acciones</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                            </tbody>
-                                                        </table>
-                                                        <br>
-                                                        <a href="student.html" class="btn btn-success pull-right">Ver todos los usuarios</a>
-                                                    </div>
+                                                        </tbody>
+                                                    </table>
+                                                    <br>
+                                                </div>
+                                                <div class="d-flex justify-content-end">
+                                                    <a href="student.html" class="btn btn-success">Ver todos los usuarios</a>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

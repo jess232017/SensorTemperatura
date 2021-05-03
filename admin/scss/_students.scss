@@ -13,9 +13,19 @@ h2 {
     color: black!important;
 }
 
-ul.fa-ul>li {
-    padding: 0;
-    margin-top: 15px;
+ul.fa-ul {
+    margin-left: 0px;
+    padding-left: 0px;
+    &>li {
+        padding: 0;
+        margin-top: 15px;
+    }
+}
+
+.profile-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 6px;
 }
 
 ul.nav.nav-tabs>li {
@@ -26,6 +36,13 @@ tbody.mini-info>tr>th,
 tbody.mini-info>tr>td {
     border: none!important;
     border-bottom: 1px solid rgb(228, 225, 225)!important;
+    padding: 5px 0px!important;
+}
+
+tbody.mini-info.no-border>tr>th,
+tbody.mini-info.no-border>tr>td {
+    border: none!important;
+    border-bottom: none!important;
     padding: 5px 0px!important;
 }
 
@@ -63,13 +80,6 @@ tbody.mini-info>tr>td {
     border-top: 1px solid #e1e1e1;
     border-bottom: 1px solid #e1e1e1;
     margin: 15px 0;
-}
-
-#user-profile .profile-details ul {
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 40px;
 }
 
 #user-profile .profile-details ul>li {
@@ -230,4 +240,16 @@ li.timeline-item>p {
     left: 0;
     width: 20px;
     height: 20px
+}
+
+button.nav-link {
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: 500;
+    color: #321fdb;
+}
+
+button.nav-link.active {
+    color: #495057!important;
 }
