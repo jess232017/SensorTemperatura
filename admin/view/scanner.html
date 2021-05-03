@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('./includes/head.html')
+
+<body class="c-app">
+
+    <!-- Sidebar content here -->
+    @@include('./includes/sidebar.html')
+
+    <main class="c-wrapper c-fixed-components">
+
+        @@include('./includes/header.html')
+
+        <main class="c-main">
+            <div class="container-fluid">
+                <div class="fade-in">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="card">
+                            <div class="card-header">
+                                <p>
+                                    Escáner de códigos
+                                    <span class="badge bg-warning text-dark">En desarrollo</span>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <div id="reader"></div>
+
+                                <script src="./js/min/html5-qrcode.min.js"></script>
+                                <script>
+                                    function onScanSuccess(qrCodeMessage) {
+                                        openNewAttend(qrCodeMessage);
+                                    }
+
+                                    var html5QrcodeScanner = new Html5QrcodeScanner(
+                                        "reader", {
+                                            fps: 10,
+                                            qrbox: 250
+                                        });
+                                    html5QrcodeScanner.render(onScanSuccess);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        @@include('./includes/footer.html')
+    </main>
+
+    @@include('./includes/script.html')
+</body>
+
+</html>

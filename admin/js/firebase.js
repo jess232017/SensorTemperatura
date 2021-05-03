@@ -13,7 +13,8 @@ const firebaseConfig = {
     measurementId: "G-S380YW4E3B"
 };
 
-var Sensor_IdCode = "null";
+var Sensor_IdCode = "null",
+    isConnected = false;
 
 //Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
@@ -26,13 +27,11 @@ const txtDegree = document.querySelector('.visual-number');
 
 //#region Ajustes
 
-var connectedRef = firebase.database().ref(".info/connected");
-connectedRef.on("value", (snap) => {
-    if (!snap.val()) {
-        if (Sensor_IdCode != "null") {
-            console.log("sin conexion a internet");
-            drawOffline();
-        }
+var connectedRef = firebase.database().ref(".info/connected").on("value", (snap) => {
+    isConnected = snap.val();
+    if (!isConnected && Sensor_IdCode != "null") {
+        $('.toast').toast('show');
+        drawOffline();
     }
 })
 
@@ -51,12 +50,7 @@ dbSensor1.on('value', snap => {
     document.querySelector('#txtTemperatura').value = sensor.temperatura;
 
     if (Sensor_IdCode != "null" && Sensor_IdCode !== sensor.codigo) {
-        if (!document.body.classList.contains('modal-open')) {
-            document.querySelector('#fab').click();
-        }
-
-        document.querySelector('#txtCodigo').value = sensor.codigo;
-        nextStep();
+        openNewAttend(sensor.codigo);
     }
 
     Sensor_IdCode = sensor.codigo;

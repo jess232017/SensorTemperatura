@@ -6,16 +6,17 @@ dbOffline.collection('attendances').add({ foo: 'to do' }, 'attend-data1')
 
 function drawOffline() {
     dbOffline.collection('students').get().then(students => {
-        drawStudentTable(students);
+        drawStudentTable(students[0]);
     });
 
     dbOffline.collection('attendances').get().then(attendances => {
-        drawStudentTable(attendances);
+        drawAttendTable(attendances[0]);
     });
 }
 
 //#region Dibujar las Tablas
 function drawStudentTable(students) {
+
     tableUser.clear().draw();
 
     for (let i in students) {
@@ -63,5 +64,13 @@ function drawAttendTable(attendances) {
     tableAttend.columns.adjust().draw();
     tablehight.columns.adjust().draw();
 }
-
 //#endregion
+
+function openNewAttend(code) {
+    if (!document.body.classList.contains('modal-open')) {
+        document.querySelector('#fab').click();
+    }
+
+    document.querySelector('#txtCodigo').value = code;
+    nextStep();
+}

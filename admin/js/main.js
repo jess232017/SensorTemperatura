@@ -355,7 +355,11 @@ function nombres() {
     document.querySelector('body').appendChild(shadow);
     sidebar.classList.add('c-sidebar-show');
 }
-
-
-screenTop
 //#endregion
+
+function showToast(Titulo, Mensaje, Tiempo) {
+    $('#toast-title').text(Titulo);
+    $('#toast-message').text(Mensaje);
+    $('#toast-time').text(Mensaje);
+    $('.toast').toast('show');
+}

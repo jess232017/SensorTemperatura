@@ -74,5 +74,5 @@ caches.keys().then(function(cacheNames) {
 
 caches.keys().then(function(cacheKeys) {
     // Muestra en la consola la cache instalada 
-    console.log('Versión SW: ' + cacheKeys);
+    //console.log('Versión SW: ' + cacheKeys);
 });
