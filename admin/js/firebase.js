@@ -201,7 +201,7 @@ $('form').submit(function(e) {
     dbAsistencias.update(actualizacionData).then(() => {
             if (parseInt(temperatura) > 37) {
                 let Titulo = "Alerta: Peligro biologico";
-                let URL = `https://stc-uni.netlify.app/admin/student-info.html?id=${codigo}`;
+                let URL = `https://stc-uni.netlify.app/admin/student-info.html?id=${idCode}`;
                 let imgSrc = document.querySelector("#cardImagen").src;
 
                 enviarNotificacion(Titulo, msAlert, URL, imgSrc);
