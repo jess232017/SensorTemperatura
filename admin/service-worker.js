@@ -3,7 +3,7 @@ self.addEventListener('install', e => {
     // Instalar de inmediato
     if (self.skipWaiting) { self.skipWaiting(); }
     e.waitUntil(
-        caches.open('cache03').then(function(cache) {
+        caches.open('cache04').then(function(cache) {
             return cache.addAll([
                 './',
                 //HTML
@@ -13,6 +13,7 @@ self.addEventListener('install', e => {
                 './student-info.html',
                 './student.html',
                 './temperature.html',
+                './scanner.html',
                 //CSS
                 './css/fixes.css',
                 './css/style.css',
@@ -24,12 +25,10 @@ self.addEventListener('install', e => {
                 'https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css',
                 'https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css',
                 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
-
-                //No cachear en producion
-                //'https://cdn.onesignal.com/sdks/OneSignalSDK.js',
-
                 //JavaScript
                 './js/min/main.min.js',
+                './js/min/html5-qrcode.min.js',
+                './js/min/perfect-scrollbar.min.js',
                 //CDN JS
                 'https://unpkg.com/localbase/dist/localbase.min.js',
                 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js',
@@ -61,7 +60,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 // Elimina archivos de cache viejos
-var cacheWhitelist = ['cache03'];
+var cacheWhitelist = ['cache04'];
 caches.keys().then(function(cacheNames) {
     return Promise.all(
         cacheNames.map(function(cacheName) {

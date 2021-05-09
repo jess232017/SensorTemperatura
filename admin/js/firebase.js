@@ -29,8 +29,11 @@ const txtDegree = document.querySelector('.visual-number');
 
 var connectedRef = firebase.database().ref(".info/connected").on("value", (snap) => {
     isConnected = snap.val();
-    if (!isConnected && Sensor_IdCode != "null") {
-        $('.toast').toast('show');
+    if (!isConnected /*&& Sensor_IdCode != "null"*/ ) {
+        //$('.toast').toast('show');
+        dbAsistencias.on('value', snap => {
+            console.log(snap.val());
+        })
         drawOffline();
     }
 })
