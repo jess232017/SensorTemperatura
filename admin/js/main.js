@@ -11,82 +11,6 @@ if (page != "" && page != "student-info.html") {
 }
 //#endregion
 
-//#region Graficos
-var myChart;
-
-function showTemperatura() {
-    if ($("#main-chart").length) {
-        var chartDegree = document.querySelector("#main-chart").getContext('2d');
-        myChart = new Chart(chartDegree, {
-            type: 'line', // 
-            data: {
-                labels: [],
-                datasets: [{
-                    data: [],
-                    label: 'Temperatura',
-                    fill: true,
-                    backgroundColor: "rgba(54, 162, 235, 0.2)",
-                    borderWidth: 1,
-                    borderColor: "blue"
-                }]
-            },
-        });
-    }
-}
-
-function setGaugeTemperature() {
-    if ($("#gauge-temperature").length) {
-        var aux = {
-            angle: -0.09,
-            animationSpeed: 63,
-            colorStart: "#6FADCF",
-            colorStop: "#8FC0DA",
-            currval: 1500,
-            fontSize: 42,
-            generateGradient: true,
-            lineWidth: 0.43,
-            pointer: { length: 0.31, color: "#000000", strokeWidth: 0.115 },
-            radiusScale: 1,
-            renderTicks: {
-                divColor: "#333333",
-                divLength: 0.45,
-                divWidth: 1.1,
-                divisions: 3,
-                subColor: "#666666",
-                subDivisions: 3,
-                subLength: 0.5,
-                subWidth: 0.6
-            },
-            staticLabels: {
-                font: "10px sans-serif", // Specifies font
-                labels: [-40, -20, 0, 20, 40], // Print labels at these values
-                color: "#000000", // Optional: Label text color
-                fractionDigits: 0 // Optional: Numerical precision. 0=round off.
-            },
-            strokeColor: "#E0E0E0",
-            staticZones: [
-                { strokeStyle: "#6495ed", min: -50, max: -20 },
-                { strokeStyle: "#96acd6", min: -21, max: 20 },
-                { strokeStyle: "#FFDD00", min: 19, max: 33 }, // Yellow
-                { strokeStyle: "#30B32D", min: 32, max: 37 }, // Green
-                { strokeStyle: "#F03E3E", min: 37, max: 50 }, // Yellow
-            ],
-        }
-
-        let target = document.querySelector('#gauge-temperature'); // your canvas element
-        gauge = new Gauge(target).setOptions(aux); // create sexy gauge!
-        gauge.maxValue = 50; // set max gauge value
-        gauge.setMinValue(-50); // Prefer setter over gauge.minValue = 0
-        gauge.animationSpeed = 32; // set animation speed (32 is default value)
-        gauge.set(50); // set actual value
-    }
-
-}
-
-showTemperatura();
-setGaugeTemperature();
-//#endregion
-
 //#region Formulario
 var Pushed = false;
 var btnMas = document.querySelector('#btnMas');
@@ -113,6 +37,8 @@ function nextStep() {
     getStudent(idCode, validarForm);
 }
 
+var msAlert;
+
 function validarForm(data) {
     if (data.exists()) {
         //Pura validacion
@@ -130,7 +56,7 @@ function validarForm(data) {
             data = data.val();
             data = data[Object.keys(data)[0]]
 
-            setImgfromFirebase(idCode, '#cardImagen');
+            obtenerImagen(idCode, '#cardImagen');
             $('#regHora').text(hora);
             $('#regFecha').text(fecha);
             $('#txtIded').text(idCode);
@@ -179,44 +105,7 @@ function resetModal() {
     document.querySelector("form#frm-attend").reset();
 }
 
-function enviarNotificacion(Titulo, Mensaje, URL = "", Image = "") {
-    let myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic ODU0NmI1YTMtZjAyNy00ZDRkLTgyODAtNTc3MDAzMmU0ZTQ2");
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Cookie", "__cfduid=d27872b10d36f1b3e813c8c6f3cfc19d11619630966");
-
-    let raw = JSON.stringify({
-        "app_id": "478939bb-8e38-49fc-84fc-7115a4e05b8a",
-        "url": URL,
-        "chrome_web_image": Image,
-        "included_segments": [
-            "Subscribed Users"
-        ],
-        "data": {
-            "foo": "bar"
-        },
-        "contents": {
-            "en": Mensaje
-        },
-        "headings": {
-            "en": Titulo
-        }
-    });
-
-    let requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
-
-    fetch("https://onesignal.com/api/v1/notifications", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
-
-var myModalEl = document.getElementById('tomarDatos')
+var myModalEl = document.getElementById('regAsistencia')
 myModalEl.addEventListener('hidden.bs.modal', function(event) {
     resetModal();
 });
@@ -241,7 +130,7 @@ function ajustPerson(students) {
         let data = [item.fbcode, item.codigo, item.nombres, item.apellidos, item.carrera, item.sexo, item.direccion];
         setPersonCard(data);
     } else {
-        alert("no se obtuvo informacion")
+        alert("No se encontro informacion del estudiante")
     }
 }
 
@@ -257,12 +146,12 @@ function ajustAlert(attends) {
             }
         }
     } else {
-        alert("no se obtuvo informacion")
+        alert("La persona no posee ninguna alerta")
     }
 }
 
 function setPersonCard(data) {
-    setImgfromFirebase(data[1], '#imgPerson');
+    obtenerImagen(data[1], '#imgPerson');
 
     $('#div-list').addClass('col-xl-8');
     $('#div-person').removeClass('hide');
@@ -316,7 +205,7 @@ function ajustAlertTable(attends) {
             }
         }
     } else {
-        alert("no se obtuvo informacion")
+        alert("no existe ninguna alerta")
     }
 }
 
@@ -350,16 +239,9 @@ shadow.addEventListener('click', () => {
     sidebar.classList.remove('c-sidebar-show');
 })
 
-function nombres() {
+function toogleMenu() {
     let sidebar = document.querySelector('aside#sidebar');
     document.querySelector('body').appendChild(shadow);
     sidebar.classList.add('c-sidebar-show');
 }
 //#endregion
-
-function showToast(Titulo, Mensaje, Tiempo) {
-    $('#toast-title').text(Titulo);
-    $('#toast-message').text(Mensaje);
-    $('#toast-time').text(Mensaje);
-    $('.toast').toast('show');
-}

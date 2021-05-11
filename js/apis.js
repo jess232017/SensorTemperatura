@@ -29,22 +29,3 @@ function createCovidCard(titulo, dato) {
 
     return card;
 }
-
-/*
-    active: 2429
-    cases: 6835
-    casesPerOneMillion: 1022
-    country: "Nicaragua"
-    critical: 0
-    deaths: 181
-    deathsPerOneMillion: 27
-    recovered: 4225
-    testsPerOneMillion: 0
-    todayCases: 0
-    todayDeaths: 0
-    totalTests: 0
-*/
-
-/*
-                                    
-*/
