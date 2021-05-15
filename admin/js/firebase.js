@@ -30,7 +30,7 @@ const txtDegree = document.querySelector('.visual-number');
 var connectedRef = firebase.database().ref(".info/connected").on("value", (snap) => {
     let isConnected = snap.val();
     if (!isConnected && Sensor_IdCode != "null") {
-        drawOffline();
+        //drawOffline();
     }
 })
 
@@ -48,7 +48,7 @@ dbSensor1.on('value', snap => {
     document.querySelector('#txtTemperatura').value = sensor.temperatura;
 
     if (Sensor_IdCode != "null" && Sensor_IdCode !== sensor.codigo) {
-        openNewAttend(sensor.codigo);
+        openNewAttend(sensor.codigo.split('?date=')[0]);
     }
 
     Sensor_IdCode = sensor.codigo;
@@ -108,22 +108,20 @@ $('form#frm-attend').submit(e => {
     actualizacionData[`/${idFirebase}`] = data;
     dbAsistencias.update(actualizacionData).then(() => {
             if (parseInt(temperatura) > 37) {
-                let Titulo = "Alerta: Peligro biologico";
                 let URL = `https://stc-uni.netlify.app/admin/student-info.html?id=${idCode}`;
-                let imgSrc = document.querySelector("#cardImagen").src;
+                let imgSrc = `https://res.cloudinary.com/js-media/image/upload/w_1000,ar_2:1,c_fill,g_auto/STC-UNI/Estudiantes/${idCode}.jpg`;
 
-                enviarNotificacion(Titulo, msAlert, URL, imgSrc);
+                enviarNotificacion(titleAlert, descripcionAlert, URL, imgSrc);
             }
         })
         .catch(error => {
-            console.log(error);
+            alert(error);
         });
 
     idFirebase = '';
 
     resetModal();
 });
-
 
 $('form#reg-Student').submit(e => {
     //Si el id esta vacio entonces crear un nuevo elemento
@@ -154,5 +152,6 @@ $('form#reg-Student').submit(e => {
     idRegistro = '';
 
     enviarImagen(document.querySelector('#addImage'), data.codigo)
+    document.querySelector("#closeModal").click();
 });
 //#endregion

@@ -290,7 +290,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                <button id="closeModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                                 <input type="submit" value="Guardar" class="btn btn-primary">
                                                             </div>
                                                         </form>
@@ -373,7 +373,7 @@
 
         <div class="profile-message-btn center-block text-center">
             <br>
-            <button id="btnModal" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tomarDatos">
+            <button id="btnModal" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#regAsistencia">
                 Tomar Temperatura
             </button>
         </div>
@@ -383,15 +383,7 @@
 
         <strong>Alertas</strong>
         <ul id="listAlertas" class="timeline mt-2 mb-0">
-            <li id="remove-me" class="d-flex justify-content-center">
-                <div class="align-items-center text-white bg-primary border-0">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            No hay ninguna alerta
-                        </div>
-                    </div>
-                </div>
-            </li>
+            
             <li class="timeline-item hide">
                 <strong>Signed out</strong>
                 <span class="float-right text-muted text-sm">30m ago</span>
@@ -536,7 +528,6 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
                                     <button class="btn btn-dark" id="btnMas" type="button" data-toggle="collapse" data-target="#inputDetalles" aria-expanded="false" aria-controls="inputDetalles">
                                         Ver más
                                     </button>
@@ -551,7 +542,7 @@
                                     </div>
                                     <div>
                                         <p id="txtNombre" class="font-weight-bold">Null</p>
-                                        <p id="txtCarrera">Null</p>
+                                        <p id="txtCareer">Null</p>
                                         <p id="txtFacultad">F.E.C</p>
                                         <div class="card p-2 mt-2 info-save">
                                             <p>El <span id="regTipo" class="font-weight-bold">estudiante</span> Registra una Temperatura de <span id="regTemp" class="font-weight-bold">33º</span> a las
@@ -606,9 +597,8 @@
 <!--<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>-->
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
 
-<!-- Offline Database -->
-<script src="https://unpkg.com/localbase/dist/localbase.min.js"></script>
-
+<!-- Offline Database 
+<script src="https://unpkg.com/localbase/dist/localbase.min.js"></script>-->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

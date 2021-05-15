@@ -48,7 +48,8 @@ function enviarImagen(fileInput, public_id) {
 
 //Obtener una imagen desde cloudinary
 function obtenerImagen(path, element) {
-    let url = `https://res.cloudinary.com/js-media/image/upload/v1620739560/STC-UNI/Estudiantes/${path}.jpg`;
+    let effect = "c_thumb,g_face,h_250,w_250";
+    let url = `https://res.cloudinary.com/js-media/image/upload/${effect}/v1620739560/STC-UNI/Estudiantes/${path}.jpg`;
     if (imageExists(url)) {
         $(element).attr("src", url);
     } else {

@@ -219,7 +219,7 @@
                             <div class="row" id="user-profile">
                                 <div class="col-lg-3 col-md-4 col-sm-4">
                                     <div class="main-box">
-                                        <h2 id="txt-Nombre">John Doe </h2>
+                                        <h2 id="txt-Nombre">Nombre</h2>
                                         <img id="imgPerson" src="../img/unknown.jpg" alt="" class="profile-img img-responsive center-block">
                                         <div class="profile-label">
                                             <a id="link-person" class="badge badge-info" href="#">Estudiante</a>
@@ -317,15 +317,6 @@
                                         <div class="tab-content" id="pills-tabContent">
                                             <div class="tab-pane fade" id="pills-alertas" role="tabpanel" aria-labelledby="pills-alertas-tab">
                                                 <div class="mt-4">
-                                                    <div id="remove-me" class="d-flex justify-content-center">
-                                                        <div class="align-items-center text-white bg-primary border-0">
-                                                            <div class="d-flex">
-                                                                <div class="toast-body">
-                                                                    No hay ninguna alerta
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="table-responsive">
                                                         <table class="table">
                                                             <tbody id="listAlertas">
@@ -495,7 +486,6 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
                                     <button class="btn btn-dark" id="btnMas" type="button" data-toggle="collapse" data-target="#inputDetalles" aria-expanded="false" aria-controls="inputDetalles">
                                         Ver más
                                     </button>
@@ -510,7 +500,7 @@
                                     </div>
                                     <div>
                                         <p id="txtNombre" class="font-weight-bold">Null</p>
-                                        <p id="txtCarrera">Null</p>
+                                        <p id="txtCareer">Null</p>
                                         <p id="txtFacultad">F.E.C</p>
                                         <div class="card p-2 mt-2 info-save">
                                             <p>El <span id="regTipo" class="font-weight-bold">estudiante</span> Registra una Temperatura de <span id="regTemp" class="font-weight-bold">33º</span> a las
@@ -565,9 +555,8 @@
 <!--<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>-->
 <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
 
-<!-- Offline Database -->
-<script src="https://unpkg.com/localbase/dist/localbase.min.js"></script>
-
+<!-- Offline Database 
+<script src="https://unpkg.com/localbase/dist/localbase.min.js"></script>-->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

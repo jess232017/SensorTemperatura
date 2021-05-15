@@ -1,4 +1,4 @@
-var stepper = new Stepper(document.querySelector('#stpIngresar'), { linear: true });
+var stepper = new Stepper(document.querySelector('#stpIngresar'));
 
 //#region Opacar menu
 var path = window.location.pathname;
@@ -30,14 +30,14 @@ function nextStep() {
         fecha = $('#txtFecha').val();
         descripcion = $('#txtDescripcion').val();
     } else {
-        hora = Current.toLocaleTimeString();
-        fecha = Current.toLocaleDateString();
+        hora = Current.toLocaleTimeString('en-US');
+        fecha = Current.toLocaleDateString('en-US');
         descripcion = "";
     }
     getStudent(idCode, validarForm);
 }
 
-var msAlert;
+var titleAlert, descripcionAlert;
 
 function validarForm(data) {
     if (data.exists()) {
@@ -62,13 +62,13 @@ function validarForm(data) {
             $('#txtIded').text(idCode);
             $("#txtIded").attr("href", `student-info.html?id=${idCode}`);
             $('#regTemp').text(temperatura + ' ºC ');
-            $('#txtCarrera').text(data.carrera);
+            $('#txtCareer').text(data.carrera);
             $('#txtNombre').text(`${data.nombres} ${data.apellidos}`);
 
             if (parseInt(temperatura) > 37) {
                 $("#regTemp").addClass("text-danger");
-                msAlert = `El estudiante de ${data.carrera} identificado como ${data.nombres} ${data.apellidos} con # carnet ${idCode} ` +
-                    `ha presentado una temperatura muy alta de ${temperatura}ºC a las ${hora}`;
+                titleAlert = `Alerta: ${data.nombres} ${data.apellidos}`;
+                descripcionAlert = `Estudiante de ${data.carrera} presenta fiebre de ${temperatura}ºC a las ${hora}`;
             } else {
                 $("#regTemp").removeClass("text-danger");
             }
@@ -94,6 +94,8 @@ function validarCampo(element, isOkay) {
     }
 }
 
+document.getElementById('regAsistencia').addEventListener('hidden.bs.modal', resetModal);
+
 function resetModal() {
     stepper.reset();
 
@@ -105,19 +107,9 @@ function resetModal() {
     document.querySelector("form#frm-attend").reset();
 }
 
-var myModalEl = document.getElementById('regAsistencia')
-myModalEl.addEventListener('hidden.bs.modal', function(event) {
-    resetModal();
-});
 //#endregion
 
 //#region Person-Card
-$('#table-attend tbody').on('click', 'tr', function() {
-    let data = tableAttend.row(this).data();
-    getStudent(data[1], ajustPerson);
-    getAttendees(data[1], ajustAlert);
-});
-
 function ajustPerson(students) {
     if (students.exists()) {
         //Obtener hijos
@@ -146,7 +138,17 @@ function ajustAlert(attends) {
             }
         }
     } else {
-        alert("La persona no posee ninguna alerta")
+        document.querySelector('#listAlertas').innerHTML = `
+            <li class="d-flex justify-content-center">
+                <div class="align-items-center text-white bg-primary border-0">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            No hay ninguna alerta
+                        </div>
+                    </div>
+                </div>
+            </li>
+        `;
     }
 }
 
@@ -168,7 +170,6 @@ function setPersonCard(data) {
 }
 
 function setAlertCard(data) {
-    $('#remove-me').remove();
     let divAlertas = document.querySelector('ul#listAlertas');
 
     let item = document.createElement('li');
@@ -205,12 +206,21 @@ function ajustAlertTable(attends) {
             }
         }
     } else {
-        alert("no existe ninguna alerta")
+        document.querySelector('#listAlertas').innerHTML = `
+            <li class="d-flex justify-content-center">
+                <div class="align-items-center text-white bg-primary border-0">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            No hay ninguna alerta
+                        </div>
+                    </div>
+                </div>
+            </li>
+        `;
     }
 }
 
 function setAlertTable(data) {
-    $('#remove-me').remove();
     let divAlertas = document.querySelector('#listAlertas');
 
     let item = document.createElement('tr');

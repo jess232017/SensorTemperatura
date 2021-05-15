@@ -20,7 +20,6 @@ $('#table-user tbody').on('click', 'tr', function() {
     setPersonCard(data);
     getAttendees(data[1], ajustAlert);
 });
-
 //#endregion
 
 //#region Inicializar tabla de asistencias
@@ -70,6 +69,12 @@ var tablePerson = $('#table-attend-personal').DataTable({
             defaultContent: "<div class='wrapper text-center'><div class='btn-group'><button class='btnEditar btn btn-primary' data-toggle='tooltip' title='Editar'>" + iconoEditar + "</button><button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>" + iconoBorrar + "</button></div></div>"
         }
     ]
+});
+
+$('#table-attend tbody').on('click', 'tr', function() {
+    let data = tableAttend.row(this).data();
+    getStudent(data[1], ajustPerson);
+    getAttendees(data[1], ajustAlert);
 });
 //#endregion
 

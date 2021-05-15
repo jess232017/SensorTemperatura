@@ -1,4 +1,4 @@
-var dbOffline = new Localbase('dbSensor')
+/*var dbOffline = new Localbase('dbSensor')
 
 dbOffline.collection('students').add({ foo: 'to do' }, 'student-data1')
 
@@ -12,7 +12,7 @@ function drawOffline() {
     dbOffline.collection('attendances').get().then(attendances => {
         drawAttendTable(attendances[0]);
     });
-}
+}*/
 
 
 function openNewAttend(code) {
