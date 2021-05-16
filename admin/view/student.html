@@ -83,7 +83,7 @@
                                                                                 <label for="txtCarrera">Carrera</label>
                                                                                 <select id="txtCarrera" required class="form-control" aria-label="Default">
                                                                                     <option selected disabled>Selecione una Carrera</option>
-                                                                                    <option value="Ingenieria en Computacion">Ingenieria en Computacion</option>
+                                                                                    <option value="Ingeniería en Computación">Ingenieria en Computacion</option>
                                                                                     <option value="Ingenieria en Electronica">Ingenieria en Electronica</option>
                                                                                     <option value="Ingenieria Quimica">Ingenieria Quimica</option>
                                                                                 </select>
@@ -95,16 +95,18 @@
                                                             <div class="modal-footer">
                                                                 <button id="closeModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                                 <input type="submit" value="Guardar" class="btn btn-primary">
+                                                                <input id="idEstudiante" type="hidden">
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <table id="table-user" class="table table-striped" style="width:100%">
+                                                <table id="table-user" class="table table-hover table-outline" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th>Id</th>
+                                                            <th>Imagen</th>
                                                             <th>Codigo</th>
                                                             <th>Nombres</th>
                                                             <th>Apellidos</th>

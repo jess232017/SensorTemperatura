@@ -78,9 +78,25 @@ function getStudent(idCode, callback) {
     });
 }
 
+function getStudentById(idRegistro, callback) {
+    dbEstudiantes.child(idRegistro).once("value", values => {
+        let object = values.val();
+        object.idFirebase = idRegistro;
+        callback(object);
+    });
+}
+
 function getAttendees(idCode, callback) {
     dbAsistencias.orderByChild("codigo").equalTo(idCode).once("value", values => {
         callback(values);
+    });
+}
+
+function getAttendById(idAttend, callback) {
+    dbAsistencias.child(idAttend).once("value", values => {
+        let object = values.val();
+        object.idFirebase = idAttend;
+        callback(object);
     });
 }
 //#endregion
@@ -109,8 +125,7 @@ $('form#frm-attend').submit(e => {
     dbAsistencias.update(actualizacionData).then(() => {
             if (parseInt(temperatura) > 37) {
                 let URL = `https://stc-uni.netlify.app/admin/student-info.html?id=${idCode}`;
-                let imgSrc = `https://res.cloudinary.com/js-media/image/upload/w_1000,ar_2:1,c_fill,g_auto/STC-UNI/Estudiantes/${idCode}.jpg`;
-
+                let imgSrc = `https://res.cloudinary.com/js-media/image/upload/ar_2:1,b_rgb:ffffff,bo_0px_solid_rgb:000,c_pad,h_500,o_90,q_50,w_1000/v1620739560/STC-UNI/Estudiantes/${idCode}.jpg`;
                 enviarNotificacion(titleAlert, descripcionAlert, URL, imgSrc);
             }
         })
@@ -127,7 +142,12 @@ $('form#reg-Student').submit(e => {
     //Si el id esta vacio entonces crear un nuevo elemento
     e.preventDefault();
 
-    let idRegistro = dbEstudiantes.push().key;
+    let idRegistro = $('#idEstudiante').val();
+
+    //Si el id esta vacio entonces crear un nuevo elemento
+    if (idRegistro == '') {
+        idRegistro = dbAsistencias.push().key;
+    };
 
     data = {
         apellidos: $("#txtApellidos").val(),

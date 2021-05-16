@@ -12,13 +12,6 @@ if (page != "" && page != "student-info.html") {
 //#endregion
 
 //#region Formulario
-var Pushed = false;
-var btnMas = document.querySelector('#btnMas');
-btnMas.addEventListener('click', function() {
-    btnMas.innerText = (Pushed) ? 'Ver más' : 'Ver menos';
-    Pushed = !Pushed;
-});
-
 var idCode, temperatura, hora, fecha, descripcion;
 
 function nextStep() {
@@ -67,8 +60,8 @@ function validarForm(data) {
 
             if (parseInt(temperatura) > 37) {
                 $("#regTemp").addClass("text-danger");
-                titleAlert = `Alerta: ${data.nombres} ${data.apellidos}`;
-                descripcionAlert = `Estudiante de ${data.carrera} presenta fiebre de ${temperatura}ºC a las ${hora}`;
+                titleAlert = `⚠️: ${data.nombres} ${data.apellidos}`;
+                descripcionAlert = `presenta fiebre de ${temperatura}ºC a las ${hora} 🤒🚨`;
             } else {
                 $("#regTemp").removeClass("text-danger");
             }
@@ -99,6 +92,7 @@ document.getElementById('regAsistencia').addEventListener('hidden.bs.modal', res
 function resetModal() {
     stepper.reset();
 
+    document.querySelector('#idAsistencia').value = "";
     document.querySelector('#txtCodigo').classList.remove('is-valid');
     document.querySelector('#txtTemperatura').classList.remove('is-valid');
     document.querySelector('#txtFecha').classList.remove('is-valid');
@@ -119,8 +113,7 @@ function ajustPerson(students) {
         let item = students[fbcode];
         item.fbcode = fbcode;
 
-        let data = [item.fbcode, item.codigo, item.nombres, item.apellidos, item.carrera, item.sexo, item.direccion];
-        setPersonCard(data);
+        setPersonCard(item);
     } else {
         alert("No se encontro informacion del estudiante")
     }
@@ -153,17 +146,17 @@ function ajustAlert(attends) {
 }
 
 function setPersonCard(data) {
-    obtenerImagen(data[1], '#imgPerson');
+    obtenerImagen(data.codigo, '#imgPerson');
 
     $('#div-list').addClass('col-xl-8');
     $('#div-person').removeClass('hide');
     tableUser.columns.adjust().draw();
     tableAttend.columns.adjust().draw();
-    $('#tdCarnet').text(data[1]);
-    $('#txt-Nombre').text(data[2]);
-    $('#tdApellido').text(data[3]);
-    $('#tdCarrera').text(data[4]);
-    $('#tdDireccion').text(data[6]);
+    $('#tdCarnet').text(data.codigo);
+    $('#txt-Nombre').text(data.nombres);
+    $('#tdApellido').text(data.apellidos);
+    $('#tdCarrera').text(data.carrera);
+    $('#tdDireccion').text(data.direccion);
     $('#link-person').attr('href', `student-info.html?id=${data[1]}`);
 
     document.querySelector('#txtCodigo').value = data[1];
