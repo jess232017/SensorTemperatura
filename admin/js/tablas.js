@@ -18,8 +18,16 @@ var tableUser = $('#table-user').DataTable({
             render: data => {
                 return `<div class='wrapper text-center'>
                     <div class='btn-group'>
-                        <button class='btnEditar btn btn-primary' data-toggle='tooltip' title='Editar'>${iconoEditar}</button>
-                        <button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>${iconoBorrar}</button>
+                        <button class='btnEditar btn btn-primary' data-toggle='tooltip' title='Editar'>
+                            <svg class="c-icon c-icon-xl">
+                                <use xlink:href="assets/svg-symbols.svg#edit"></use>
+                            </svg>
+                        </button>
+                        <button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>
+                            <svg class="c-icon c-icon-xl">
+                                <use xlink:href="assets/svg-symbols.svg#delete"></use>
+                            </svg>
+                        </button>
                         <input type="hidden" value="${data}">
                     </div>
                 </div>`;
@@ -83,8 +91,16 @@ const clDefAttend = [{
         render: data => {
             return `<div class='wrapper text-center'>
                 <div class='btn-group'>
-                    <button class='btnEditar btn btn-primary' data-toggle='tooltip' title='Editar'>${iconoEditar}</button>
-                    <button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>${iconoBorrar}</button>
+                    <button class='btnEditar btn btn-primary' data-toggle='tooltip' title='Editar'>
+                        <svg class="c-icon c-icon-xl">
+                            <use xlink:href="assets/svg-symbols.svg#edit"></use>
+                        </svg>
+                    </button>
+                    <button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>
+                        <svg class="c-icon c-icon-xl">
+                            <use xlink:href="assets/svg-symbols.svg#delete"></use>
+                        </svg>
+                    </button>
                     <input type="hidden" value="${data}">
                 </div>
             </div>`;

@@ -43,7 +43,17 @@
   height: 32px;
 }
 
+.delete {
+  width: 32px;
+  height: 32px;
+}
+
 .dying {
+  width: 32px;
+  height: 32px;
+}
+
+.edit {
   width: 32px;
   height: 32px;
 }
