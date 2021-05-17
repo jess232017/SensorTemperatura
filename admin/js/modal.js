@@ -12,6 +12,18 @@ function fillFrmAttend(data) {
     }
 }
 
+function resetModal() {
+    stepper.reset();
+
+    document.querySelector('#idAsistencia').value = "";
+    document.querySelector('#txtCodigo').classList.remove('is-valid');
+    document.querySelector('#txtTemperatura').classList.remove('is-valid');
+    document.querySelector('#txtFecha').classList.remove('is-valid');
+    document.querySelector('#txtHora').classList.remove('is-valid');
+
+    document.querySelector("form#frm-attend").reset();
+}
+
 //Eventos
 document.getElementById('regAsistencia').addEventListener('hidden.bs.modal', resetModal);
 
@@ -26,7 +38,6 @@ btnMas.addEventListener('click', function() {
 });
 
 function fillFrmStudent(data) {
-    console.log(data);
     document.querySelector('#txtNombres').value = data.nombres;
     document.querySelector('#txtApellidos').value = data.apellidos;
     document.querySelector('#txtCarrera').value = data.carrera;
@@ -41,21 +52,10 @@ function fillFrmStudent(data) {
 }
 
 function setProfileImage(e) {
-
-
-    var file = document.getElementById('file').files[0];
-    var reader = new FileReader();
-    // it's onload event and you forgot (parameters)
-    reader.onload = function(e) {
-            var image = document.querySelector("#profileImage");
-            // the result image data
-            image.src = e.target.result;
-        }
-        // you have to declare the file loading
-    reader.readAsDataURL(file);
+    document.querySelector("#profileImage").src = URL.createObjectURL(e.target.files[0]);
 }
 
-//
+// Eventos
 document.getElementById('regAsistencia').addEventListener('hidden.bs.modal', () => {
     document.querySelector('#idEstudiante').value = "";
 });

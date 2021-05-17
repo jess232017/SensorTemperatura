@@ -19,12 +19,12 @@ var tableUser = $('#table-user').DataTable({
                 return `<div class='wrapper text-center'>
                     <div class='btn-group'>
                         <button class='btnEditar btn btn-primary' data-toggle='tooltip' title='Editar'>
-                            <svg class="c-icon c-icon-xl">
+                            <svg class="c-icon c-icon-x">
                                 <use xlink:href="assets/svg-symbols.svg#edit"></use>
                             </svg>
                         </button>
                         <button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>
-                            <svg class="c-icon c-icon-xl">
+                            <svg class="c-icon c-icon-x">
                                 <use xlink:href="assets/svg-symbols.svg#delete"></use>
                             </svg>
                         </button>
@@ -41,7 +41,7 @@ $('#table-user tbody').on('click', 'tr', function() {
     if (typeof data !== 'undefined') {
         setPersonCard({
             fbcode: data[0],
-            codigo: data[2],
+            codigo: data[1],
             nombres: data[3],
             apellidos: data[4],
             carrera: data[5],
@@ -82,22 +82,70 @@ const clDefAttend = [{
         visible: false, //ocultamos la columna de idFirebase que es la [0]                        
     }, {
         targets: [1],
-        render: function(data) {
-            return `<img loading="lazy" style="border-radius:50%" src="https://res.cloudinary.com/js-media/image/upload/c_scale,e_auto_brightness,h_48,q_80,w_48/v1620739560/STC-UNI/Estudiantes/${data}.jpg" alt="${data}">`
+        render: data => `
+            <div class='wrapper text-center'>
+                <img loading="lazy" style="border-radius:50%" src="https://res.cloudinary.com/js-media/image/upload/c_scale,e_auto_brightness,h_48,q_80,w_48/v1620739560/STC-UNI/Estudiantes/${data}.jpg" alt="${data}">
+            </div>
+        `
+
+    }, {
+        targets: [2],
+        render: data => {
+            let badge = data.temperatura < MaxTemperatura ? `<span class="badge bg-light text-dark">${data.temperatura}</span>` : `<span class="badge bg-danger">${data.temperatura}</span>`;
+            return `
+            <div class="d-flex flex-column">
+                <div>${badge}</div>
+                <span class="small text-muted">${data.codigo}</span>
+            </div>`;
         }
     },
     {
-        targets: [6],
+        targets: [3],
+        render: data => `
+            <div class="d-flex flex-column">
+                <div>${data.fecha}</div>
+                <span class="small text-muted">${data.hora}</span>
+            </div>
+        `
+    },
+    {
+        targets: [4],
         render: data => {
-            return `<div class='wrapper text-center'>
+            /*return `
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="material-icons">more_vert</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown open">
+                    <a href="#!" class="px-2" id="triggerId3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="material-icons">more_vert</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="triggerId3">
+                        <a class="dropdown-item" href="#"><i class="fa fa-pencil mr-1"></i> Edit</a>
+                        <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Delete</a>
+                    </div>
+                </div>
+            `;*/
+
+            return `
+            <div class='wrapper text-center'>
                 <div class='btn-group'>
                     <button class='btnEditar btn btn-primary' data-toggle='tooltip' title='Editar'>
-                        <svg class="c-icon c-icon-xl">
+                        <svg class="c-icon c-icon-x">
                             <use xlink:href="assets/svg-symbols.svg#edit"></use>
                         </svg>
                     </button>
                     <button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>
-                        <svg class="c-icon c-icon-xl">
+                        <svg class="c-icon c-icon-x">
                             <use xlink:href="assets/svg-symbols.svg#delete"></use>
                         </svg>
                     </button>
@@ -135,8 +183,8 @@ var tablePerson = $('#table-attend-personal').DataTable({
 $('#table-attend tbody').on('click', 'tr', function() {
     let data = tableAttend.row(this).data();
     if (typeof data !== 'undefined') {
-        getStudent(data[2], ajustPerson);
-        getAttendees(data[2], ajustAlert);
+        getStudent(data[1], ajustPerson);
+        getAttendees(data[1], ajustAlert);
     }
 });
 
@@ -201,10 +249,14 @@ function drawAttendTable(attendances) {
         dataSet = [
             i,
             item.codigo,
-            item.codigo,
-            item.fecha,
-            item.hora,
-            item.temperatura,
+            {
+                codigo: item.codigo,
+                temperatura: item.temperatura
+            },
+            {
+                fecha: item.fecha,
+                hora: item.hora
+            },
             i,
         ];
         tableAttend.rows.add([dataSet]).draw();

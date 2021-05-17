@@ -1,3 +1,4 @@
+var MaxTemperatura = 38;
 var stepper = new Stepper(document.querySelector('#stpIngresar'));
 
 //#region Opacar menu
@@ -87,19 +88,6 @@ function validarCampo(element, isOkay) {
     }
 }
 
-document.getElementById('regAsistencia').addEventListener('hidden.bs.modal', resetModal);
-
-function resetModal() {
-    stepper.reset();
-
-    document.querySelector('#idAsistencia').value = "";
-    document.querySelector('#txtCodigo').classList.remove('is-valid');
-    document.querySelector('#txtTemperatura').classList.remove('is-valid');
-    document.querySelector('#txtFecha').classList.remove('is-valid');
-    document.querySelector('#txtHora').classList.remove('is-valid');
-
-    document.querySelector("form#frm-attend").reset();
-}
 
 //#endregion
 
@@ -120,28 +108,32 @@ function ajustPerson(students) {
 }
 
 function ajustAlert(attends) {
-    if (attends.exists()) {
-        //Limpiar la lista de alertas
-        document.querySelector('#listAlertas').innerHTML = "";
-        attends = attends.val();
-        for (let i in attends) {
-            let item = attends[i];
-            if (item.temperatura >= 38) {
-                setAlertCard(item);
+    let divAlertas = document.querySelector('#listAlertas');
+    if (typeof divAlertas !== 'undefined' && divAlertas !== null) {
+        if (attends.exists()) {
+            //Limpiar la lista de alertas
+
+            divAlertas.innerHTML = "";
+            attends = attends.val();
+            for (let i in attends) {
+                let item = attends[i];
+                if (item.temperatura >= MaxTemperatura) {
+                    setAlertCard(item);
+                }
             }
-        }
-    } else {
-        document.querySelector('#listAlertas').innerHTML = `
-            <li class="d-flex justify-content-center">
-                <div class="align-items-center text-white bg-primary border-0">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            No hay ninguna alerta
+        } else {
+            divAlertas.innerHTML = `
+                <li class="d-flex justify-content-center">
+                    <div class="align-items-center text-white bg-primary border-0">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                No hay ninguna alerta
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        `;
+                </li>
+            `;
+        }
     }
 }
 
@@ -184,6 +176,7 @@ let params = new URLSearchParams(location.search);
 var idPerson = params.get('id');
 
 if (idPerson != null) {
+    console.log(idPerson);
     getStudent(idPerson, ajustPerson);
     getAttendees(idPerson, ajustAlertTable);
     $('#tabAlertas').click();

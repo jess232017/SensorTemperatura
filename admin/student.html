@@ -225,78 +225,6 @@
                                                 <button id="btnModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#record-student">
                                                    Registrar Estudiante
                                                 </button>
-                                                <!--Registrar un nuevo estudiante-->
-                                                <div class="modal fade" id="record-student" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <form id="reg-Student" class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalCenterTitle">Registrar Estudiante</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="card-body">
-                                                                    <div class="d-flex flex-column">
-                                                                        <div class="d-flex flex-column align-items-center">
-                                                                            <img id="profileImage" class="img-thumbnail" width="150" height="150" src="./img/profile.png" alt="Imagen de Perfil">
-                                                                            <input onchange="setProfileImage(event)" class="mt-2" type="file" accept="image/png, image/jpeg" name="Agregar Foto" id="addImage">
-                                                                        </div>
-
-                                                                        <div class="mb-4"></div>
-
-                                                                        <div class="grid-2c">
-                                                                            <div class="form-group">
-                                                                                <label for="txtNombres">Nombres</label>
-                                                                                <input type="text" class="form-control" id="txtNombres" required placeholder="Ambos Nombres">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="txtApellidos">Apellidos</label>
-                                                                                <input type="text" class="form-control" id="txtApellidos" required placeholder="Ambos Apellidos">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="txtCarnet"># Carnet</label>
-                                                                                <input type="text" class="form-control" id="txtCarnet" required placeholder="Codido de Carnet">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="txtCorreo">Correo</label>
-                                                                                <input type="email" class="form-control" id="txtCorreo" required placeholder="Correo Electronico">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="txtDireccion">Direccion</label>
-                                                                                <input type="text" class="form-control" id="txtDireccion" required placeholder="Direccion">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="txtTelefono">Telefono</label>
-                                                                                <input type="tel" class="form-control" id="txtTelefono" required placeholder="Numero de Telefono">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="txtSexo">Sexo</label>
-                                                                                <select id="txtSexo" required class="form-control" aria-label="Default">
-                                                                                    <option selected disabled>Selecione el sexo</option>
-                                                                                    <option value="M">Masculino</option>
-                                                                                    <option value="F">Femenino</option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="txtCarrera">Carrera</label>
-                                                                                <select id="txtCarrera" required class="form-control" aria-label="Default">
-                                                                                    <option selected disabled>Selecione una Carrera</option>
-                                                                                    <option value="Ingeniería en Computación">Ingenieria en Computacion</option>
-                                                                                    <option value="Ingenieria en Electronica">Ingenieria en Electronica</option>
-                                                                                    <option value="Ingenieria Quimica">Ingenieria Quimica</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button id="closeModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                <input type="submit" value="Guardar" class="btn btn-primary">
-                                                                <input id="idEstudiante" type="hidden">
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="card-body">
                                                 <table id="table-user" class="table table-hover table-outline" style="width:100%">
@@ -407,7 +335,7 @@
         <footer class="c-footer">
     <div id="fab" data-bs-toggle="modal" data-bs-target="#regAsistencia">&#xe145;</div>
 
-<!-- Modal -->
+<!-- Modal de Asistencia-->
 <div class="modal fade" id="regAsistencia" tabindex="-1" aria-labelledby="regAsistencia" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered">
         <div class="modal-content">
@@ -565,6 +493,79 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!--Registrar o editar un estudiante-->
+<div class="modal fade" id="record-student" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form id="reg-Student" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Registrar Estudiante</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex flex-column align-items-center">
+                            <img id="profileImage" class="img-thumbnail" width="150" height="150" src="./img/profile.png" alt="Imagen de Perfil">
+                            <input onchange="setProfileImage(event)" class="mt-2" type="file" accept="image/png, image/jpeg" name="Agregar Foto" id="addImage">
+                        </div>
+
+                        <div class="mb-4"></div>
+
+                        <div class="grid-2c">
+                            <div class="form-group">
+                                <label for="txtNombres">Nombres</label>
+                                <input type="text" class="form-control" id="txtNombres" required placeholder="Ambos Nombres">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtApellidos">Apellidos</label>
+                                <input type="text" class="form-control" id="txtApellidos" required placeholder="Ambos Apellidos">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCarnet"># Carnet</label>
+                                <input type="text" class="form-control" id="txtCarnet" required placeholder="Codido de Carnet">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCorreo">Correo</label>
+                                <input type="email" class="form-control" id="txtCorreo" required placeholder="Correo Electronico">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtDireccion">Direccion</label>
+                                <input type="text" class="form-control" id="txtDireccion" required placeholder="Direccion">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTelefono">Telefono</label>
+                                <input type="tel" class="form-control" id="txtTelefono" required placeholder="Numero de Telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtSexo">Sexo</label>
+                                <select id="txtSexo" required class="form-control" aria-label="Default">
+                                    <option selected disabled>Selecione el sexo</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCarrera">Carrera</label>
+                                <select id="txtCarrera" required class="form-control" aria-label="Default">
+                                    <option selected disabled>Selecione una Carrera</option>
+                                    <option value="Ingeniería en Computación">Ingenieria en Computacion</option>
+                                    <option value="Ingenieria en Electronica">Ingenieria en Electronica</option>
+                                    <option value="Ingenieria Quimica">Ingenieria Quimica</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <input type="submit" value="Guardar" class="btn btn-primary">
+                <input id="idEstudiante" type="hidden">
+            </div>
+        </form>
     </div>
 </div>
     <!-- Footer content here -->
