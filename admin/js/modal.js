@@ -36,7 +36,23 @@ function fillFrmStudent(data) {
     document.querySelector('#txtSexo').value = data.sexo;
     document.querySelector('#txtTelefono').value = data.telefono;
     document.querySelector('#idEstudiante').value = data.idFirebase;
+    obtenerImagen(data.codigo, "#profileImage")
     $('#record-student').modal('show');
+}
+
+function setProfileImage(e) {
+
+
+    var file = document.getElementById('file').files[0];
+    var reader = new FileReader();
+    // it's onload event and you forgot (parameters)
+    reader.onload = function(e) {
+            var image = document.querySelector("#profileImage");
+            // the result image data
+            image.src = e.target.result;
+        }
+        // you have to declare the file loading
+    reader.readAsDataURL(file);
 }
 
 //

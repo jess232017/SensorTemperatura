@@ -124,12 +124,12 @@ $('#table-attend tbody').on('click', 'tr', function() {
     }
 });
 
-$("#table-attend").on("click", ".btnEditar", (e) => {
+$("#table-attend, #table-hight, #table-attend-personal").on("click", ".btnEditar", (e) => {
     let aux = e.target.closest('.btn-group').querySelector('input');
     getAttendById(aux.value, fillFrmAttend);
 });
 
-$("#table-attend").on("click", ".btnBorrar", e => {
+$("#table-attend, #table-hight, #table-attend-personal").on("click", ".btnBorrar", e => {
     let aux = e.target.closest('.btn-group').querySelector('input');
     Swal.fire({
         title: '¿Está seguro de eliminar la asistencia?',
@@ -146,6 +146,7 @@ $("#table-attend").on("click", ".btnBorrar", e => {
         }
     })
 });
+
 //#endregion
 
 //#region Rellenar de datos las Tablas
