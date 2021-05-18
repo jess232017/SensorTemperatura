@@ -4,14 +4,20 @@ const btnServer = document.getElementById('btnServer');
 const onlyServer = document.getElementById("only-server");
 const errorText = '<span class="badge bg-danger">Error: </span><span style="color:red">';
 
-btnServer.addEventListener('click', () => {
-    divConsole.innerHTML = "Intentando conectarse <br>";
-    if (navigator.serial) {
-        connectSerial();
-    } else {
-        writeInConsole(errorText + 'Web Serial API no soportada.</span>');
-    }
-});
+if (typeof(divConsole) != 'undefined' && divConsole != null) {
+    const ps = new PerfectScrollbar(divConsole);
+}
+
+if (typeof(btnServer) != 'undefined' && btnServer != null) {
+    btnServer.addEventListener('click', () => {
+        divConsole.innerHTML = "Intentando conectarse <br>";
+        if (navigator.serial) {
+            connectSerial();
+        } else {
+            writeInConsole(errorText + 'Web Serial API no soportada.</span>');
+        }
+    });
+}
 
 async function connectSerial() {
     try {

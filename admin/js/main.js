@@ -1,6 +1,5 @@
 var MaxTemperatura = 38;
 var stepper = new Stepper(document.querySelector('#stpIngresar'));
-const ps = new PerfectScrollbar('#console');
 
 //#region Opacar menu
 var path = window.location.pathname;
