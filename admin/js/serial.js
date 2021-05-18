@@ -1,0 +1,65 @@
+var isServing = false;
+const divConsole = document.getElementById("console");
+const btnServer = document.getElementById('btnServer');
+const onlyServer = document.getElementById("only-server");
+const errorText = '<span class="badge bg-danger">Error: </span><span style="color:red">';
+
+btnServer.addEventListener('click', () => {
+    divConsole.innerHTML = "Intentando conectarse <br>";
+    if (navigator.serial) {
+        connectSerial();
+    } else {
+        writeInConsole(errorText + 'Web Serial API no soportada.</span>');
+    }
+});
+
+async function connectSerial() {
+    try {
+        const port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 115200 });
+
+        const decoder = new TextDecoderStream();
+
+        port.readable.pipeTo(decoder.writable);
+
+        const inputStream = decoder.readable;
+        const reader = inputStream.getReader();
+
+        setServing(true);
+        while (true) {
+            const { value, done } = await reader.read();
+
+            if (value) {
+                writeInConsole(value.toString());
+                fromArduino(value.toString());
+            }
+
+            if (done) {
+                console.log('[readLoop] DONE', done);
+                reader.releaseLock();
+                setServing(false);
+                break;
+            }
+        }
+    } catch (error) {
+        writeInConsole(errorText + error + '</span>');
+        setServing(false);
+    }
+}
+
+function writeInConsole(mensaje) {
+    if (typeof(divConsole) != 'undefined' && divConsole != null) {
+        divConsole.innerHTML += "<br>" + mensaje;
+        divConsole.scrollTop = divConsole.scrollHeight;
+    }
+}
+
+function setServing(value) {
+    isServing = value;
+    btnServer.innerText = isServing ? "Conectado" : "Conectar"
+        /*if (isServing) {
+            onlyServer.classList.remove("hide")
+        } else {
+            onlyServer.classList.add("hide")
+        }*/
+}

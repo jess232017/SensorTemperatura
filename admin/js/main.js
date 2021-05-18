@@ -1,14 +1,25 @@
 var MaxTemperatura = 38;
 var stepper = new Stepper(document.querySelector('#stpIngresar'));
+const ps = new PerfectScrollbar('#console');
 
 //#region Opacar menu
 var path = window.location.pathname;
 var page = path.split("/").pop();
 
-if (page != "" && page != "student-info.html") {
-    document.querySelector(`a[href='${page}']`).style.backgroundColor = "#323d4c";
-} else {
-    document.querySelector(`a[href='index.html']`).style.backgroundColor = "#323d4c";
+
+switch (page) {
+    case "":
+        document.querySelector(`a[href='index.html']`).style.backgroundColor = "#323d4c";
+        break;
+    case "scanner.html":
+        document.querySelector(`a[href='attendance.html']`).style.backgroundColor = "#323d4c";
+        break;
+    case "student-info.html":
+        document.querySelector(`a[href='student.html']`).style.backgroundColor = "#323d4c";
+        break;
+
+    default:
+        document.querySelector(`a[href='${page}']`).style.backgroundColor = "#323d4c";
 }
 //#endregion
 
@@ -149,9 +160,10 @@ function setPersonCard(data) {
     $('#tdApellido').text(data.apellidos);
     $('#tdCarrera').text(data.carrera);
     $('#tdDireccion').text(data.direccion);
-    $('#link-person').attr('href', `student-info.html?id=${data[1]}`);
+    $('#link-person').attr('href', `student-info.html?id=${data.codigo}`);
 
-    document.querySelector('#txtCodigo').value = data[1];
+    console.log(data.codigo);
+    document.querySelector('#txtCodigo').value = data.codigo;
 }
 
 function setAlertCard(data) {
