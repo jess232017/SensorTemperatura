@@ -15,15 +15,31 @@
         <main class="c-main">
             <div class="container-fluid">
                 <div class="fade-in">
-                    <div class="grid-4c h-75">
-
+                    <div class="grid-4c h-85">
                         <div class="card m-0">
                             <div class="card-header">
-                                <h5 class="card-title mb-0">Temperatura</h5>
+                                <h5 class="card-title mb-0">Sensando</h5>
                             </div>
-                            <div class="card-body fab-contain">
-                                <span class="material-icons mini-icon">thermostat</span>
-                                <span class="mini visual-number">0</span>
+                            <div class="card-body fab-contain d-flex flex-column">
+                                <div class="mb-1">
+                                    <span class="material-icons mini-icon">thermostat</span>
+                                    <span id="visual-thermostat" class="mini visual-number">0</span>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="material-icons mini-icon color">opacity</span>
+                                    <span id="visual-humidity" class="mini visual-number">0</span>
+
+                                    <style>
+                                        #visual-humidity.visual-number::after {
+                                            content: '';
+                                        }
+                                        
+                                        #no-show {
+                                            display: none;
+                                        }
+                                    </style>
+
+                                </div>
                             </div>
                         </div>
 
@@ -32,7 +48,16 @@
                                 <h5 class="card-title mb-0">Medidor de Temperatura</h5>
                             </div>
                             <div class="card-body fab-contain">
-                                <canvas id="gauge-temperature"></canvas>
+                                <div class="grid-graph">
+                                    <div class="gauge-graph">
+                                        <h5>Temperatura</h5>
+                                        <canvas id="gauge-temperature"></canvas>
+                                    </div>
+                                    <div class="gauge-graph">
+                                        <h5>Humedad</h5>
+                                        <canvas id="gauge-humidity"></canvas>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

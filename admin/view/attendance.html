@@ -13,44 +13,39 @@
         @@include('./includes/header.html')
 
         <section class="c-body">
-
             <main class="c-main">
                 <div class="container-fluid">
                     <div class="fade-in">
-                        <div class="container">
-                            <div class="container-fluid p-0">
-                                @@include('./includes/element/fast-card.html')
-                                <h1 class="h3 mb-3">Asistencias</h1>
-                                <div class="row">
-                                    <div id="div-list">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h5 class="card-title mb-0">Entradas al recinto</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <table id="table-attend" class="table table-hover table-outline" style="width:100%">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>IdFirebase</th>
-                                                            <th>Imagen</th>
-                                                            <th>Registro</th>
-                                                            <th>Fecha</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+                        @@include('./includes/element/fast-card.html')
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                        <div class="row">
+                            <h1 class="h3 mb-3">Asistencias</h1>
+                            <div id="div-list">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Entradas al recinto</h5>
                                     </div>
+                                    <div class="card-body">
+                                        <table id="table-attend" class="table table-hover table-outline" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>IdFirebase</th>
+                                                    <th>Imagen</th>
+                                                    <th>Registro</th>
+                                                    <th>Fecha</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                                    <div id="div-person" class="col-xl-4 hide">
-                                        @@include('./includes/element/person-card.html')
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
+                            </div>
 
+                            <div id="div-person" class="col-xl-4 hide">
+                                @@include('./includes/element/person-card.html')
                             </div>
                         </div>
                     </div>

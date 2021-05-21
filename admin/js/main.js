@@ -238,7 +238,8 @@ function setAlertTable(data) {
 
 //#endregion
 
-//#region reparar shadow effect en el sidebar
+//#region reparar 
+//shadow effect en el sidebar
 var shadow = document.createElement('div');
 shadow.className = "c-sidebar-backdrop c-fade c-show";
 shadow.addEventListener('click', () => {
@@ -250,5 +251,19 @@ function toogleMenu() {
     let sidebar = document.querySelector('aside#sidebar');
     document.querySelector('body').appendChild(shadow);
     sidebar.classList.add('c-sidebar-show');
+}
+
+//Minimizar sidebar
+document.querySelector("aside#sidebar").addEventListener('click', e => {
+    console.log(e.target);
+})
+
+function toogleMinimizer() {
+    let sbTitle = document.querySelector("h1#sbTitle");
+    if (sbTitle.classList.contains('hide')) {
+        sbTitle.classList.remove('hide');
+    } else {
+        sbTitle.classList.add('hide');
+    }
 }
 //#endregion

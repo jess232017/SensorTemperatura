@@ -34,39 +34,53 @@ firebase.firestore().enablePersistence();
 //#endregion
 
 //#region Realizar Consultas a la base de datos 
-dbSensor1.on('value', snap => {
-    let sensor = snap.val();
-    if (typeof gauge !== 'undefined') {
-        gauge.set(sensor.temperatura);
+dbSensor1.child('codigo').on('value', snap => {
+    let codigo = snap.val();
+
+    if (Sensor_IdCode != "null") {
+        openNewAttend(codigo.split('?date=')[0]);
     }
 
-    $('.visual-number').text(sensor.temperatura);
-    document.querySelector('#txtTemperatura').value = sensor.temperatura;
-
-    if (Sensor_IdCode != "null" && Sensor_IdCode !== sensor.codigo) {
-        openNewAttend(sensor.codigo.split('?date=')[0]);
-    }
-
-    Sensor_IdCode = sensor.codigo;
+    Sensor_IdCode = codigo;
 });
+
+dbSensor1.child('temperatura').on('value', snap => {
+    let value = snap.val();
+
+    if (typeof gauge !== 'undefined') {
+        gauge.set(value);
+    }
+
+    if (Contador > 60) {
+        removeData(myChart);
+    }
+
+    $('#visual-thermostat').text(value);
+    document.querySelector('#txtTemperatura').value = value;
+    addData(temperatureChart, new Date().toLocaleTimeString(), value);
+});
+
+dbSensor1.child('humedad').on('value', snap => {
+    let value = snap.val();
+
+    if (typeof gaugeHumidity !== 'undefined') {
+        gaugeHumidity.set(value);
+    }
+
+    if (Contador > 60) {
+        removeData(humidityChart);
+    }
+
+    $('#visual-humidity').text(snap.val());
+    addData(humidityChart, new Date().toLocaleTimeString(), value);
+})
+
 
 dbSensor1.child('from-serial').on('value', snap => {
     if (!isServing) {
         writeInConsole(snap.val().replace(/\x0D\x0A/g, "<br/>"))
     }
 });
-
-function toArduino() {
-    var data = document.getElementById("txtArduino").value;
-    document.getElementById("txtArduino").value = "";
-    document.sendform.txtArduino.focus();
-
-    dbSensor1.child('to-serial').set(data, error => {
-        if (error) {
-            console.log("Error al escribir: " + error)
-        }
-    });
-}
 
 function fromArduino(data) {
     dbSensor1.child('from-serial').set(data, error => {

@@ -92,10 +92,8 @@ html:not([dir=rtl]) .custom-select-sm {
 
 /*  Logo  */
 
-@media (max-width: 56px) {
-    div.responsive>svg.responsive {
-        display: none!important;
-    }
+h1#sbTitle {
+    transition: all .3s ease-in;
 }
 
 

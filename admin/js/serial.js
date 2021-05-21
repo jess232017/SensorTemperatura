@@ -22,7 +22,7 @@ if (typeof(btnServer) != 'undefined' && btnServer != null) {
 async function connectSerial() {
     try {
         const port = await navigator.serial.requestPort();
-        await port.open({ baudRate: 115200 });
+        await port.open({ baudRate: 9600 });
 
         const decoder = new TextDecoderStream();
 
@@ -58,6 +58,18 @@ function writeInConsole(mensaje) {
         divConsole.innerHTML += "<br>" + mensaje;
         divConsole.scrollTop = divConsole.scrollHeight;
     }
+}
+
+function toArduino() {
+    var data = document.getElementById("txtArduino").value;
+    document.getElementById("txtArduino").value = "";
+    document.sendform.txtArduino.focus();
+
+    dbSensor1.child('to-serial').set(data, error => {
+        if (error) {
+            console.log("Error al escribir: " + error)
+        }
+    });
 }
 
 function setServing(value) {
