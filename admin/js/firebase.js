@@ -142,11 +142,13 @@ $('form#frm-attend').submit(e => {
     e.preventDefault();
 
     let idFirebase = $('#idAsistencia').val();
+    console.log(idFirebase);
 
     //Si el id esta vacio entonces crear un nuevo elemento
-    if (idFirebase == '') {
+    if (idFirebase === '') {
         idFirebase = dbAsistencias.push().key;
     };
+    console.log(idFirebase);
 
     data = {
         codigo: idCode,
@@ -170,7 +172,6 @@ $('form#frm-attend').submit(e => {
         });
 
     idFirebase = '';
-
     resetModal();
 });
 

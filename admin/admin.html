@@ -217,39 +217,124 @@
     </ul>
 </header>
 
-        <main class="c-main">
-            <div class="container-fluid">
-                <div class="fade-in">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <div class="card">
-                            <div class="card-header">
-                                <p>
-                                    Escáner de códigos
-                                    <span class="badge bg-warning text-dark">En desarrollo</span>
-                                </p>
+        <section class="c-body">
+            <main class="c-main">
+                <div class="container-fluid">
+                    <div class="fade-in">
+
+                        <div class="row">
+                            <h1 class="h3 mb-3">Administrativo</h1>
+                            <div id="div-list">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="card-title mb-0">Registro de Personal Administrativo</h5>
+                                        <button id="btnModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#record-student">
+                                           Registrar Persona
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="table-user" class="table table-hover table-outline" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Imagen</th>
+                                                    <th>Codigo</th>
+                                                    <th>Nombres</th>
+                                                    <th>Apellidos</th>
+                                                    <th>Carrera</th>
+                                                    <th>Sexo</th>
+                                                    <th>Direccion</th>
+                                                    <th>Telefono</th>
+                                                    <th>Correo</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <div id="reader"></div>
 
-                                <script src="./js/min/html5-qrcode.min.js"></script>
-                                <script>
-                                    function onScanSuccess(qrCodeMessage) {
-                                        openNewAttend(qrCodeMessage);
-                                    }
+                            <div id="div-person" class="col-xl-4 hide">
+                                <div class="card">
+    <div class="card-header">
+        <h5 id="txt-Nombre" class="card-title mb-0">Angelica Ramos</h5>
+    </div>
 
-                                    var html5QrcodeScanner = new Html5QrcodeScanner(
-                                        "reader", {
-                                            fps: 10,
-                                            qrbox: 250
-                                        });
-                                    html5QrcodeScanner.render(onScanSuccess);
-                                </script>
+    <div class="main-box">
+        <div class="d-flex flex-column align-items-center">
+            <img id="imgPerson" src="../img/unknown.jpg" alt="imagen de persona" class="img-thumbnail profile-img img-responsive img-mini center-block">
+            <div class="profile-label">
+                <a id="link-person" target="_blank" class="badge badge-info" href="student.html">Estudiante</a>
+            </div>
+
+            <div class="profile-since">
+                Registrado el: 23/01/2021
+            </div>
+        </div>
+
+        <table class="table table-condensed table-hover nowrap dataTable no-footer dtr-column collapsed">
+            <tbody class="mini-info">
+                <tr>
+                    <th># Carnet</th>
+                    <td id="tdCarnet">None</td>
+                </tr>
+                <tr>
+                    <th>Apellidos</th>
+                    <td id="tdApellido">None</td>
+                </tr>
+                <tr>
+                    <th>Carrera</th>
+                    <td id="tdCarrera">None</td>
+                </tr>
+                <tr>
+                    <th>Direccion</th>
+                    <td id="tdDireccion">+1234123123123</td>
+                </tr>
+                <tr>
+                    <th>Registros</th>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>Alta</th>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <th>Alta</th>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="profile-message-btn center-block text-center">
+            <br>
+            <button id="btnModal" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#regAsistencia">
+                Tomar Temperatura
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <strong>Alertas</strong>
+        <ul id="listAlertas" class="timeline mt-2 mb-0">
+            
+            <li class="timeline-item hide">
+                <strong>Signed out</strong>
+                <span class="float-right text-muted text-sm">30m ago</span>
+                <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+            </li>
+        </ul>
+
+    </div>
+</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </section>
 
         <footer class="c-footer">
     <div id="fab" data-bs-toggle="modal" data-bs-target="#regAsistencia">&#xe145;</div>

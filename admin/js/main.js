@@ -61,6 +61,7 @@ function validarForm(data) {
             data = data[Object.keys(data)[0]]
 
             obtenerImagen(idCode, '#cardImagen');
+            console.log(hora, fecha);
             $('#regHora').text(hora);
             $('#regFecha').text(fecha);
             $('#txtIded').text(idCode);
@@ -161,7 +162,6 @@ function setPersonCard(data) {
     $('#tdDireccion').text(data.direccion);
     $('#link-person').attr('href', `student-info.html?id=${data.codigo}`);
 
-    console.log(data.codigo);
     document.querySelector('#txtCodigo').value = data.codigo;
 }
 

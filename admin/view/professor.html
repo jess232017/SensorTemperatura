@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+@@include('./includes/head.html')
+
+<body class="c-app">
+
+    <!-- Sidebar content here -->
+    @@include('./includes/sidebar.html')
+
+    <main class="c-wrapper c-fixed-components">
+
+        @@include('./includes/header.html')
+
+        <section class="c-body">
+            <main class="c-main">
+                <div class="container-fluid">
+                    <div class="fade-in">
+
+                        <div class="row">
+                            <h1 class="h3 mb-3">Profesores</h1>
+                            <div id="div-list">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="card-title mb-0">Registro de Profesores</h5>
+                                        <button id="btnModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#record-student">
+                                           Registrar Persona
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="table-user" class="table table-hover table-outline" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Imagen</th>
+                                                    <th>Codigo</th>
+                                                    <th>Nombres</th>
+                                                    <th>Apellidos</th>
+                                                    <th>Carrera</th>
+                                                    <th>Sexo</th>
+                                                    <th>Direccion</th>
+                                                    <th>Telefono</th>
+                                                    <th>Correo</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="div-person" class="col-xl-4 hide">
+                                @@include('./includes/element/person-card.html')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        @@include('./includes/footer.html')
+    </main>
+
+    @@include('./includes/script.html')
+</body>
+
+</html>
