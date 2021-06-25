@@ -99,7 +99,7 @@ dbEstudiantes.on('value', snap => {
     drawStudentTable(students);
 });
 
-dbAsistencias.on('value', snap => {
+dbAsistencias.child("/estudiantes").on('value', snap => {
     var attendances = snap.val();
 
     //Guardar la informacion en una base de datos local
@@ -107,6 +107,8 @@ dbAsistencias.on('value', snap => {
 
     drawAttendTable(attendances);
 });
+
+dbAsistencias.child("/visitantes").on('value', snap => drawVisitorTable(snap.val()));
 
 function getStudent(idCode, callback) {
     dbEstudiantes.orderByChild("codigo").equalTo(idCode).once("value", values => {
@@ -123,13 +125,13 @@ function getStudentById(idRegistro, callback) {
 }
 
 function getAttendees(idCode, callback) {
-    dbAsistencias.orderByChild("codigo").equalTo(idCode).once("value", values => {
+    dbAsistencias.child("/estudiantes").orderByChild("codigo").equalTo(idCode).once("value", values => {
         callback(values);
     });
 }
 
 function getAttendById(idAttend, callback) {
-    dbAsistencias.child(idAttend).once("value", values => {
+    dbAsistencias.child("/estudiantes").child(idAttend).once("value", values => {
         let object = values.val();
         object.idFirebase = idAttend;
         callback(object);
@@ -141,14 +143,21 @@ function getAttendById(idAttend, callback) {
 $('form#frm-attend').submit(e => {
     e.preventDefault();
 
+    if (idCode == "") {
+        RegistrarIngresoVisitante();
+    } else {
+        RegistrarIngresoEstudiante();
+    }
+    resetModal();
+});
+
+function RegistrarIngresoEstudiante() {
     let idFirebase = $('#idAsistencia').val();
-    console.log(idFirebase);
 
     //Si el id esta vacio entonces crear un nuevo elemento
     if (idFirebase === '') {
         idFirebase = dbAsistencias.push().key;
     };
-    console.log(idFirebase);
 
     data = {
         codigo: idCode,
@@ -172,13 +181,37 @@ $('form#frm-attend').submit(e => {
         });
 
     idFirebase = '';
-    resetModal();
-});
+}
+
+function RegistrarIngresoVisitante() {
+    let idFirebase = dbAsistencias.push().key;
+
+    data = {
+        descripcion: descripcion,
+        fecha: fecha,
+        hora: hora,
+        temperatura: temperatura,
+    };
+
+    actualizacionData = {};
+    actualizacionData[`/visitantes/${idFirebase}`] = data;
+    dbAsistencias.update(actualizacionData).then(() => {
+            if (parseInt(temperatura) > 37) {
+                let URL = `https://stc-uni.netlify.app/admin/attend-visit.html`;
+                enviarNotificacion(titleAlert, descripcionAlert, URL, "");
+            }
+        })
+        .catch(error => {
+            alert(error);
+        });
+
+    idFirebase = '';
+}
 
 $('form#reg-Student').submit(e => {
-    //Si el id esta vacio entonces crear un nuevo elemento
     e.preventDefault();
 
+    //Si el id esta vacio entonces crear un nuevo elemento
     let idRegistro = $('#idEstudiante').val();
 
     //Si el id esta vacio entonces crear un nuevo elemento

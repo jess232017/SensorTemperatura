@@ -109,33 +109,8 @@ const clDefAttend = [{
         `
     },
     {
-        targets: [4],
+        targets: [5],
         render: data => {
-            /*return `
-                <div class="btn-group">
-                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="material-icons">more_vert</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                    </ul>
-                </div>
-
-                <div class="dropdown open">
-                    <a href="#!" class="px-2" id="triggerId3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="material-icons">more_vert</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="triggerId3">
-                        <a class="dropdown-item" href="#"><i class="fa fa-pencil mr-1"></i> Edit</a>
-                        <a class="dropdown-item text-danger" href="#"><i class="fa fa-trash mr-1"></i> Delete</a>
-                    </div>
-                </div>
-            `;*/
-
             return `
             <div class='wrapper text-center'>
                 <div class='btn-group'>
@@ -156,6 +131,46 @@ const clDefAttend = [{
     }
 ];
 
+const clVisitorAttend = [{
+        targets: [2],
+        render: data => {
+            let badge = data.temperatura < MaxTemperatura ? `<span class="badge bg-light text-dark">${data.temperatura}</span>` : `<span class="badge bg-danger">${data.temperatura}</span>`;
+            return `<div>${badge}</div>`;
+        }
+    },
+    {
+        targets: [3],
+        render: data => `
+        <div class="d-flex flex-column">
+            <div>${data.fecha}</div>
+            <span class="small text-muted">${data.hora}</span>
+        </div>
+    `
+    },
+    {
+        targets: [4],
+        render: data => {
+            return `
+        <div class='wrapper text-center'>
+            <div class='btn-group'>
+                <button class='btnEditar btn btn-primary' data-toggle='tooltip' title='Editar'>
+                    <svg class="c-icon c-icon-x">
+                        <use xlink:href="assets/svg-symbols.svg#edit"></use>
+                    </svg>
+                </button>
+                <button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>
+                    <svg class="c-icon c-icon-x">
+                        <use xlink:href="assets/svg-symbols.svg#delete"></use>
+                    </svg>
+                </button>
+                <input type="hidden" value="${data}">
+            </div>
+        </div>`;
+        }
+    }
+];
+
+
 var tableAttend = $('#table-attend').DataTable({
     responsive: true,
     language: {
@@ -164,7 +179,7 @@ var tableAttend = $('#table-attend').DataTable({
     columnDefs: clDefAttend,
 });
 
-var tablehight = $('#table-hight').DataTable({
+let tablehight = $('#table-hight').DataTable({
     responsive: true,
     language: {
         url: './assets/translate.json'
@@ -172,12 +187,20 @@ var tablehight = $('#table-hight').DataTable({
     columnDefs: clDefAttend,
 });
 
-var tablePerson = $('#table-attend-personal').DataTable({
+let tablePerson = $('#table-attend-personal').DataTable({
     responsive: true,
     language: {
         url: './assets/translate.json'
     },
     columnDefs: clDefAttend,
+});
+
+let tableAttendVisit = $('#table-attend-visit').DataTable({
+    responsive: true,
+    language: {
+        url: './assets/translate.json'
+    },
+    columnDefs: clVisitorAttend,
 });
 
 $('#table-attend tbody').on('click', 'tr', function() {
@@ -257,6 +280,7 @@ function drawAttendTable(attendances) {
                 fecha: item.fecha,
                 hora: item.hora
             },
+            item.descripcion,
             i,
         ];
         tableAttend.rows.add([dataSet]).draw();
@@ -270,5 +294,28 @@ function drawAttendTable(attendances) {
     tablePerson.columns.adjust().draw();
     tableAttend.columns.adjust().draw();
     tablehight.columns.adjust().draw();
+}
+
+function drawVisitorTable(attendances) {
+    tableAttendVisit.clear().draw();
+
+    for (let i in attendances) {
+        let item = attendances[i];
+        dataSet = [
+            i,
+            item.descripcion,
+            {
+                codigo: item.codigo,
+                temperatura: item.temperatura
+            },
+            {
+                fecha: item.fecha,
+                hora: item.hora
+            },
+            i,
+        ];
+        tableAttendVisit.rows.add([dataSet]).draw();
+    }
+    tableAttendVisit.columns.adjust().draw();
 }
 //#endregion

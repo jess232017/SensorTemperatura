@@ -29,14 +29,19 @@ function nextStep() {
     let Current = new Date();
     idCode = $('#txtCodigo').val();
     temperatura = $('#txtTemperatura').val();
+    descripcion = $('#txtDescripcion').val();
+
     if (Pushed) {
         hora = $('#txtHora').val();
         fecha = $('#txtFecha').val();
-        descripcion = $('#txtDescripcion').val();
     } else {
         hora = Current.toLocaleTimeString('en-US');
         fecha = Current.toLocaleDateString('en-US');
-        descripcion = "";
+    }
+
+    if (idCode == "" && temperatura != "") {
+        validarVisitante();
+        return;
     }
     getStudent(idCode, validarForm);
 }
@@ -50,6 +55,7 @@ function validarForm(data) {
 
         isOkay = validarCampo('#txtCodigo', isOkay);
         isOkay = validarCampo('#txtTemperatura', isOkay);
+        document.querySelector("#txtDescripcion").classList.remove('is-invalid');
 
         if (Pushed) {
             isOkay = validarCampo('#txtFecha', isOkay);
@@ -59,12 +65,14 @@ function validarForm(data) {
         if (isOkay) {
             data = data.val();
             data = data[Object.keys(data)[0]]
+            setOcultable(false);
 
             obtenerImagen(idCode, '#cardImagen');
             console.log(hora, fecha);
             $('#regHora').text(hora);
             $('#regFecha').text(fecha);
             $('#txtIded').text(idCode);
+            $('#regTipo').text("estudiante");
             $("#txtIded").attr("href", `student-info.html?id=${idCode}`);
             $('#regTemp').text(temperatura + ' ºC ');
             $('#txtCareer').text(data.carrera);
@@ -86,6 +94,36 @@ function validarForm(data) {
     }
 }
 
+function validarVisitante() {
+    let isOkay = true;
+    isOkay = validarCampo('#txtDescripcion', isOkay);
+
+    if (Pushed) {
+        isOkay = validarCampo('#txtFecha', isOkay);
+        isOkay = validarCampo('#txtHora', isOkay);
+    }
+
+    if (isOkay) {
+
+        setOcultable(true);
+
+        $('#regHora').text(hora);
+        $('#regFecha').text(fecha);
+        $('#regTipo').text("visitante");
+        $('#regTemp').text(temperatura + ' ºC ');
+
+        if (parseInt(temperatura) > 37) {
+            $("#regTemp").addClass("text-danger");
+            titleAlert = `Visitante: ${descripcion}`;
+            descripcionAlert = `Presenta fiebre de ${temperatura}ºC a las ${hora} 🤒🚨`;
+        } else {
+            $("#regTemp").removeClass("text-danger");
+        }
+
+        stepper.next()
+    }
+}
+
 function validarCampo(element, isOkay) {
     let domInput = document.querySelector(element);
 
@@ -99,6 +137,19 @@ function validarCampo(element, isOkay) {
     }
 }
 
+
+//#endregion
+
+////#region  NuevaAsistencia
+
+function openNewAttend(code) {
+    if (!document.body.classList.contains('modal-open')) {
+        document.querySelector('#fab').click();
+    }
+
+    document.querySelector('#txtCodigo').value = code;
+    nextStep();
+}
 
 //#endregion
 

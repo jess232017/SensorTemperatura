@@ -13,13 +13,3 @@ function drawOffline() {
         drawAttendTable(attendances[0]);
     });
 }*/
-
-
-function openNewAttend(code) {
-    if (!document.body.classList.contains('modal-open')) {
-        document.querySelector('#fab').click();
-    }
-
-    document.querySelector('#txtCodigo').value = code;
-    nextStep();
-}

@@ -18,10 +18,18 @@ function resetModal() {
     document.querySelector('#idAsistencia').value = "";
     document.querySelector('#txtCodigo').classList.remove('is-valid');
     document.querySelector('#txtTemperatura').classList.remove('is-valid');
+    document.querySelector('#txtDescripcion').classList.remove('is-valid');
     document.querySelector('#txtFecha').classList.remove('is-valid');
     document.querySelector('#txtHora').classList.remove('is-valid');
 
     document.querySelector("form#frm-attend").reset();
+}
+
+function setOcultable(ocultar) {
+    document.querySelectorAll('[ocultable]').forEach(element => {
+        if (ocultar) element.style.display = "none";
+        else element.removeAttribute("style");
+    });
 }
 
 //Eventos

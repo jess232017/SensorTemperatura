@@ -314,338 +314,105 @@
     </div>
 </div>
 
-                        <!---->
-                        <div class="card">
-    <div class="card-body">
-        <div class="d-flex justify-content-between">
-            <div>
-                <h4 class="card-title mb-0">Temperatura</h4>
-                <div class="small text-muted">Mayo 2021</div>
-            </div>
-            <!--Toogle-->
-            <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
-                <div class="btn-group btn-group-toggle mx-3" data-toggle="buttons">
-                    <label class="btn btn-outline-secondary">
-                            <input id="option1" type="radio" name="options" autocomplete="off"> Día
-                        </label>
-                    <label class="btn btn-outline-secondary active">
-                            <input id="option2" type="radio" name="options" autocomplete="off" checked=""> Mes
-                        </label>
-                    <label class="btn btn-outline-secondary">
-                            <input id="option3" type="radio" name="options" autocomplete="off"> Año
-                        </label>
-                </div>
-                <button id="btnModal" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#regAsistencia">
-                    Tomar Temperatura
-                </button>
-            </div>
-        </div>
-
-        <div class="gauge-graph">
-            <canvas class="chart chartjs-render-monitor" height="250px" id="main-chart"></canvas>
-        </div>
-    </div>
-    <div id="no-show" class="card-footer">
-        <div class="row text-center">
-            <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                <div class="text-muted">Visitantes</div><strong>29.703 (27%)</strong>
-                <div class="progress progress-xs mt-2">
-                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 27%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                <div class="text-muted">Estudiantes</div><strong>24.093 (38%)</strong>
-                <div class="progress progress-xs mt-2">
-                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 38%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                <div class="text-muted">Profesores</div><strong>78.706 (12%)</strong>
-                <div class="progress progress-xs mt-2">
-                    <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 12%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                <div class="text-muted">Administrativo</div><strong>22.123 (23%)</strong>
-                <div class="progress progress-xs mt-2">
-                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 23%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
                         <div class="row">
-                            <div class="col-md-12">
+                            <h1 class="h3 mb-3">Asistencia de Visitantes</h1>
+                            <div id="div-list">
                                 <div class="card">
-                                    <div class="card-header">Asistencias y Temperaturas</div>
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Entradas al recinto</h5>
+                                    </div>
                                     <div class="card-body">
-                                        <div class="row">
-                                            <!-- Temperaturas -->
-                                            <div class="col-sm-6">
-                                                <div>
-    <div class="row">
-        <div class="col-6">
-            <div class="c-callout c-callout-info"><small class="text-muted">Temperatura Normal</small>
-                <div class="text-value-lg">9,123</div>
-            </div>
-        </div>
-
-        <div class="col-6">
-            <div class="c-callout c-callout-danger"><small class="text-muted">Temperatura Alta</small>
-                <div class="text-value-lg">22,643</div>
-            </div>
-        </div>
-
-    </div>
-
-    <hr class="mt-0">
-    <div class="progress-group mb-4">
-        <div class="progress-group-prepend"><span class="progress-group-text">Lunes</span></div>
-        <div class="progress-group-bars">
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-group mb-4">
-        <div class="progress-group-prepend"><span class="progress-group-text">Martes</span></div>
-        <div class="progress-group-bars">
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-group mb-4">
-        <div class="progress-group-prepend"><span class="progress-group-text">Miercoles</span></div>
-        <div class="progress-group-bars">
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 22%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-group mb-4">
-        <div class="progress-group-prepend"><span class="progress-group-text">Jueves</span></div>
-        <div class="progress-group-bars">
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 91%" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-group mb-4">
-        <div class="progress-group-prepend"><span class="progress-group-text">Viernes</span></div>
-        <div class="progress-group-bars">
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-group mb-4">
-        <div class="progress-group-prepend"><span class="progress-group-text">Sabado</span></div>
-        <div class="progress-group-bars">
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 53%" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-group mb-4">
-        <div class="progress-group-prepend"><span class="progress-group-text">Domingo</span></div>
-        <div class="progress-group-bars">
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="progress progress-xs">
-                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 69%" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-    </div>
-</div>
-                                            </div>
-
-                                            <!-- Asistencias -->
-                                            <div class="col-sm-6">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <div class="c-callout c-callout-warning"><small class="text-muted">Asistencias Total</small>
-                                                            <div class="text-value-lg">78,623</div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="c-callout c-callout-success"><small class="text-muted">Por Carnet</small>
-                                                            <div class="text-value-lg">49,123</div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <hr class="mt-0">
-                                                <div class="progress-group">
-                                                    <div class="progress-group-header">
-                                                        <svg class="c-icon progress-group-ico">
-                                                            <use xlink:href="assets/svg-symbols.svg#male"></use>
-                                                        </svg>
-                                                        <div>Hombres</div>
-                                                        <div class="mfs-auto font-weight-bold">43%</div>
-                                                    </div>
-                                                    <div class="progress-group-bars">
-                                                        <div class="progress progress-xs">
-                                                            <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="progress-group mb-5">
-                                                    <div class="progress-group-header">
-                                                        <svg class="c-icon progress-group-ico">
-                                                            <use xlink:href="assets/svg-symbols.svg#girl"></use>
-                                                        </svg>
-                                                        <div>Mujeres</div>
-                                                        <div class="mfs-auto font-weight-bold">37%</div>
-                                                    </div>
-                                                    <div class="progress-group-bars">
-                                                        <div class="progress progress-xs">
-                                                            <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="progress-group">
-                                                    <div class="progress-group-header align-items-end">
-                                                        <svg class="c-icon progress-group-ico">
-                                                            <use xlink:href="assets/svg-symbols.svg#c-21"></use>
-                                                        </svg>
-                                                        <div>Carnet 2021</div>
-                                                        <div class="mfs-auto font-weight-bold mfe-2">191.235</div>
-                                                        <div class="text-muted small">(56%)</div>
-                                                    </div>
-                                                    <div class="progress-group-bars">
-                                                        <div class="progress progress-xs">
-                                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="progress-group">
-                                                    <div class="progress-group-header align-items-end">
-                                                        <svg class="c-icon progress-group-ico">
-                                                            <use xlink:href="assets/svg-symbols.svg#c-20"></use>
-                                                        </svg>
-                                                        <div>Carnet 2020</div>
-                                                        <div class="mfs-auto font-weight-bold mfe-2">51.223</div>
-                                                        <div class="text-muted small">(15%)</div>
-                                                    </div>
-                                                    <div class="progress-group-bars">
-                                                        <div class="progress progress-xs">
-                                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="progress-group">
-                                                    <div class="progress-group-header align-items-end">
-                                                        <svg class="c-icon progress-group-ico">
-                                                            <use xlink:href="assets/svg-symbols.svg#c-19"></use>
-                                                        </svg>
-                                                        <div>Carnet 2019</div>
-                                                        <div class="mfs-auto font-weight-bold mfe-2">37.564</div>
-                                                        <div class="text-muted small">(11%)</div>
-                                                    </div>
-                                                    <div class="progress-group-bars">
-                                                        <div class="progress progress-xs">
-                                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 11%" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="progress-group">
-                                                    <div class="progress-group-header align-items-end">
-                                                        <svg class="c-icon progress-group-ico">
-                                                            <use xlink:href="assets/svg-symbols.svg#visit-v2"></use>
-                                                        </svg>
-                                                        <div>Invitados</div>
-                                                        <div class="mfs-auto font-weight-bold mfe-2">27.319</div>
-                                                        <div class="text-muted small">(8%)</div>
-                                                    </div>
-                                                    <div class="progress-group-bars">
-                                                        <div class="progress progress-xs">
-                                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 8%" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <br>
-
-                                        <!--Datatable -->
-                                        <table id="table-user" class="table table-hover table-outline" style="width:100%">
+                                        <table id="table-attend-visit" class="table table-hover table-outline" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Imagen</th>
-                                                    <th>Codigo</th>
-                                                    <th>Nombres</th>
-                                                    <th>Apellidos</th>
-                                                    <th>Carrera</th>
-                                                    <th>Sexo</th>
-                                                    <th>Direccion</th>
-                                                    <th>Telefono</th>
-                                                    <th>Correo</th>
+                                                    <th>Id Registro</th>
+                                                    <th>Descripción</th>
+                                                    <th>Temperatura</th>
+                                                    <th>Fecha</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!--Mas Data-->
-                        <div class="card">
-                            <h5 class="card-header">Estadistica en Nicaragua</h5>
-                            <div class="card-body">
-                                <div id="covid-api" class="grid-fast-card">
+                            <div id="div-person" class="col-xl-4 hide">
+                                <div class="card">
+    <div class="card-header">
+        <h5 id="txt-Nombre" class="card-title mb-0">Angelica Ramos</h5>
+    </div>
 
-                                </div>
-                                <div class="status-note">
-                                    * Datos Nacionales obtenidos de: <a target="_blank" rel="noreferrer" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE COVID-19 Data</a>
-                                </div>
-                                <a target="_blank" rel="noreferrer" href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" class="btn btn-primary mt-2">Ver Mapa</a>
-                            </div>
-                        </div>
+    <div class="main-box">
+        <div class="d-flex flex-column align-items-center">
+            <img id="imgPerson" src="../img/unknown.jpg" alt="imagen de persona" class="img-thumbnail profile-img img-responsive img-mini center-block">
+            <div class="profile-label">
+                <a id="link-person" target="_blank" class="badge badge-info" href="student.html">Estudiante</a>
+            </div>
 
-                        <div class="card">
-                            <h5 class="card-header">Notificaciones</h5>
-                            <div class="card-body">
-                                <h5 class="card-title">Recibir alertas</h5>
-                                <p class="card-text">Suscríbase a las notificaciones para recibir alertas y boletines de las personas que presentan fiebre al entrar al recinto desde su dispositivo móvil o de escritorio.</p>
-                                <div class='onesignal-customlink-container'></div>
-                            </div>
-                        </div>
+            <div class="profile-since">
+                Registrado el: 23/01/2021
+            </div>
+        </div>
 
-                        <div class="card">
-                            <h5 class="card-header">Enlace</h5>
-                            <div class="card-body">
-                                <h5 class="card-title">Revise las ultimas Recomendaciones de la OMS</h5>
-                                <p class="card-text">Conozca la información más reciente sobre el brote de COVID-19 consultando las actualizaciones periódicas del sitio web de la OMS y de las autoridades nacionales y locales de salud pública de su lugar de residencia.</p>
-                                <br>
-                                <a target="_blank" rel="noreferrer" href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public" class="btn btn-primary mt-2">Visitar pagina</a>
+        <table class="table table-condensed table-hover nowrap dataTable no-footer dtr-column collapsed">
+            <tbody class="mini-info">
+                <tr>
+                    <th># Carnet</th>
+                    <td id="tdCarnet">None</td>
+                </tr>
+                <tr>
+                    <th>Apellidos</th>
+                    <td id="tdApellido">None</td>
+                </tr>
+                <tr>
+                    <th>Carrera</th>
+                    <td id="tdCarrera">None</td>
+                </tr>
+                <tr>
+                    <th>Direccion</th>
+                    <td id="tdDireccion">+1234123123123</td>
+                </tr>
+                <tr>
+                    <th>Registros</th>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>Alta</th>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <th>Alta</th>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="profile-message-btn center-block text-center">
+            <br>
+            <button id="btnModal" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#regAsistencia">
+                Tomar Temperatura
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <strong>Alertas</strong>
+        <ul id="listAlertas" class="timeline mt-2 mb-0">
+            
+            <li class="timeline-item hide">
+                <strong>Signed out</strong>
+                <span class="float-right text-muted text-sm">30m ago</span>
+                <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+            </li>
+        </ul>
+
+    </div>
+</div>
                             </div>
                         </div>
                     </div>
