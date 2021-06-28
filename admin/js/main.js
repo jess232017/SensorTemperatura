@@ -140,7 +140,7 @@ function validarCampo(element, isOkay) {
 
 //#endregion
 
-////#region  NuevaAsistencia
+//#region NuevaAsistencia
 
 function openNewAttend(code) {
     if (!document.body.classList.contains('modal-open')) {

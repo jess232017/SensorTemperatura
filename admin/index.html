@@ -70,43 +70,14 @@
                 </a>
             </li>
 
-            <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-                <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="attendance.html">
                     <svg class="c-sidebar-nav-icon">
                         <use xlink:href="assets/svg-symbols.svg#attend"></use>
                     </svg> Asistencias
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="pl-4 c-sidebar-nav-item">
-                        <a class="c-sidebar-nav-link" href="attend-visit.html">
-                            <svg class="c-sidebar-nav-icon">
-                                <use xlink:href="assets/svg-symbols.svg#visit"></use>
-                            </svg> Visitantes
-                        </a>
-                    </li>
-                    <li class="pl-4 c-sidebar-nav-item">
-                        <a class="c-sidebar-nav-link" href="attendance.html">
-                            <svg class="c-sidebar-nav-icon">
-                                <use xlink:href="assets/svg-symbols.svg#student"></use>
-                            </svg> Estudiantes
-                        </a>
-                    </li>
-                    <li class="pl-4 c-sidebar-nav-item">
-                        <a class="c-sidebar-nav-link" href="#">
-                            <svg class="c-sidebar-nav-icon">
-                                <use xlink:href="assets/svg-symbols.svg#teacher"></use>
-                            </svg> Profesores
-                        </a>
-                    </li>
-                    <li class="pl-4 c-sidebar-nav-item">
-                        <a class="c-sidebar-nav-link" href="#">
-                            <svg class="c-sidebar-nav-icon">
-                                <use xlink:href="assets/svg-symbols.svg#employee"></use>
-                            </svg> Administrativo
-                        </a>
-                    </li>
-                </ul>
             </li>
+
             <li class="c-sidebar-nav-item hide">
                 <a class="c-sidebar-nav-link" href="#">
                     <svg class="c-sidebar-nav-icon">
@@ -259,60 +230,75 @@
             <main class="c-main">
                 <div class="container-fluid">
                     <div class="fade-in">
-                        <div class="grid-fast-card mb-4">
-    <div class="card">
-        <div class="card-body p-0 d-flex align-items-center">
-            <div class="bg-gradient-success p-4 mfe-3">
-                <svg class="c-icon c-icon-xl">
-                    <use xlink:href="assets/svg-symbols.svg#student"></use>
-                </svg>
-            </div>
-            <div>
-                <div class="text-value text-primary">1340</div>
-                <div class="text-muted text-uppercase font-weight-bold small"># de Estudiantes</div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body p-0 d-flex align-items-center">
-            <div class="bg-gradient-info p-4 mfe-3">
-                <svg class="c-icon c-icon-xl">
-                    <use xlink:href="assets/svg-symbols.svg#teacher"></use>
-                </svg>
-            </div>
-            <div>
-                <div class="text-value text-info">86</div>
-                <div class="text-muted text-uppercase font-weight-bold small"># de Profesores</div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body p-0 d-flex align-items-center">
-            <div class="bg-gradient-warning p-4 mfe-3">
-                <svg class="c-icon c-icon-xl">
-                    <use xlink:href="assets/svg-symbols.svg#employee"></use>
-                </svg>
-            </div>
-            <div>
-                <div class="text-value text-warning">120</div>
-                <div class="text-muted text-uppercase font-weight-bold small"># de Empleados</div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body p-0 d-flex align-items-center">
-            <div class="bg-gradient-primary p-4 mfe-3">
+                        <div class="grid-fast-card mb-4 nav nav-tabs" style="border-bottom: none;" id="nav-tab" role="tablist">
+    <button class="card nav-link" id="nav-visit-tab" data-bs-toggle="tab" data-bs-target="#nav-visit" type="button" role="tab" aria-controls="nav-visit" aria-selected="true">
+        <div class="card-body p-0 d-flex align-items-center" style="width: 100%;">
+            <div class="bg-gradient-primary p-4">
                 <svg class="c-icon c-icon-xl">
                     <use xlink:href="assets/svg-symbols.svg#visit"></use>
                 </svg>
             </div>
-            <div>
+
+            <div style="width: 100%;">
                 <div class="text-value text-danger">2300</div>
-                <div class="text-muted text-uppercase font-weight-bold small"># de Invitados</div>
+                <div class="text-muted text-uppercase font-weight-bold small">Invitados</div>
             </div>
         </div>
-    </div>
+    </button>
+    <button class="card nav-link active" id="nav-student-tab" data-bs-toggle="tab" data-bs-target="#nav-student" type="button" role="tab" aria-controls="nav-student" aria-selected="false">
+        <div class="card-body p-0 d-flex align-items-center" style="width: 100%;">
+            <div class="bg-gradient-success p-4 ">
+                <svg class="c-icon c-icon-xl">
+                    <use xlink:href="assets/svg-symbols.svg#student"></use>
+                </svg>
+            </div>
+            <div style="width: 100%;"> 
+                <div class="text-value text-primary">1340</div>
+                <div class="text-muted text-uppercase font-weight-bold small">Estudiantes</div>
+            </div>
+        </div>
+    </button>
+    <button class="card nav-link" id="nav-professor-tab" data-bs-toggle="tab" data-bs-target="#nav-professor" type="button" role="tab" aria-controls="nav-professor" aria-selected="false">
+        <div class="card-body p-0 d-flex align-items-center" style="width: 100%;">
+            <div class="bg-gradient-info p-4">
+                <svg class="c-icon c-icon-xl">
+                    <use xlink:href="assets/svg-symbols.svg#teacher"></use>
+                </svg>
+            </div>
+            <div style="width: 100%;">
+                <div class="text-value text-info">86</div>
+                <div class="text-muted text-uppercase font-weight-bold small">Profesores</div>
+            </div>
+        </div>
+    </button>
+    <button class="card nav-link" id="nav-admin-tab" data-bs-toggle="tab" data-bs-target="#nav-admin" type="button" role="tab" aria-controls="nav-admin" aria-selected="false">
+        <div class="card-body p-0 d-flex align-items-center" style="width: 100%;">
+            <div class="bg-gradient-warning p-4 ">
+                <svg class="c-icon c-icon-xl">
+                    <use xlink:href="assets/svg-symbols.svg#employee"></use>
+                </svg>
+            </div>
+            <div style="width: 100%;">
+                <div class="text-value text-warning">120</div>
+                <div class="text-muted text-uppercase font-weight-bold small">Empleados</div>
+            </div>
+        </div>
+    </button>
 </div>
+
+<style>
+    .card.nav-link.active {
+        border-bottom: 1px solid #c4c9d0;
+        background: white;
+    }
+    
+    button.nav-link,
+    .card.nav-link {
+        border-bottom: 1px solid #c4c9d0;
+        padding: 0;
+        background: white;
+    }
+</style>
 
                         <!---->
                         <div class="card">

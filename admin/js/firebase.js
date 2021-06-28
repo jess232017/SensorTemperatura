@@ -45,7 +45,7 @@ dbSensor1.child('codigo').on('value', snap => {
 });
 
 dbSensor1.child('temperatura').on('value', snap => {
-    let value = snap.val();
+    let value = snap.val().toFixed(2);
 
     if (typeof gauge !== 'undefined') {
         gauge.set(value);
@@ -75,6 +75,19 @@ dbSensor1.child('humedad').on('value', snap => {
     addData(humidityChart, new Date().toLocaleTimeString(), value);
 })
 
+dbSensor1.child('activo').on('value', snap => {
+    if ($(".fab").length) {
+        let fabSwitch = document.querySelector(".fab");
+        let activo = snap.val();
+        fabSwitch.style.color = (activo == 1) ? '#ffffff' : '#000000';
+
+        fabSwitch.addEventListener('click', () => {
+            let actualizacionData = {};
+            actualizacionData['/activo'] = ((activo == 1) ? 0 : 1);
+            dbSensor1.update(actualizacionData)
+        });
+    }
+});
 
 dbSensor1.child('from-serial').on('value', snap => {
     if (!isServing) {
