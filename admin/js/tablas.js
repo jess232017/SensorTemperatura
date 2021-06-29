@@ -1,6 +1,9 @@
 //#region Inicializar tabla de estudiantes
 var tableUser = $('#table-user').DataTable({
     responsive: true,
+    /*"order": [
+        [3, "asc"]
+    ],*/
     language: {
         url: './assets/translate.json'
     },

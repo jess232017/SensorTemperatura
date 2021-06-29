@@ -21,8 +21,10 @@ if (typeof(btnServer) != 'undefined' && btnServer != null) {
 
 async function connectSerial() {
     try {
+        const baudRate = parseFloat(prompt("Ingrese la tasa de baudios", "9600"));
+
         const port = await navigator.serial.requestPort();
-        await port.open({ baudRate: 9600 });
+        await port.open({ baudRate: baudRate });
 
         const decoder = new TextDecoderStream();
 

@@ -500,8 +500,8 @@ a {
 }
 
 .grid-fast-card.mini {
-  -ms-grid-columns: (minmax(125px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  -ms-grid-columns: (minmax(175px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 }
 
 .grid-fast-card > .card {

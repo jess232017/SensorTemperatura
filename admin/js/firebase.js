@@ -103,7 +103,7 @@ function fromArduino(data) {
     });
 }
 
-dbEstudiantes.on('value', snap => {
+dbEstudiantes.orderByChild("nombres").on('value', snap => {
     let students = snap.val();
 
     //Guardar la informacion en  una base de datos local

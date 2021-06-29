@@ -18,21 +18,11 @@
                     <div class="fade-in">
                         @@include('./includes/element/fast-card.html')
 
-                        <!--
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link" id="nav-visit-tab" data-bs-toggle="tab" data-bs-target="#nav-visit" type="button" role="tab" aria-controls="nav-visit" aria-selected="true">Visitantes</button>
-                                <button class="nav-link active" id="nav-student-tab" data-bs-toggle="tab" data-bs-target="#nav-student" type="button" role="tab" aria-controls="nav-student" aria-selected="false">Estudiantes</button>
-                                <button class="nav-link" id="nav-professor-tab" data-bs-toggle="tab" data-bs-target="#nav-professor" type="button" role="tab" aria-controls="nav-professor" aria-selected="false">Profesores</button>
-                                <button class="nav-link" id="nav-admin-tab" data-bs-toggle="tab" data-bs-target="#nav-admin" type="button" role="tab" aria-controls="nav-admin" aria-selected="false">Administrativo</button>
-                            </div>
-                        </nav>-->
-
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade" id="nav-visit" role="tabpanel" aria-labelledby="nav-visit-tab">
                                 <div class="row">
-                                    <div id="div-list">
-                                        <h1 class="h3 mb-3">Asistencias</h1>
+                                    <h1 class="h3 mb-3">Asistencias</h1>
+                                    <div>
                                         <div class="card">
                                             <div class="card-header">
                                                 <h5 class="card-title mb-0">Registro de Visitantes</h5>
@@ -55,16 +45,12 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div id="div-person" class="col-xl-4 hide">
-                                        @@include('./includes/element/person-card.html')
-                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade show active" id="nav-student" role="tabpanel" aria-labelledby="nav-student-tab">
                                 <div class="row">
+                                    <h1 class="h3 mb-3">Asistencias</h1>
                                     <div id="div-list">
-                                        <h1 class="h3 mb-3">Asistencias</h1>
                                         <div class="card">
                                             <div class="card-header">
                                                 <h5 class="card-title mb-0">Registro de Estudiantes</h5>
@@ -87,6 +73,10 @@
                                                 </table>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div id="div-person" class="col-xl-4 hide">
+                                        @@include('./includes/element/person-card.html')
                                     </div>
                                 </div>
                             </div>

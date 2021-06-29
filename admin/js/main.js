@@ -204,8 +204,10 @@ function setPersonCard(data) {
 
     $('#div-list').addClass('col-xl-8');
     $('#div-person').removeClass('hide');
-    tableUser.columns.adjust().draw();
-    tableAttend.columns.adjust().draw();
+
+    tableUser.columns.adjust().draw(false);
+    tableAttend.columns.adjust().draw(false);
+
     $('#tdCarnet').text(data.codigo);
     $('#txt-Nombre').text(data.nombres);
     $('#tdApellido').text(data.apellidos);
