@@ -12,8 +12,10 @@ var tableUser = $('#table-user').DataTable({
             visible: false, //ocultamos la columna de idFirebase que es la [0]                        
         }, {
             targets: [1],
-            render: function(data) {
-                return `<img loading="lazy" style="border-radius:50%" src="https://res.cloudinary.com/js-media/image/upload/c_scale,e_auto_brightness,h_48,q_80,w_48/v1620739560/STC-UNI/Estudiantes/${data}.jpg" alt="${data}">`
+            //let effect2 = "c_scale,e_auto_brightness,h_48,q_80,w_48";
+            render: (data) => {
+                let url = obtenerImagen(data, effect2);
+                return `<img loading="lazy" style="border-radius:50%" src="${url}" alt="${data}">`;
             }
         },
         {

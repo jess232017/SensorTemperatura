@@ -67,8 +67,8 @@ function validarForm(data) {
             data = data[Object.keys(data)[0]]
             setOcultable(false);
 
-            obtenerImagen(idCode, '#cardImagen');
-            console.log(hora, fecha);
+            $('#cardImagen').attr("src", obtenerImagen(data.codigo, effect1));
+
             $('#regHora').text(hora);
             $('#regFecha').text(fecha);
             $('#txtIded').text(idCode);
@@ -200,7 +200,7 @@ function ajustAlert(attends) {
 }
 
 function setPersonCard(data) {
-    obtenerImagen(data.codigo, '#imgPerson');
+    $('#imgPerson').attr("src", obtenerImagen(data.codigo, effect1));
 
     $('#div-list').addClass('col-xl-8');
     $('#div-person').removeClass('hide');

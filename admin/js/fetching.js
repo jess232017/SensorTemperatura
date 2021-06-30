@@ -1,8 +1,27 @@
+const cl = new cloudinary.Cloudinary({
+    cloud_name: "js-media",
+    secure: true
+});
+
+/*
+    let effect = "c_thumb,g_face,h_250,w_250";
+    let effect2 = "c_scale,e_auto_brightness,h_48,q_80,w_48";
+*/
+
+const effect1 = [
+    { width: 250, height: 250, gravity: "face", crop: "thumb" },
+];
+
+const effect2 = [
+    { width: 48, height: 48, quality: 80, gravity: "face", crop: "thumb" },
+];
+
 //Determinar si la imagen existe
 function imageExists(image_url) {
     var http = new XMLHttpRequest();
     http.open('HEAD', image_url, false);
     http.send();
+
     return http.status != 404;
 }
 
@@ -33,10 +52,14 @@ function enviarNotificacion(Titulo, Mensaje, URL = "", Image = "") {
 
 //Subir una imagen a cloudinary
 function enviarImagen(fileInput, public_id) {
+
     let formdata = new FormData();
     formdata.append("file", fileInput.files[0]);
     formdata.append("upload_preset", "ml_default");
     formdata.append("public_id", public_id);
+    //formdata.append("overwrite", true);
+    //formdata.append("api_secret", "mPFl4NB7tsp-0AxvVftFAtfuWtM");
+    //formdata.append("api_key", "749175694184996");
 
     let requestOptions = { method: 'POST', body: formdata, redirect: 'follow' };
 
@@ -47,12 +70,16 @@ function enviarImagen(fileInput, public_id) {
 }
 
 //Obtener una imagen desde cloudinary
-function obtenerImagen(path, element) {
-    let effect = "c_thumb,g_face,h_250,w_250";
-    let url = `https://res.cloudinary.com/js-media/image/upload/${effect}/v1620739560/STC-UNI/Estudiantes/${path}.jpg`;
-    if (imageExists(url)) {
-        $(element).attr("src", url);
-    } else {
-        $(element).attr("src", "https://img.icons8.com/office/16/000000/no-image.png");
-    }
+function obtenerImagen(path, transformation) {
+    console.log(cl.url(`STC-UNI/Estudiantes/${path}.png`, {
+        secure: true,
+        transformation
+    }), transformation);
+    let url = cl.url(`STC-UNI/Estudiantes/${path}.png`, {
+        secure: true,
+        transformation
+    });
+
+    return url;
+    return imageExists(url) ? url : "https://img.icons8.com/office/16/000000/no-image.png";
 }
