@@ -18,6 +18,8 @@ const effect2 = [
 
 //Determinar si la imagen existe
 function imageExists(image_url) {
+    return true;
+
     var http = new XMLHttpRequest();
     http.open('HEAD', image_url, false);
     http.send();
@@ -52,7 +54,6 @@ function enviarNotificacion(Titulo, Mensaje, URL = "", Image = "") {
 
 //Subir una imagen a cloudinary
 function enviarImagen(fileInput, public_id) {
-
     let formdata = new FormData();
     formdata.append("file", fileInput.files[0]);
     formdata.append("upload_preset", "ml_default");
@@ -71,15 +72,10 @@ function enviarImagen(fileInput, public_id) {
 
 //Obtener una imagen desde cloudinary
 function obtenerImagen(path, transformation) {
-    console.log(cl.url(`STC-UNI/Estudiantes/${path}.png`, {
-        secure: true,
-        transformation
-    }), transformation);
     let url = cl.url(`STC-UNI/Estudiantes/${path}.png`, {
         secure: true,
         transformation
     });
 
     return url;
-    return imageExists(url) ? url : "https://img.icons8.com/office/16/000000/no-image.png";
 }
